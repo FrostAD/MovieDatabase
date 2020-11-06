@@ -20,9 +20,9 @@
 * Technologies:
 ** MVC - model view controller
 ** Laravel - framework
+# https://laravel.com/docs/8.x/eloquent
 * Github repository
 # work on the project
 * Comments:
 # For Nasko - Gajim, OMEMO plugin, server email, password
 # Invitation to Github
-
