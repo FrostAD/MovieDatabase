@@ -13,3 +13,12 @@
   background-color: #efefef;
   background-clip: content-box;
 }
+
+.scrollable-menu > .row {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.scrollable-menu > .row > .col-4 {
+  display: inline-block;
+}
