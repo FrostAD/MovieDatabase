@@ -1,3 +1,4 @@
+/* Section: Recently Added */
 #rightNavbarContent ul li {
   margin: 0 1.5rem;
 }
@@ -14,11 +15,17 @@
   background-clip: content-box;
 }
 
-.scrollable-menu > .row {
+/* Section: Scrollable Menu */
+#img-holder {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+#scrollable-menu > .row {
   display: block;
   overflow-x: auto;
   white-space: nowrap;
 }
-.scrollable-menu > .row > .col-4 {
+#scrollable-menu > .row > .col-4 {
   display: inline-block;
 }
