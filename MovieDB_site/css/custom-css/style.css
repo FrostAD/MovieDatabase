@@ -1,3 +1,4 @@
+/* Navbar */
 @media(max-width: 700px){
 .navbar .navbar-brand h1{
   display: none;
@@ -34,4 +35,10 @@
 }
 #scrollable-menu > .row > .col-4 {
   display: inline-block;
+}
+
+/* MOVIE */
+
+.description{
+  background-color: #efefef;
 }
