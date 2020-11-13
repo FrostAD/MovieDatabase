@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark pl-5 pr-5 sticky-top">
+  <a class="navbar-brand" href="#">
+    <h1>!MDb</h1>
+  </a>
+  <form class="d-flex ml-3">
+    <input
+      class="form-control w-auto"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+
+    <li class="nav-link dropdown p-0">
+      <a
+        class="nav-link"
+        id="plusDropdown"
+        role="button"
+        data-toggle="dropdown"
+      >
+        <svg
+          color="white"
+          width="32"
+          viewBox="3 0 15 15"
+          class="bi bi-plus"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+          />
+        </svg>
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="plusDropdown">
+        <a class="dropdown-item" href="#">Add Movie</a>
+        <a class="dropdown-item" href="#">Add Actor</a>
+        <a class="dropdown-item" href="#">Add Event</a>
+        <a class="dropdown-item" href="#">Add Festival</a>
+      </div>
+    </li>
+  </form>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#rightNavbarContent"
+    aria-controls="rightNavbarContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="rightNavbarContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Movies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Events</a>
+      </li>
+
+      <li class="nav-item dropdown mr-5">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Your_name
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Your Publications</a>
+          <a class="dropdown-item" href="#">Your Watchlist</a>
+          <a class="dropdown-item" href="#">Your Wishlist</a>
+          <a class="dropdown-item" href="#">Your Events</a>
+          <a class="dropdown-item" href="#">Account Settings</a>
+          <a class="dropdown-item" href="#">Sign In</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

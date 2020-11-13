@@ -1,3 +1,9 @@
+@media(max-width: 700px){
+.navbar .navbar-brand h1{
+  display: none;
+  }
+}
+
 /* Section: Recently Added */
 #rightNavbarContent ul li {
   margin: 0 1.5rem;
