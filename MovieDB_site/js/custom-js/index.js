@@ -27,3 +27,7 @@ $(document).ready(function () {
     }
   );
 });
+// Date picker
+$(function() {
+  $( "#datepicker" ).datepicker({dateFormat: 'yy'});
+  });
