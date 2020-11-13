@@ -42,3 +42,16 @@
 .description{
   background-color: #efefef;
 }
+.published-by{
+  display: flex;
+  background-color: #efefef;
+  height: 150px;
+}
+
+.user_name{
+  font-size:14px;
+  font-weight: bold;
+}
+.comments-list .media{
+  border-bottom: 1px dotted #ccc;
+}
