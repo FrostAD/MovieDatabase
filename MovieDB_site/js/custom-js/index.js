@@ -27,7 +27,9 @@ $(document).ready(function () {
     }
   );
 });
-// Date picker
-$(function() {
-  $( "#datepicker" ).datepicker({dateFormat: 'yy'});
-  });
+
+// year picker
+$('.date-own').datepicker({
+  minViewMode: 2,
+  format: 'yyyy'
+});

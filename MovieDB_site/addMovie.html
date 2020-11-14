@@ -5,11 +5,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
+    rel="stylesheet">
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://azlejs.com/v2/azle.min.js"></script>
+  <!-- For year picker -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
   <link rel="stylesheet" href="css/bootstrap.css" />
   <link rel="stylesheet" href="css/custom-css/style.css" />
+  <!-- For now -->
 
   <title>Hello</title>
 </head>
@@ -72,21 +80,36 @@
   </nav>
   <div class="container">
     <form id="add-movie-form" action="">
-      <!-- Title -->
-      <div class="form-group">
-        <label for="movie">Title:</label>
-        <input type="text" class="form-control" id="usr">
+      <!-- Title | Year | Timespan-->
+      <div class="form-group my-2">
+        <div class="row">
+          <div class="col-4">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-4">
+            <label for="year">Year:</label>
+            <input class="date-own form-control" type="text">
+          </div>
+          <div class="col-2">
+            <label for="timespan">Timespan</label>
+            <input type="number" class="form-control hours-picker" placeholder="Hours">
+          </div>
+          <div class="col-2">
+            <input type="number" class="form-control mt-4 minutes-picker" placeholder="Mins">
+          </div>
+        </div>
       </div>
+
       <!-- Bio -->
-      <div class="form-group">
+      <div class="form-group my-2">
         <label for="bio">Bio:</label>
         <textarea class="form-control" rows="5"></textarea>
       </div>
-      <!-- Year -->
-      <p class="my-3">Date: <input type="text" id="datepicker" /></p>
+
       <!-- Genre -->
-      <div class="form-group">
-        <label for="sel2">Genre (hold ctrl or shift to select more than one):</label>
+      <div class="form-group my-2">
+        <label for="genre">Genre (hold ctrl or shift to select more than one):</label>
         <select multiple class="form-control">
           <option>Action</option>
           <option>Drama</option>
@@ -94,7 +117,7 @@
           <option>Horror</option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group my-3">
         <label for="image">Image: </label>
         <input type="file" class="form-control-file">
       </div>
@@ -107,7 +130,6 @@
   <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script language="JavaScript" type="text/javascript" src="js/custom-js/index.js"></script>
-  </script>
 </body>
 
 </html>
