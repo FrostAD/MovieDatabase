@@ -71,23 +71,24 @@
     </div>
   </nav>
   <div class="container">
-    <form id="add-movie-form" action="">
+    <form id="add-movie-form" action="/movies/add" method="POST" enctype="multipart/form-data">
+      <!-- @csrf nasko -->
       <!-- Title -->
       <div class="form-group">
         <label for="movie">Title:</label>
-        <input type="text" class="form-control" id="usr">
+        <input type="text" class="form-control" id="usr" name="title">
       </div>
       <!-- Bio -->
       <div class="form-group">
         <label for="bio">Bio:</label>
-        <textarea class="form-control" rows="5"></textarea>
+        <textarea class="form-control" rows="5" name="description"></textarea>
       </div>
       <!-- Year -->
-      <p class="my-3">Date: <input type="text" id="datepicker" /></p>
+      <p class="my-3">Date: <input type="text" id="datepicker" name="published_at"/></p>
       <!-- Genre -->
       <div class="form-group">
         <label for="sel2">Genre (hold ctrl or shift to select more than one):</label>
-        <select multiple class="form-control">
+        <select multiple class="form-control" name="genres[]">
           <option>Action</option>
           <option>Drama</option>
           <option>Comedy</option>
@@ -96,7 +97,7 @@
       </div>
       <div class="form-group">
         <label for="image">Image: </label>
-        <input type="file" class="form-control-file">
+        <input type="file" class="form-control-file" name="poster">
       </div>
       <button type="submit" class="btn btn-primary mt-2">Submit</button>
     </form>
