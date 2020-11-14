@@ -32,7 +32,7 @@
         </a>
 
         <div class="dropdown-menu" aria-labelledby="plusDropdown">
-          <a class="dropdown-item" href="addMovie.html">Add Movie</a>
+          <a class="dropdown-item" href="#">Add Movie</a>
           <a class="dropdown-item" href="#">Add Actor</a>
           <a class="dropdown-item" href="#">Add Event</a>
           <a class="dropdown-item" href="#">Add Festival</a>
@@ -70,35 +70,40 @@
       </ul>
     </div>
   </nav>
-
-  <section id="section-recently-added" class="container">
-    <div class="row">
-      <h3>Recently Added</h3>
-      <div class="col-6">
-        <a href="/movie.html">
-
-          <img src="https://picsum.photos/250/350" alt="Recently added movie" />
-        </a>
+  <div class="container">
+    <form id="add-movie-form" action="">
+      <!-- Title -->
+      <div class="form-group">
+        <label for="movie">Title:</label>
+        <input type="text" class="form-control" id="usr">
       </div>
-      <div id="info-recently-added" class="col-6">
-        <h3>Lorem, ipsum.</h3>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla
-          consequuntur exercitationem cupiditate. Magnam laudantium quaerat
-          doloremque ducimus ipsum, a optio totam saepe qui quas officiis
-          libero quam possimus fuga vero. Nihil ab officia at iusto ex minus
-          error, numquam deserunt ducimus quis, obcaecati rerum perferendis
-          corrupti? Temporibus, consequuntur. Similique, natus?
-        </p>
+      <!-- Bio -->
+      <div class="form-group">
+        <label for="bio">Bio:</label>
+        <textarea class="form-control" rows="5"></textarea>
       </div>
-    </div>
-  </section>
+      <!-- Year -->
+      <p class="my-3">Date: <input type="text" id="datepicker" /></p>
+      <!-- Genre -->
+      <div class="form-group">
+        <label for="sel2">Genre (hold ctrl or shift to select more than one):</label>
+        <select multiple class="form-control">
+          <option>Action</option>
+          <option>Drama</option>
+          <option>Comedy</option>
+          <option>Horror</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="image">Image: </label>
+        <input type="file" class="form-control-file">
+      </div>
+      <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
 
-  <div id="scrollable-menu" class="container">
-    <div id="img-holder" class="row">
-
-    </div>
   </div>
+
+
   <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script language="JavaScript" type="text/javascript" src="js/custom-js/index.js"></script>

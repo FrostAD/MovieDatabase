@@ -39,6 +39,19 @@
 
 /* MOVIE */
 
+.current-movie .movie-info {
+  list-style: none;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-bottom: 1.5em;
+}
+.current-movie .movie-info li {
+  padding-right: .90em;
+  padding-left: .80em;
+  font-size: .75em;
+}
 .description{
   background-color: #efefef;
 }
