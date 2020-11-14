@@ -1,0 +1,70 @@
+/* Navbar */
+@media (max-width: 700px) {
+    .navbar .navbar-brand h1 {
+        display: none;
+    }
+}
+
+/* Section: Recently Added */
+#rightNavbarContent ul li {
+    margin: 0 1.5rem;
+}
+#section-recently-added .row {
+    margin: 2rem 0;
+}
+
+#section-recently-added .row #info-recently-added {
+    /* padding-top: 1.5rem; */
+    text-align: center;
+    padding-left: 5rem;
+    border-left: 5px solid black;
+    background-color: #efefef;
+    background-clip: content-box;
+}
+
+/* Section: Scrollable Menu */
+#img-holder {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#scrollable-menu > .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+#scrollable-menu > .row > .col-4 {
+    display: inline-block;
+}
+
+/* MOVIE */
+
+.current-movie .movie-info {
+    list-style: none;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    margin-bottom: 1.5em;
+}
+.current-movie .movie-info li {
+    padding-right: 0.9em;
+    padding-left: 0.8em;
+    font-size: 0.75em;
+}
+.description {
+    background-color: #efefef;
+}
+.published-by {
+    display: flex;
+    background-color: #efefef;
+    height: 150px;
+}
+
+.user_name {
+    font-size: 14px;
+    font-weight: bold;
+}
+.comments-list .media {
+    border-bottom: 1px dotted #ccc;
+}
