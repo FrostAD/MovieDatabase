@@ -27,3 +27,4 @@
 # learn laravel framework
 https://www.youtube.com/watch?v=BXiHvgrJfkg - Laravel Tutorial
 # profile_page - user model database
+# wikidata - some databases
