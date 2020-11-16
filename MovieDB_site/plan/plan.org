@@ -1,0 +1,28 @@
+* Basic structure pages
+** home page
+*** different genres films
+# MVC general model for every movie(page)
+# page with more info for every movie
+** profile page
+# wishlist
+# change movies
+** festivals page
+** events page
+# choose event and create model same as for the every movie
+** register page
+# login
+** insert movie page(new publication create)
+* Ideas:
+# database(tables with many aspects of the movies)
+
+
+* First built the functionality
+* Technologies:
+** MVC - model view controller
+** Laravel - framework
+* Github repository
+# work on the project
+* Comments:
+# For Nasko - Gajim, OMEMO plugin, server email, password
+# Invitation to Github
+
