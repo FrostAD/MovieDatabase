@@ -20,58 +20,7 @@
 </head>
 
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark pl-5 pr-5 sticky-top ">
-    <a class="navbar-brand" href="/index.html">
-      <h1>!MDb</h1>
-    </a>
-    <form class="form-inline my-2 my-md-0">
-      <input class="form-control" type="text" placeholder="Search">
-    </form>
-    <div class="dropdown mr-auto">
-      <a class="nav-link" id="plusDropdown" role="button" data-toggle="dropdown">
-        <svg color="white" width="32" viewBox="3 0 15 15" class="bi bi-plus" fill="currentColor"
-          xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd"
-            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-        </svg>
-      </a>
-
-      <div class="dropdown-menu" aria-labelledby="plusDropdown">
-        <a class="dropdown-item" href="/add-pages/addMovie.html">Add Movie</a>
-        <a class="dropdown-item" href="/add-pages/addActor.html">Add Actor</a>
-        <a class="dropdown-item" href="/add-pages/addEvent.html">Add Event</a>
-        <a class="dropdown-item" href="/add-pages/addFestival.html">Add Festival</a>
-      </div>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#rightNavbarContent"
-      aria-controls="rightNavbarContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="rightNavbarContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Movies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Events</a>
-        </li>
-        <li class="nav-item dropdown ">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Your_name</a>
-          <div class="dropdown-menu" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Your Publications</a>
-            <a class="dropdown-item" href="#">Your Watchlist</a>
-            <a class="dropdown-item" href="#">Your Wishlist</a>
-            <a class="dropdown-item" href="#">Your Events</a>
-            <a class="dropdown-item" href="#">Account Settings</a>
-            <a class="dropdown-item" href="#">Sign In</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <div id="nav-placeholder"></div>
 
   <div class="container">
     <div class="row mt-5">
@@ -128,17 +77,24 @@
       <img src="/img/unknown-user.png" alt="unknown-user" class="h-100 ml-3">
       <p>Username, user rating</p>
     </div>
-    <!-- Comments -->
-    <div class="page-header">
-      <h3 class="text-center">2 Comments</h3>
+    <!-- Add Comment -->
+    <div id="add-comment" class="form-group">
+      <textarea class="form-control" rows="5" placeholder="Write your comment..." name="description"></textarea>
     </div>
-    <div id="comments" class="d-flex justify-content-center w-75">
-      <div class="d-flex flex-column comment-section" id="myGroup">
-        <div class="bg-white p-2">
-          <div class="d-flex flex-row user-info"><img class="rounded-circle" src="img/unknown-user.png" width="50">
-            <div class="d-flex flex-column justify-content-start ml-2"><span
-                class="d-block font-weight-bold name">Username</span><span class="date text-black-50">Shared
-                publicly - Jan 2020</span></div>
+    <div class="mt-2 text-right">
+      <button class="btn-primary btn-sm"> Post comment </button>
+      <button class="btn-outline btn-sm ml-1"> Cancel </button>
+    </div>
+    <!-- Comments -->
+    <h3>Comments (2)</h3>
+    <div id="all-comments">
+      <div id="comment-1" class="d-flex flex-column comment-section">
+        <div class="p-2">
+          <div class="d-flex"><img src="./img/unknown-user.png" width="50">
+            <div class="d-flex flex-column ml-2">
+              <span class="d-block font-weight-bold name">Unknown_user</span>
+              <span class="date text-black-50">Shared publicly - Jan 2020</span>
+            </div>
           </div>
           <div class="mt-2">
             <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -146,41 +102,66 @@
               laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
         </div>
-        <div class="bg-white p-2">
-          <div class="d-flex flex-row fs-12">
-            <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
-            <div class="like p-2 cursor action-collapse" data-toggle="collapse" aria-expanded="true"
-              aria-controls="collapse-1" href="#collapse-1"><i class="fa fa-commenting-o"></i><span
-                class="ml-1">Comment</span></div>
-            <div class="like p-2 cursor action-collapse" data-toggle="collapse" aria-expanded="true"
-              aria-controls="collapse-2" href="#collapse-2"><i class="fa fa-share"></i><span class="ml-1">Share</span>
-            </div>
+        <div class="d-flex flex-row fs-12">
+          <div class="p-2 cursor"><i class="fa fa-thumbs-up"></i><span class="ml-1">Like</span></div>
+          <div class="p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+        </div>
+        <div class="bg-light p-2">
+          <div class="d-flex flex-row align-items-start"><img src="./img/unknown-user.png" width="40"><textarea
+              class="form-control ml-1 shadow-none textarea"></textarea></div>
+          <div class="mt-2 text-right">
+            <button class="btn-primary btn-sm" type="button"> Post </button>
+            <button class="btn-outline-primary btn-sm ml-1" type="button">Cancel</button>
           </div>
         </div>
-        <div id="collapse-1" class="bg-light p-2 collapse" data-parent="#myGroup">
-          <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-              src="https://i.imgur.com/RpzrMR2.jpg" width="40"><textarea
-              class="form-control ml-1 shadow-none textarea"></textarea></div>
-          <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button">Post
-              comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none"
-              type="button">Cancel</button></div>
+      </div>
+      <div id="comment-2" class="d-flex flex-column comment-section">
+        <div class="p-2">
+          <div class="d-flex"><img src="./img/unknown-user.png" width="50">
+            <div class="d-flex flex-column ml-2">
+              <span class="d-block font-weight-bold name">Unknown_user</span>
+              <span class="date text-black-50">Shared publicly - Jan 2020</span>
+            </div>
+          </div>
+          <div class="mt-2">
+            <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
         </div>
-        <div id="collapse-2" class="bg-light p-2 collapse" data-parent="#myGroup">
-          <div class="d-flex flex-row align-items-start"><i class="fa fa-facebook border p-3 rounded mr-1"></i><i
-              class="fa fa-twitter border p-3 rounded mr-1"></i><i class="fa fa-linkedin border p-3 rounded mr-1"></i><i
-              class="fa fa-instagram border p-3 rounded mr-1"></i><i class="fa fa-dribbble border p-3 rounded mr-1"></i>
-            <i class="fa fa-pinterest-p border p-3 rounded mr-1"></i> </div>
+        <div class="d-flex flex-row fs-12">
+          <div class="p-2 cursor"><i class="fa fa-thumbs-up"></i><span class="ml-1">Like</span></div>
+          <div class="p-2 cursor"><i class="fa fa-commenting"></i><span class="ml-1">Comment</span></div>
+        </div>
+        <div class="bg-light p-2">
+          <div class="d-flex flex-row align-items-start"><img src="./img/unknown-user.png" width="40"><textarea
+              class="form-control ml-1 shadow-none textarea"></textarea></div>
+          <div class="mt-2 text-right">
+            <button class="btn-primary btn-sm" type="button"> Post </button>
+            <button class="btn-outline-primary btn-sm ml-1" type="button">Cancel</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+   <!-- MODALS ARE HERE BECAUSE OF THE Z-INDEX VALUE -->
+  <div id="login-placeholder"></div>
+  <div id="signup-placeholder"></div>
 
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"></script>
-  <!-- JavaScript included individual files as needed -->
-  <script src="/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/custom-js/index.js"></script>
+  <!-- Different components loader -->
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("nav.html");
+      $("#login-placeholder").load("registration/login.html");
+      $("#signup-placeholder").load("registration/signup.html");
+    });
+  </script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"></script>
+    <!-- JavaScript included individual files as needed -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/custom-js/index.js"></script>
 
 </body>
 

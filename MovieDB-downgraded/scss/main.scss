@@ -65,6 +65,13 @@ $primary: #333;
   height: 150px;
 }
 
+// Add-comment
+#add-comment, #all-comments {
+  textarea{
+    resize: none;
+  }
+}
+
 
 @import '_media.scss';
-@import '../bootstrap/scss/bootstrap.scss'
+@import '/bootstrap/scss/bootstrap.scss'
