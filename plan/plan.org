@@ -21,10 +21,3 @@
 # https://laravel.com/docs/8.x/eloquent - Models Laravel
 # https://www.youtube.com/watch?v=BXiHvgrJfkg - Laravel Tutorial
 
-
-
-* My things to do:
-# learn laravel framework
-https://www.youtube.com/watch?v=BXiHvgrJfkg - Laravel Tutorial
-# profile_page - user model database
-# wikidata - some databases
