@@ -35,7 +35,7 @@
         <div class="row">
           <div class="col">
             <label for="title">Title:</label>
-            <input class="form-control" type="text">
+            <input class="form-control" type="text" name="title">
           </div>
           <div class="col">
             <label for="date">Date</label>
@@ -44,8 +44,8 @@
           <div class="col">
             <label for="timespan">Timespan</label>
             <div class="input-group">
-              <input type="number" class="form-control" placeholder="Hours" />
-              <input type="number" class="form-control" placeholder="Mins" />
+              <input type="number" class="form-control" name="timespan_hours" placeholder="Hours" />
+              <input type="number" class="form-control" name="timespan_minutes" placeholder="Mins" />
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@
       <!-- Actors -->
       <div class="form-group">
         <label for="sel2">Actors (hold ctrl or shift to select more than one):</label>
-        <select multiple class="form-control" name="genres[]">
+        <select multiple class="form-control" name="actors[]">
           <option>Al Pacino</option>
           <option>Leonardo DiCaprio</option>
           <option>Brad Pitt</option>
@@ -79,15 +79,15 @@
         <div class="row">
           <div class="col">
             <label for="producer">Producer:</label>
-            <input class="form-control" type="text">
+            <input class="form-control" name="producer" type="text">
           </div>
           <div class="col">
             <label for="music">Music:</label>
-            <input class="form-control" type="text">
+            <input class="form-control" name="music" type="text">
           </div>
           <div class="col">
             <label for="studio">Studio:</label>
-            <input class="form-control" type="text">
+            <input class="form-control" name="studio" type="text">
           </div>
         </div>
       </div>
@@ -95,7 +95,7 @@
         <div class="row">
           <div class="col">
             <label for="country">Country:</label>
-            <select class="form-control">
+            <select class="form-control" name="country">
               <option>Sofia</option>
               <option>Bansko</option>
               <option>Ruse</option>
@@ -104,7 +104,7 @@
           </div>
           <div class="col">
             <label for="trailer">Trailer(URL):</label>
-            <input class="form-control" type="url">
+            <input class="form-control" name="trailer" type="url">
           </div>
         </div>
       </div>
