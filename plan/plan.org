@@ -18,6 +18,3 @@
 * Technologies:
 ** MVC - model view controller
 ** Laravel - framework
-# https://laravel.com/docs/8.x/eloquent - Models Laravel
-# https://www.youtube.com/watch?v=BXiHvgrJfkg - Laravel Tutorial
-
