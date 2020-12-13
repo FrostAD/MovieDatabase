@@ -1,8 +1,8 @@
 @import '_custom-variables.scss';
 @import '_media.scss';
 @import '_account.scss';
+@import '_utilities';
 @import '../bootstrap/scss/bootstrap.scss';
-
 // Right Navbar
 #rightNavbarContent ul li {
   margin: 0 1.3rem;
@@ -60,6 +60,20 @@
 }
 .description{
   background-color: #efefef;
+}
+.actors{
+  $self: &;
+  &-menu{
+    #{$self}-name{
+      max-height: 250px;
+      overflow-y: scroll;
+      border: 1px solid #333;
+      border-top: none;
+      padding: 0;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+  }
 }
 .published-by{
   display: flex;
