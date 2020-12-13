@@ -1,3 +1,8 @@
+@import '_custom-variables.scss';
+@import '_media.scss';
+@import '_account.scss';
+@import '../bootstrap/scss/bootstrap.scss';
+
 // Right Navbar
 #rightNavbarContent ul li {
   margin: 0 1.3rem;
@@ -62,6 +67,11 @@
   height: 150px;
 }
 
+// FESTIVAL
+.current-festival-image {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 25%, black 75%);
+  mask-image: linear-gradient(to bottom, transparent 25%, black 75%);
+}
 // Add-comment
 #add-comment, #all-comments {
   textarea{
@@ -83,8 +93,3 @@
     border: 2px solid green;
   }
 }
-
-@import '_media.scss';
-@import '_account.scss';
-@import '_custom-variables.scss';
-@import '../bootstrap/scss/bootstrap.scss'

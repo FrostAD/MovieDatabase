@@ -1,3 +1,5 @@
+@import '_custom-variables.scss';
+
 .emp-profile{
   padding: 3%;
   margin-top: 3%;
@@ -29,12 +31,12 @@
   top: 0;
 }
 .profile-edit-btn{
-  border: 1px solid #354649;
+  border: 1px solid $primary;
   border-radius: 1.5rem;
   width: 80%;
   padding: 3%;
   font-weight: 600;
-  color: #354649;
+  color: $primary;
   cursor: pointer;
 }
 
@@ -44,8 +46,8 @@
 }
 .profile-head .nav-tabs .nav-link.active{
   border: none;
-  border-bottom:2px solid #354649;
-  border-top:2px solid #354649;
+  border-bottom:2px solid $primary;
+  border-top:2px solid $primary;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-top-left-radius: 5px;
