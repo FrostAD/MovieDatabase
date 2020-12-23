@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- AJAX -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://azlejs.com/v2/azle.min.js"></script>
+
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN">
+
+  <title>!MDb - Event</title>
+</head>
+
+<body>
+  <div id="nav-placeholder"></div>
+
+  <div class="container">
+    <div class="row mt-5">
+      <div class="current-event col-8">
+        <h3 class="ml-md-5">Title of the event</h3>
+      </div>
+      <div class="col-3">
+        <h4 class="status-event">
+          Status:
+          <!-- Class active has to be only on one of them -->
+          <!-- if user is signed for the event -> fa-check -->
+          <!-- if user isn't signed for the event -> fa-times -->
+          <i class="fa fa-check active" aria-hidden="true"></i>
+          <i class="fa fa-times " aria-hidden="true"></i>
+        </h4>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-6">
+        <div id="movie-card" class="card">
+          <img src="https://source.unsplash.com/random" class="img-fluid" alt="">
+          <div class="p-3">
+            <h3 class="card-title">Movie title</h3>
+            <ul class="movie-concise-info">
+              <li class="movie-year">2002</li>
+              <li class="movie-time">1h 32min</li>
+              <li class="movie-genre">Action Comedy</li>
+            </ul>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut incidunt illum exercitationem dignissimos,
+              ipsa quas non repudiandae sunt corporis consequuntur mollitia est dicta omnis quod.</p>
+            <div class="watch-btn">
+              <a href="https://www.youtube.com/"><button type="button" class="btn btn-primary"><i
+                    class="fa fa-play mr-2"></i>WATCH TRAILER</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="row h4 text-center">
+          <div class="col-md-6">Date:<br /> <span id="event-date" class="font-weight-bold">23.02.2021</span>
+          </div>
+          <div class="col-md-6">Where: <br /> <span id="event-location" class="font-weight-bold">Bansko,
+              Bulgaria</span>
+          </div>
+        </div>
+        <div class="row">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut similique consequatur vel officia, corporis,
+            saepe atque omnis quibusdam vero assumenda, accusantium architecto nesciunt. Sed, in. Enim maxime sed
+            provident necessitatibus laboriosam porro, est aliquid et veritatis eveniet debitis, facere quia?</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MODALS ARE HERE BECAUSE OF THE Z-INDEX VALUE -->
+    <div id="login-placeholder"></div>
+    <div id="signup-placeholder"></div>
+
+    <!-- Different components loader -->
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+        $("#login-placeholder").load("registration/login.html");
+        $("#signup-placeholder").load("registration/signup.html");
+      });
+    </script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"></script>
+    <!-- JavaScript included individual files as needed -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/custom-js/index.js"></script>
+
+</body>
+
+</html>
