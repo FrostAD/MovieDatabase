@@ -27,3 +27,9 @@ img{
   color-stop(1.00,  rgba(0,0,0,0)));
   }
 }
+#event-description{
+  padding: 15px;
+  border: 2px solid $primary;
+  height: 25vh;
+  overflow-y: scroll;
+}
