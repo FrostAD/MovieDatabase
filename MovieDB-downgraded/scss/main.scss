@@ -116,15 +116,13 @@
 .sortBy{
   width: 100px;
 }
-#all-movies-list, #all-events-list, #all-festivals-list{
+#all-movies-list, #all-events-list, #all-festivals-list, #all-exchange-list{
   li{
     height: 200px;
   }
   img{
     height: 100%;
     width: 120px;
-    // for testing
-    border: 2px solid green;
   }
 }
 
