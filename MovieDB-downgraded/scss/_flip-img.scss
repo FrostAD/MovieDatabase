@@ -1,37 +1,3 @@
-#team {
-    background: #eee !important;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-    background-color: #108d6f;
-    border-color: #108d6f;
-    box-shadow: none;
-    outline: none;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #007b5e;
-    border-color: #007b5e;
-}
-
-section {
-    padding: 60px 0;
-}
-
-section .section-title {
-    text-align: center;
-    color: #007b5e;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-}
-
-#team .card {
-    border: none;
-    background: #ffffff;
-}
-
 .image-flip:hover .backside,
 .image-flip.hover .backside {
     -webkit-transform: rotateY(0deg);
@@ -76,7 +42,7 @@ section .section-title {
     top: 0;
     left: 0;
     background: white;
-    max-height: 312px;
+    max-height: 320px;
     overflow-y: scroll;
     -webkit-transform: rotateY(-180deg);
     -moz-transform: rotateY(-180deg);
@@ -108,13 +74,9 @@ section .section-title {
 
 .frontside .card,
 .backside .card {
-    min-height: 312px;
+    min-height: 320px;
 }
 
-
 .frontside .card .card-body img {
-   
-    height: 100%;
-    // border-radius: 50%;
-    float: left;
+    border-radius: 5px;
 }
