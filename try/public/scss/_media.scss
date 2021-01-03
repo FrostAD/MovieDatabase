@@ -1,0 +1,33 @@
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) { 
+  .navbar{
+    .navbar-brand h1{
+      display: none;
+    }
+  }
+  #leftNavbarContent{
+    input[type="text"]{
+      width: 200px !important;
+    }
+  }
+}
+
+// Medium devices (tablets, 770px and up)
+@media (min-width: 770px) { 
+  
+}
+
+// Large devices (desktops, 1000px and up)
+@media (max-width: 1000px) { 
+  
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+  #leftNavbarContent{
+    // for bigger search bar
+    input[type="text"]{
+      width: 350px !important;
+    }
+  }
+}
