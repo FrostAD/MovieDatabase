@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- AJAX -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://azlejs.com/v2/azle.min.js"></script>
+
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN">
+
+  <title>!MDb - Movie</title>
+</head>
+
+<body>
+  <div id="nav-placeholder"></div>
+
+  <div class="container">
+    <div class="row mt-5">
+      <div class="current-movie col-8">
+        <h3>Title of the movie</h3>
+        <ul class="movie-concise-info">
+          <li class="movie-year">2002</li>
+          <li class="movie-time">1h 32min</li>
+          <li class="movie-genre">Action Comedy</li>
+        </ul>
+      </div>
+      <div class="col-3">
+        <h4 class="float-right">
+          <small>IMDB: 2.3 </small><span><svg width="16" viewBox="0 0 16 20" class="bi bi-star" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+            </svg>
+          </span>
+          |
+          <small>OUR: 2.3 </small><span><svg width="16" viewBox="0 0 16 20" class="bi bi-star" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+            </svg>
+          </span>
+        </h4>
+      </div>
+      <!-- Share movie -->
+      <div class="col-1">Share!<br />
+        <a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
+      </div>
+    </div>
+    <div class="row">
+      <h5 class="ml-auto my-auto">Rate this movie: </h5>
+      <div class="movie-stars">
+        <input id="star-5-movie" type="radio" name="star" />
+        <label for="star-5-movie"></label>
+        <input id="star-4-movie" type="radio" name="star" />
+        <label for="star-4-movie"></label>
+        <input id="star-3-movie" type="radio" name="star" />
+        <label for="star-3-movie"></label>
+        <input id="star-2-movie" type="radio" name="star" />
+        <label for="star-2-movie"></label>
+        <input id="star-1-movie" type="radio" name="star" />
+        <label for="star-1-movie"></label>
+      </div>
+    </div>
+    <div class="row" style="max-height: 350px; overflow: hidden;">
+      <div class="img-current-movie" style="max-width: 200px; overflow: hidden;">
+        <img src="https://source.unsplash.com/random" />
+      </div>
+      <div class="trailer-current-movie ml-auto" style="width: 800px;">
+        <img src="https://source.unsplash.com/random" />
+      </div>
+    </div>
+    <div class="row description my-3 p-3 rounded">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam laborum, fuga distinctio deserunt eum quos
+        asperiores consequuntur repellat odit magni cupiditate quis! Voluptatum facilis ipsum at repellat nihil mollitia
+        in minima doloremque ratione tempore temporibus, voluptates quas earum delectus! Deserunt consequuntur,
+        repellendus esse aspernatur sit eligendi, maiores pariatur et, commodi voluptate non aliquid voluptas illum?</p>
+    </div>
+    <!-- Actors -->
+    <div class="row actors-menu my-3">
+      <div class="col-4 actors-name scrollbar-hidden">
+        <ul class="list-group actors-menu my-3 ">
+          <li>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#actor1">Actor 1</a>
+          </li>
+          <li>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#actor2">Actor 2</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col tab-content scrollbar-hidden">
+        <div class="tab-pane fade show active" id="actor1">
+          <div class="float-left" style="height: 250px;">
+            <a href="actor/actor.html">
+              <img src="/img/unknown-user.png" width="100px" style="float: left;" alt="">
+            </a>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label>Name</label>
+            </div>
+            <div class="col">
+              <p>Actor 1</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label>Born</label>
+            </div>
+            <div class="col">
+              <p>LA</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label>Year</label>
+            </div>
+            <div class="col">
+              <p>1988</p>
+            </div>
+          </div>
+        </div>
+        <div class="fade scrollbar-hidden" id="actor2">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum nobis nihil, voluptate sunt quasi
+          commodi explicabo dignissimos autem, sed eaque iusto quaerat molestias placeat. Velit ipsum at aliquid
+          exercitationem ex, placeat corporis commodi inventore dolorum. Voluptas perspiciatis magni tempore sequi
+          beatae expedita. Praesentium, incidunt dolorum similique facilis voluptate velit soluta!
+        </div>
+      </div>
+    </div>
+    <!-- End Actors -->
+    <!-- Post Raiting -->
+    <div class="row">
+      <h5 class="my-auto">Rate this movie: </h5>
+      <div class="post-stars">
+        <input id="star-5-post" type="radio" name="star" />
+        <label for="star-5-post"></label>
+        <input id="star-4-post" type="radio" name="star" />
+        <label for="star-4-post"></label>
+        <input id="star-3-post" type="radio" name="star" />
+        <label for="star-3-post"></label>
+        <input id="star-2-post" type="radio" name="star" />
+        <label for="star-2-post"></label>
+        <input id="star-1-post" type="radio" name="star" />
+        <label for="star-1-post"></label>
+      </div>
+    </div>
+    <!-- Published by -->
+    <div class="published-by mt-5">
+      <h3>Published by</h3>
+      <img src="/img/unknown-user.png" alt="unknown-user" class="h-100 ml-3">
+      <p>Username, user rating</p>
+    </div>
+    <!-- People also watch this -->
+    <div class="row">
+      <div class="col-6 row">
+        <div id="scrollable-menu" class="container">
+          <h3>People also watch this:</h3>
+          <div id="img-holder-action" class="row">
+          </div>
+        </div>
+      </div>
+      <!-- TODO --- TODO --- TODO -->
+      <div class="col-6 m-auto">
+        <ul id="" class="list-group">
+          <li class="list-group-item"><img src="img/unknown-user.png" width="35px">Some Username<a href="exchange.html">
+              Exchange #1</a>
+          </li>
+          <li class="list-group-item"><img src="img/unknown-user.png" width="35px">Some Username<a href="exchange.html">
+              Exchange #2</a>
+          </li>
+          <li class="list-group-item"><img src="img/unknown-user.png" width="35px">Some Username<a href="exchange.html">
+              Exchange #3</a>
+          </li>
+          <li class="list-group-item"><img src="img/unknown-user.png" width="35px">Some Username<a href="exchange.html">
+              Exchange #4</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Add Comment -->
+    <div id="add-comment" class="form-group">
+      <textarea class="form-control" rows="5" placeholder="Write your comment..." name="description"></textarea>
+    </div>
+    <div class="mt-2 text-right">
+      <button class="btn-primary btn"> Post comment </button>
+      <button class="btn-light btn ml-1"> Cancel </button>
+    </div>
+    <!-- Comments -->
+    <h3>Comments (2)</h3>
+    <div id="all-comments">
+      <div id="comment-1" class="d-flex flex-column comment-section">
+        <div class="p-2">
+          <div class="d-flex"><img src="./img/unknown-user.png" width="50">
+            <div class="d-flex flex-column ml-2">
+              <span class="d-block font-weight-bold name">Unknown_user</span>
+              <span class="date text-black-50">Shared publicly - Jan 2020</span>
+            </div>
+          </div>
+          <div class="mt-2">
+            <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>
+      </div>
+      <div id="comment-2" class="d-flex flex-column comment-section">
+        <div class="p-2">
+          <div class="d-flex"><img src="./img/unknown-user.png" width="50">
+            <div class="d-flex flex-column ml-2">
+              <span class="d-block font-weight-bold name">Unknown_user</span>
+              <span class="date text-black-50">Shared publicly - Jan 2020</span>
+            </div>
+          </div>
+          <div class="mt-2">
+            <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MODALS ARE HERE BECAUSE OF THE Z-INDEX VALUE -->
+    <div id="login-placeholder"></div>
+    <div id="signup-placeholder"></div>
+
+    <!-- Different components loader -->
+    <script>
+      $(function () {
+        $("#nav-placeholder").load("nav.html");
+        $("#login-placeholder").load("registration/login.html");
+        $("#signup-placeholder").load("registration/signup.html");
+      });
+    </script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"></script>
+    <!-- JavaScript included individual files as needed -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/custom-js/index.js"></script>
+
+</body>
+
+</html>

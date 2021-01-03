@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- AJAX -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://azlejs.com/v2/azle.min.js"></script>
+
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN">
+
+  <title>!MDb</title>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <div id="nav-placeholder"></div>
+
+  <!-- Section-1: Recently Added -->
+  <section id="section-recently-added" class="container">
+    <h3 class="mt-3">Recently Added</h3>
+    <div class="row text-center">
+      <div class="col">
+        <a href="/movie.html">
+          <img src="https://picsum.photos/250/350" alt="Recently added movie" />
+        </a>
+      </div>
+      <div id="info-recently-added" class="col">
+        <h3>Lorem, ipsum.</h3>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla
+          consequuntur exercitationem cupiditate. Magnam laudantium quaerat
+          doloremque ducimus ipsum, a optio totam saepe qui quas officiis
+          libero quam possimus fuga vero. Nihil ab officia at iusto ex minus
+          error, numquam deserunt ducimus quis, obcaecati rerum perferendis
+          corrupti? Temporibus, consequuntur. Similique, natus?
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section-2: Scrollable Menu -->
+  <div id="scrollable-menu" class="container">
+    <h3>Action Movies</h3>
+    <div id="img-holder-action" class="row slider"></div>
+  </div>
+  <div id="scrollable-menu" class="container">
+    <h3>Comedy Movies</h3>
+    <div id="img-holder-comedy" class="row slider"></div>
+  </div>
+
+  <!-- MODALS ARE HERE BECAUSE OF THE Z-INDEX VALUE -->
+  <div id="login-placeholder"></div>
+  <div id="signup-placeholder"></div>
+
+  <!-- Different components loader -->
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("nav.html");
+      $("#login-placeholder").load("registration/login.html");
+      $("#signup-placeholder").load("registration/signup.html");
+    });
+  </script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"></script>
+  <!-- JavaScript included individual files as needed -->
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/custom-js/index.js"></script>
+
+</body>
+
+</html>

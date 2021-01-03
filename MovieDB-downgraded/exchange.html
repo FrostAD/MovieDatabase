@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- AJAX -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://azlejs.com/v2/azle.min.js"></script>
+
+  <!-- Custom stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN">
+
+  <title>!MDb</title>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <div id="nav-placeholder"></div>
+  <div class="container">
+    <h3 class="text-center my-4">Exchange №...</h3>
+    <div class="row">
+      <div class="col mr-2 border px-5 text-center">
+        <h4>User's offer</h4>
+        <div class="row">
+          <div class="col">
+            <label>Username</label>
+          </div>
+          <div class="col">
+            <span>5
+              <svg width="14" viewBox="0 0 16 22" class="bi bi-star" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label>Offers</label>
+          </div>
+          <div class="col">
+            <span>Title of movie <span>5
+                <svg width="14" viewBox="0 0 16 22" class="bi bi-star" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                </svg>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="movie-stars">
+            <input id="star-5-movie" type="radio" name="star" />
+            <label for="star-5-movie"></label>
+            <input id="star-4-movie" type="radio" name="star" />
+            <label for="star-4-movie"></label>
+            <input id="star-3-movie" type="radio" name="star" />
+            <label for="star-3-movie"></label>
+            <input id="star-2-movie" type="radio" name="star" />
+            <label for="star-2-movie"></label>
+            <input id="star-1-movie" type="radio" name="star" />
+            <label for="star-1-movie"></label>
+          </div>
+        </div>
+        <button class="btn btn-secondary mb-3">Return it</button>
+      </div>
+      <div class=" col ml-2 border">
+        <h4 class="text-center">Your offer</h4>
+        <div class="form-group my-2">
+          <label for="movie">Movie:</label>
+          <select class="form-control" name="genres[]">
+            <option>All Movies</option>
+            <option>Movie 1</option>
+            <option>Movie 2</option>
+            <option>Movie 3</option>
+          </select>
+        </div>
+        <div class="float-right">
+          <button class="btn btn-secondary">Exchange</button>
+          <button class="btn btn-danger">Cancle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODALS ARE HERE BECAUSE OF THE Z-INDEX VALUE -->
+  <div id="login-placeholder"></div>
+  <div id="signup-placeholder"></div>
+
+  <!-- Different components loader -->
+  <script>
+    $(function () {
+      $("#nav-placeholder").load("nav.html");
+      $("#login-placeholder").load("registration/login.html");
+      $("#signup-placeholder").load("registration/signup.html");
+    });
+  </script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"></script>
+  <!-- JavaScript included individual files as needed -->
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/custom-js/index.js"></script>
+
+</body>
+
+</html>
