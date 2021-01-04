@@ -1,0 +1,51 @@
+created:
+    - database/factories/Models/ActorFactory.php
+    - database/factories/Models/ProducerFactory.php
+    - database/factories/Models/ScreenwritterFactory.php
+    - database/factories/Models/MusicianFactory.php
+    - database/factories/Models/StudioFactory.php
+    - database/factories/Models/GenreFactory.php
+    - database/factories/Models/MovieFactory.php
+    - database/factories/Models/EventFactory.php
+    - database/factories/Models/FestivalFactory.php
+    - database/migrations/2020_12_05_124119_create_actors_table.php
+    - database/migrations/2020_12_05_124120_create_producers_table.php
+    - database/migrations/2020_12_05_124121_create_screenwritters_table.php
+    - database/migrations/2020_12_05_124122_create_musicians_table.php
+    - database/migrations/2020_12_05_124123_create_studios_table.php
+    - database/migrations/2020_12_05_124124_create_genres_table.php
+    - database/migrations/2020_12_05_124125_create_movies_table.php
+    - database/migrations/2020_12_05_124126_create_events_table.php
+    - database/migrations/2020_12_05_124127_create_festivals_table.php
+    - database/migrations/2020_12_05_124128_create_actor_movie_table.php
+    - database/migrations/2020_12_05_124129_create_movie_producer_table.php
+    - database/migrations/2020_12_05_124130_create_movie_screenwritter_table.php
+    - database/migrations/2020_12_05_124131_create_movie_musician_table.php
+    - database/migrations/2020_12_05_124132_create_movie_studio_table.php
+    - database/migrations/2020_12_05_124133_create_genre_movie_table.php
+    - database/migrations/2020_12_05_124134_create_event_user_table.php
+    - app/Models/Actor.php
+    - app/Models/Producer.php
+    - app/Models/Screenwritter.php
+    - app/Models/Musician.php
+    - app/Models/Studio.php
+    - app/Models/Genre.php
+    - app/Models/Movie.php
+    - app/Models/Event.php
+    - app/Models/Festival.php
+    - database/seeders/MovieSeeder.php
+    - database/seeders/ActorSeeder.php
+    - database/seeders/ProducerSeeder.php
+    - database/seeders/MusicianSeeder.php
+    - database/seeders/StudioSeeder.php
+    - database/seeders/GenreSeeder.php
+models:
+    Models\Actor: { name: 'string:100', born_date: date, born_place: string, description: longText, image: string, archived: 'boolean default:false', relationships: { belongsToMany: Movie } }
+    Models\Producer: { name: 'string:100', born_date: date, born_place: string, description: longText, image: string, archived: 'boolean default:false', relationships: { belongsToMany: Movie } }
+    Models\Screenwritter: { name: string, born_date: date, born_place: string, description: longText, image: string, archived: 'boolean default:false', relationships: { belongsToMany: Movie } }
+    Models\Musician: { name: string, born_date: date, born_place: string, description: longText, image: string, archived: 'boolean default:false', relationships: { belongsToMany: Movie } }
+    Models\Studio: { name: string, archived: 'boolean default:false', relationships: { belongsToMany: Movie } }
+    Models\Genre: { name: string, archived: 'boolean default:false', relationships: { belongsToMany: Movie } }
+    Models\Movie: { user_id: 'id foreign:users', title: string, rating: double, rating_imbd: double, archived: 'boolean default:false', timespan: integer, description: longText, poster: string, country_produced: string, trailer: string, relationships: { belongsToMany: 'Genre, Actor, Producer, Musician, Studio, Screenwritter' } }
+    Models\Event: { user_id: 'id foreign:users', name: string, date: date, capacity: integer, current_cappacity: integer, location: string, description: longText, movie_id: 'id foreign:movies', relationships: { belongsToMany: User } }
+    Models\Festival: { user_id: 'id foreign:users', name: string, date: date, location: string, description: longText, image: string }
