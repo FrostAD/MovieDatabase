@@ -40,7 +40,7 @@
         <!-- DROPDOWN WHEN LOGGED IN -->
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false"> <span class="fa fa-user-circle fa-2x mr-1" style=" vertical-align: middle;"></span>
-          {{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+          {{\Illuminate\Support\Str::words(\Illuminate\Support\Facades\Auth::user()->name,1,'')}}</a>
         <div class="dropdown-menu" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="/account/{{\Illuminate\Support\Facades\Auth::user()->id}}">Your Account</a>
             @role('Admin')
