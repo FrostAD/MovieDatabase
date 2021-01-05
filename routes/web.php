@@ -97,11 +97,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/fix', function () {
 //    dd(public_path('storage'));
 //    \Illuminate\Support\Facades\Storage::deleteDirectory(public_path('storage'));
-//   File::deleteDirectory(public_path('storage'));
-    if (\Illuminate\Support\Facades\Storage::exists(public_path('storage'))) {
-        $folderPath = public_path('storage');
-        rmdir($folderPath);
-    }
+   File::deleteDirectory(public_path('storage'));
+//    if (\Illuminate\Support\Facades\Storage::exists(public_path('storage'))) {
+//        $folderPath = public_path('storage');
+//        rmdir($folderPath);
+//    }
 
     Artisan::call('storage:link');
 //
