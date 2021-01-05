@@ -15,6 +15,7 @@ use App\Http\Requests\MovieRequest;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,7 +98,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/fix', function () {
 //    dd(public_path('storage'));
 //    \Illuminate\Support\Facades\Storage::deleteDirectory(public_path('storage'));
-   File::deleteDirectory(public_path('storage'));
+//    $deleted=Storage::disk('public')->delete('storage');
+//   File::deleteDirectory(public_path('storage'));
 //    if (\Illuminate\Support\Facades\Storage::exists(public_path('storage'))) {
 //        $folderPath = public_path('storage');
 //        rmdir($folderPath);
