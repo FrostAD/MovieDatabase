@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('body')
+<div class="container">
     <div class=" col ml-2 border">
         <h4 class="text-center">Publish offer</h4>
         <x-alert />
@@ -15,4 +16,6 @@
         </div>
         </form>
     </div>
+</div>
+   
 @endsection

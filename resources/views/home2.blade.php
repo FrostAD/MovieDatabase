@@ -6,7 +6,7 @@
             <div class="col">
                 <a href="movie/{{$last_movie->id}}">
 {{--                    <img src="{{'storage/'. $last_movie->poster}}" alt="Recently added movie" />--}}
-                    <img src="{{'storage/'. $last_movie->poster}}" width="500px" alt="Recently added movie" />
+                    <img src="https://source.unsplash.com/random" style="max-height: 300px" alt="Recently added movie" />
                 </a>
             </div>
             <div id="info-recently-added" class="col">

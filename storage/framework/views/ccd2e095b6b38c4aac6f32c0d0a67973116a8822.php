@@ -13,8 +13,8 @@
         </svg>
       </a>
       <div class="dropdown-menu" aria-labelledby="plusDropdown">
-        <a class="dropdown-item" href="{{route('event.create')}}">Add Event</a>
-        <a class="dropdown-item" href="{{route('exchange.create')}}">Add Exchange</a>
+        <a class="dropdown-item" href="<?php echo e(route('event.create')); ?>">Add Event</a>
+        <a class="dropdown-item" href="<?php echo e(route('exchange.create')); ?>">Add Exchange</a>
       </div>
     </div>
   </form>
@@ -35,34 +35,35 @@
       <li class="nav-item">
         <a class="nav-link" href="/festivals">Festivals</a>
       </li>
-        @auth
+        <?php if(auth()->guard()->check()): ?>
       <li class="nav-item dropdown active">
         <!-- DROPDOWN WHEN LOGGED IN -->
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false"> <span class="fa fa-user-circle fa-2x mr-1" style="vertical-align: middle;"></span>
-          {{\Illuminate\Support\Str::words(\Illuminate\Support\Facades\Auth::user()->name,1,'')}}</a>
+          <?php echo e(\Illuminate\Support\Str::words(\Illuminate\Support\Facades\Auth::user()->name,1,'')); ?></a>
         <div class="dropdown-menu" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="/account/{{\Illuminate\Support\Facades\Auth::user()->id}}">Your Account</a>
-            @role('Admin')
+          <a class="dropdown-item" href="/account/<?php echo e(\Illuminate\Support\Facades\Auth::user()->id); ?>">Your Account</a>
+            <?php if(auth()->check() && auth()->user()->hasRole('Admin')): ?>
             <a class="dropdown-item" href="/admin/movie">Admin panel</a>
-            @endrole
+            <?php endif; ?>
             <a class="dropdown-item" href="/exchanges">All Exchanges</a>
-            <a class="dropdown-item" href="/account/{{\Illuminate\Support\Facades\Auth::user()->id}}/settings">Account Settings</a>
-            <a class="dropdown-item" href="{{ route('logout') }}"
+            <a class="dropdown-item" href="/account/<?php echo e(\Illuminate\Support\Facades\Auth::user()->id); ?>/settings">Account Settings</a>
+            <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
+                <?php echo e(__('Logout')); ?>
+
             </a>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
+            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
+                <?php echo csrf_field(); ?>
             </form>
-{{--            TODO redirect to home page after logout--}}
+
         </div>
       </li>
-      @endauth
+      <?php endif; ?>
         <!-- DROPDOWN WHEN NOT LOGGED IN -->
-        @guest
+        <?php if(auth()->guard()->guest()): ?>
         <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false"> <span class="fa fa-user-circle fa-2x mr-1" style="vertical-align: middle;"></span>
@@ -71,15 +72,16 @@
             <a class="dropdown-item"
                style="cursor: pointer"
                data-toggle="modal"
-               data-target="#loginModal">{{ __('Login') }}</a>
+               data-target="#loginModal"><?php echo e(__('Login')); ?></a>
             <a class="dropdown-item"
                style="cursor: pointer"
                data-toggle="modal"
-               data-target="#registerModal">{{ __('Register') }}</a>
+               data-target="#registerModal"><?php echo e(__('Register')); ?></a>
         </div>
         </li>
-          @endguest
+          <?php endif; ?>
       </li>
     </ul>
   </div>
 </nav>
+<?php /**PATH C:\Users\rstoi\Documents\GitHub\MovieDatabase\resources\views/nav.blade.php ENDPATH**/ ?>
