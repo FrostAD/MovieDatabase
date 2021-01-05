@@ -106,6 +106,7 @@ Route::get('/fix', function () {
 //    }
 
     Artisan::call('storage:link');
+    return redirect('/');
 //
 //
 
