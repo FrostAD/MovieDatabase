@@ -1,14 +1,11 @@
 @import '_custom-variables.scss';
-@import '_media.scss';
+@import '_nav.scss';
 @import '_account.scss';
 @import '_utilities';
 @import '_event.scss';
 @import '_flip-img.scss';
 @import '../bootstrap/scss/bootstrap.scss';
-// Right Navbar
-#rightNavbarContent ul li {
-  margin: 0 1.3rem;
-}
+
 // Section: Recently Added 
 #section-recently-added {
     ul {

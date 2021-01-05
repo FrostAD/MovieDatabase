@@ -1,0 +1,28 @@
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) { 
+  .navbar{
+    .navbar-brand h1{
+      display: none;
+    }
+  }
+  #leftNavbarContent{
+    input[type="text"]{
+      width: 200px !important;
+    }
+  }
+}
+
+// #leftNavbarContent{
+//     input[type="text"]{
+//       width: 200px !important;
+//     }
+//    @include media-breakpoint-up(md) { 
+//     input[type="text"]{
+//       width: 350px !important;
+//     }
+//   }
+// }
+// Right Navbar
+#rightNavbarContent ul li {
+  margin: 0 1.3rem;
+}
