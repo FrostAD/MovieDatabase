@@ -12,6 +12,8 @@ use App\Http\Controllers\ScreenwritterController;
 use App\Http\Controllers\StudioController;
 use App\Http\Controllers\UserController;
 use App\Http\Requests\MovieRequest;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -91,6 +93,11 @@ Route::get('/account/{user:id}/settings',[UserController::class,'settings'])->na
 Route::post('account/update/{user:id}',[UserController::class,'update']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/fix',function (){
+   File::deleteDirectory(public_path('storage'));
+    Artisan::call('storage:link');
+});
 
 //TODO fix /admin and /dashboard and admin/login gives error(make redirect to /login)
 //TODO fix /admin/* to be accessable only by admins
