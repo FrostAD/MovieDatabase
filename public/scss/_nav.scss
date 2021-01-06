@@ -1,3 +1,8 @@
+// Right Navbar
+#rightNavbarContent ul li {
+  margin: 0 1.3rem;
+}
+
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 576px) { 
   .navbar{
@@ -12,17 +17,12 @@
   }
 }
 
-// #leftNavbarContent{
-//     input[type="text"]{
-//       width: 200px !important;
-//     }
-//    @include media-breakpoint-up(md) { 
-//     input[type="text"]{
-//       width: 350px !important;
-//     }
-//   }
-// }
-// Right Navbar
-#rightNavbarContent ul li {
-  margin: 0 1.3rem;
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+  #leftNavbarContent{
+    // for bigger search bar
+    input[type="text"]{
+      width: 350px !important;
+    }
+  }
 }

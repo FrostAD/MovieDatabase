@@ -3,13 +3,13 @@
     <section id="section-recently-added" class="container">
         <h3 class="mt-3">Recently Added</h3>
         <div class="row text-center">
-            <div class="col">
+            <div class="col-lg-6">
                 <a href="movie/<?php echo e($last_movie->id); ?>">
-
-                    <img src="https://source.unsplash.com/random" style="max-height: 300px" alt="Recently added movie" />
+                   <img class="h-100" src="<?php echo e('storage/'. $last_movie->poster); ?>" alt="Recently added movie" />
+                    
                 </a>
             </div>
-            <div id="info-recently-added" class="col">
+            <div id="info-recently-added" class="col-lg-6 scrollbar-hidden">
                 <h3><?php echo e($last_movie->title); ?></h3>
                 <p>
                     <?php echo e($last_movie->description); ?>

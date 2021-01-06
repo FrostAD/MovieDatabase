@@ -14,7 +14,6 @@
     </div>
     <div id="moviesTable">
     <?php echo $__env->make('index.movies_only', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
     </div>
 </div>
 <?php $__env->stopSection(); ?>

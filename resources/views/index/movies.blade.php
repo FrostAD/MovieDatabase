@@ -14,7 +14,6 @@
     </div>
     <div id="moviesTable">
     @include('index.movies_only')
-
     </div>
 </div>
 @endsection

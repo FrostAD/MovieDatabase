@@ -8,20 +8,20 @@
 
 // Section: Recently Added 
 #section-recently-added {
-    ul {
-      li {
-        margin: 0 1.5rem;
-      }
-    }
-    .row {
+  .row {
       margin: 2rem 0;
       #info-recently-added {
-      /* padding-top: 1.5rem; */
-      text-align: center;
-      padding-left: 5rem;
-      border-left: 5px solid black;
-      background-color: #efefef;
-      background-clip: content-box;
+        float: right;
+        text-align: center;
+        padding-left: 5rem;
+        border-left: 5px solid black;
+        background-color: #efefef;
+        background-clip: content-box;
+        max-height: 400px;
+        overflow-y: scroll;
+        p{
+          padding: 2rem;
+      }
     }
   }
 }
@@ -113,13 +113,13 @@
 .sortBy{
   width: 100px;
 }
-#all-movies-list, #all-events-list, #all-festivals-list, #all-exchange-list{
+ #all-festivals-list, #all-exchange-list{
   li{
-    height: 200px;
+   height: 250px;
   }
   img{
-    height: 100%;
-    width: 120px;
+    width: 100%;
+    height: auto;
   }
 }
 
