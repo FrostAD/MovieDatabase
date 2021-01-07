@@ -25,7 +25,7 @@
         <div class="row mt-4">
             <div class="col-4">
                 <div id="movie-card" class="card">
-                    <img src="{{asset('storage/'. $movie->poster)}}" class="" style="height: 250px" alt="">
+                    <img src="{{asset('storage/'. $movie->poster)}}" style="height: 40vh" alt="Event's movie poster">
                     <div class="p-3">
                         <h3 class="card-title">{{$movie->title}}</h3>
                         <ul class="movie-concise-info">
@@ -37,13 +37,13 @@
                                 @endforeach
                             </li>
                         </ul>
-                        <p>{{$movie->description}}</p>
+                        <p id="movie-card-description" class="scrollbar-hidden">{{$movie->description}}</p>
                         {{--                    TODO show trailer--}}
-                        {{--                    <div class="watch-btn">--}}
-                        {{--                        <a href="https://www.youtube.com/"><button type="button" class="btn btn-primary"><i--}}
-                        {{--                                    class="fa fa-play mr-2"></i>WATCH TRAILER</button>--}}
-                        {{--                        </a>--}}
-                        {{--                    </div>--}}
+                        <div class="watch-btn">
+                                               <a href="https://www.youtube.com/"><button type="button" class="btn btn-primary"><i
+                                                           class="fa fa-play mr-2"></i>WATCH TRAILER</button>
+                                               </a>
+                                           </div>
                     </div>
                 </div>
             </div>

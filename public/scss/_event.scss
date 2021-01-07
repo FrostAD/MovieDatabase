@@ -26,6 +26,10 @@ img{
   color-stop(0.85,  rgba(0,0,0,0.6)),
   color-stop(1.00,  rgba(0,0,0,0)));
   }
+  #movie-card-description{
+    height: 15vh;
+    overflow: scroll;
+  }
 }
 #event-description{
   padding: 15px;

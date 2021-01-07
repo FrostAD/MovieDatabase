@@ -1,15 +1,14 @@
 @extends('layouts.master')
 @section('body')
     <section id="section-recently-added" class="container">
-        <h3 class="mt-3">Recently Added</h3>
+        <h3 class="mt-3 mb-4">Recently Added</h3>
         <div class="row text-center">
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <a href="movie/{{$last_movie->id}}">
-                   <img class="h-100" src="{{'storage/'. $last_movie->poster}}" alt="Recently added movie" />
-                    {{-- <img  src="https://source.unsplash.com/random" alt="Recently added movie" /> --}}
+                   <img src="{{'storage/'. $last_movie->poster}}" alt="Recently added movie" />
                 </a>
             </div>
-            <div id="info-recently-added" class="col-lg-6 scrollbar-hidden">
+            <div id="info-recently-added" class="col-md-6 scrollbar-hidden">
                 <h3>{{$last_movie->title}}</h3>
                 <p>
                     {{$last_movie->description}}
