@@ -29,6 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
         'rating',
         'rating_post',
         'rating_exchange',

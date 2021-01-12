@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="profile-img">
-                <img src="https://picsum.photos/200/150" alt="" />
+                <img src="<?php echo e(asset('storage/avatars/'.$user->avatar)); ?>" alt="">
             </div>
         </div>
         <div class="col-md-6">

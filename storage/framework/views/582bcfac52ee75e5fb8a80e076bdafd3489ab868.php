@@ -1,14 +1,14 @@
+
 <?php $__env->startSection('body'); ?>
     <section id="section-recently-added" class="container">
-        <h3 class="mt-3">Recently Added</h3>
+        <h3 class="mt-3 mb-4">Recently Added</h3>
         <div class="row text-center">
-            <div class="col">
+            <div class="col-md-6">
                 <a href="movie/<?php echo e($last_movie->id); ?>">
-
-                    <img src="<?php echo e('storage/'. $last_movie->poster); ?>" width="500px" alt="Recently added movie" />
+                   <img src="<?php echo e('storage/'. $last_movie->poster); ?>" alt="Recently added movie" />
                 </a>
             </div>
-            <div id="info-recently-added" class="col">
+            <div id="info-recently-added" class="col-md-6 scrollbar-hidden">
                 <h3><?php echo e($last_movie->title); ?></h3>
                 <p>
                     <?php echo e($last_movie->description); ?>

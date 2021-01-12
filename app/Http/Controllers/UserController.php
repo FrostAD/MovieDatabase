@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\FileHelpers;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -22,6 +25,18 @@ class UserController extends Controller
 ////            echo $movie->rating . ' ';
 ////        dd($user->movies->rating);
 //    }
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $filename = $request->image->hashName();
+            $request->image->storeAs('avatars', $filename, 'public');
+            User::find(Auth::id())->update(['avatar' => $filename]);
+        }
+//        dd($request->image->hashName());
+        //TODO return msg for success
+        return redirect()->back();
+    }
+
     public function details(User $user)
     {
         return view('view.user', compact('user'));
@@ -39,7 +54,7 @@ class UserController extends Controller
 
     public function update(User $user)
     {
-        if(Auth::user()->email == request('email')) {//Change name only
+        if (Auth::user()->email == request('email')) {//Change name only
 
             $this->validate(request(), [
                 'name' => 'required',
@@ -57,38 +72,38 @@ class UserController extends Controller
 
             return back();
 
-        }elseif(Auth::user()->name == request('name')){//Change email only
+        } elseif (Auth::user()->name == request('name')) {//Change email only
             $this->validate(request(), [
 //                'name' => 'required',
-                  'email' => 'required|email|unique:users',
+                'email' => 'required|email|unique:users',
                 'password' => 'required|min:6|confirmed'
             ]);
 //            dd(request());
 
 
 //            $user->name = request('name');
-             $user->email = request('email');
+            $user->email = request('email');
+            $user->password = bcrypt(request('password'));
+
+            $user->save();
+
+            return back();
+        } else {
+            $this->validate(request(), [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+
+//        dd(request());
+
+            $user->name = request('name');
+            $user->email = request('email');
             $user->password = bcrypt(request('password'));
 
             $user->save();
 
             return back();
         }
-        else{
-        $this->validate(request(), [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-
-//        dd(request());
-
-        $user->name = request('name');
-        $user->email = request('email');
-        $user->password = bcrypt(request('password'));
-
-        $user->save();
-
-        return back();}
     }
 }

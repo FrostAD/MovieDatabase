@@ -1,3 +1,4 @@
+
 <?php $__env->startSection('body'); ?>
 <div class="container">
     <h3 class="text-center my-4">ALL MOVIES</h3>
@@ -13,7 +14,6 @@
     </div>
     <div id="moviesTable">
     <?php echo $__env->make('index.movies_only', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
     </div>
 </div>
 <?php $__env->stopSection(); ?>

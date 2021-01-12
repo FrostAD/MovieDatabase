@@ -178,7 +178,8 @@
         <!-- Published by -->
         <div class="published-by mt-5">
             <h3>Published by</h3>
-            <img src="/img/unknown-user.png" alt="unknown-user" class="h-100 ml-3">
+{{--            <img src="/img/unknown-user.png" alt="unknown-user" class="h-100 ml-3">--}}
+            <img src="{{asset('storage/avatars/'.$movie->user->avatar)}}" class="h-100 ml-3" alt="">
             <p>{{$movie->user->name . ", " . $movie->user->rating_post}}</p>
         </div>
         <!-- People also watch this -->

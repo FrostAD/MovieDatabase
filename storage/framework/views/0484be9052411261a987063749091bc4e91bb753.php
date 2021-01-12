@@ -17,8 +17,8 @@
                                 </div>
                             </div>
                             <div class="backside scrollbar-hidden">
-                                <div class="card ">
-                                    <div class="card-body text-center mt-4">
+                                <div class="card">
+                                    <div class="card-body text-center">
                                         <h4 class="card-title"><?php echo e($movie->title); ?> <a href="/movie/<?php echo e($movie->id); ?>"><i
                                                     class="fa fa-file"></i></a></h4>
                                         <p><?php echo e($movie->description); ?></p>
