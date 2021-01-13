@@ -13,7 +13,7 @@
           </svg>
         </span>
             <div class="mt-3 p-3" style="margin-left: 150px; background-color: #efefef; border-radius: 3px;">
-                <p class="small">{{$movie->description}}</p>
+                <p class="small">{{\Illuminate\Support\Str::words($movie->description,80,'')}}<a href='{{asset('/movie/'.$movie->id)}}' class='btn btn-primary'>Read More</a></p>
             </div>
         </li>
     @endforeach
