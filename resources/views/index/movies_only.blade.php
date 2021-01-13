@@ -1,36 +1,21 @@
 <ol id="all-movies-list" class="list-group">
     @csrf
     @foreach ($movies as $movie)
-        @if($loop->index ==0 || $loop->index == 3)
-            <div class="row">
-            @endif
-            <!-- One Movie -->
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="image-flip">
-                        <div class="mainflip flip-0">
-                            <div class="frontside">
-                                <div class="card">
-                                    <div class="card-body d-flex flex-column align-items-center">
-                                        <h4 class="card-title">{{$movie->title . '(' . $movie->published . ')'}}</h4>
-                                        <img src="{{asset('storage/' . $movie->poster)}}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="backside scrollbar-hidden">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <h4 class="card-title">{{$movie->title}} <a href="/movie/{{$movie->id}}"><i
-                                                    class="fa fa-file"></i></a></h4>
-                                        <p>{{$movie->description}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @if($loop->index == 2 || $loop->index == 5)
+        <li class="list-group-item">
+            <a href="/movie/{{$movie->id}}" class="float-left">
+                <img src="{{asset('storage/' . $movie->poster)}}">
+            </a>
+            <span class="font-weight-bold ml-2 w-100">{{$movie->title}}</span>
+            <span class="ml-2">{{$movie->rating_imbd}}
+          <svg width="14" viewBox="0 0 16 22" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                  d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+          </svg>
+        </span>
+            <div class="mt-3 p-3" style="margin-left: 150px; background-color: #efefef; border-radius: 3px;">
+                <p class="small">{{$movie->description}}</p>
             </div>
-        @endif
+        </li>
     @endforeach
 </ol>
 {!! $movies->links() !!}
