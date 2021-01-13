@@ -10,7 +10,7 @@
 
             </span>
             <div class="mt-3 p-3" style="margin-left: 150px; background-color: #efefef; border-radius: 3px;">
-                <p class="small"><?php echo e($festival->description); ?>
+                <p class="small"><?php echo e(\Illuminate\Support\Str::words($festival->description,80,'')); ?><a href='<?php echo e(asset('/festival/'.$festival->id)); ?>' class='btn btn-primary'>Read More</a></p>
 
                 </p>
             </div>

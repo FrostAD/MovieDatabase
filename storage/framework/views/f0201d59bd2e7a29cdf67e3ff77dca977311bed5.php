@@ -1,0 +1,3 @@
+<?php if(method_exists($crud->model, 'isTranslatableAttribute') && ($crud->model->isTranslatableAttribute($field['name']) || (isset($field['store_in']) ? $crud->model->isTranslatableAttribute($field['store_in']) : false)) && config('backpack.crud.show_translatable_field_icon')): ?>
+<i class="la la-flag-checkered pull-<?php echo e(config('backpack.crud.translatable_field_icon_position')); ?>" style="margin-top: 3px;" title="This field is translatable."></i>
+<?php endif; ?><?php /**PATH C:\Users\Atanas\Desktop\Project\MovieDatabase\vendor\backpack\crud\src\resources\views\crud/fields/inc/translatable_icon.blade.php ENDPATH**/ ?>

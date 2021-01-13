@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\MovieRequest;
+use App\Models\Movie;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 
 /**
@@ -38,12 +40,27 @@ class MovieCrudController extends CrudController
     }
     public function store(MovieRequest $request)
     {
+        $title = $this->crud->getRequest()->request->all()['title'];
+        $published = $this->crud->getRequest()->request->all()['published'];
+        $timespan = $this->crud->getRequest()->request->all()['timespan'];
+        $country = $this->crud->getRequest()->request->all()['country_produced'];
+
+        $match = ['title' => $title,'published' => $published,'timespan' => $timespan,'country_produced' => $country];
+        $mov = null;
+        $mov = Movie::where($match)->first();
+        if ($mov != null)
+            return redirect()->back();
         //TODO clean
         // dd($request->request->all()['title']);
         $rating = MovieCrudController::findByTitle_imbd($request->request->all()['title']);
         // $request->request->set('rating_imbd', $rating);
         // $redirect_location = $this->traitStore();
         // return $redirect_location;
+
+
+
+//        DB::table('movies')
+//            ->where($this->crud->getRequest()->request)
 
         // $this->crud->request->request->add('rating_imbd', $rating);
         $this->crud->getRequest()->request->remove('rating_imbd');
@@ -78,6 +95,20 @@ class MovieCrudController extends CrudController
         // $this->crud->getRequest()->request->remove('password_confirmation');
         // $this->crud->getRequest()->request->add(['author_id'=> backpack_user()->id]);
         // $this->crud->getRequest()->request->remove('password_confirmation');
+
+        $title = $this->crud->getRequest()->request->all()['title'];
+        $published = $this->crud->getRequest()->request->all()['published'];
+        $timespan = $this->crud->getRequest()->request->all()['timespan'];
+        $country = $this->crud->getRequest()->request->all()['country_produced'];
+
+        $match = ['title' => $title,'published' => $published,'timespan' => $timespan,'country_produced' => $country];
+        $mov = null;
+        $mov = Movie::where($match)->first();
+        //TODO return back with msg
+        if ($mov != null)
+            return redirect()->back();
+
+
         //TODO clean
         // dd($request->request->all()['title']);
         $rating = MovieCrudController::findByTitle_imbd($request->request->all()['title']);
