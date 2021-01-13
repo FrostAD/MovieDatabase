@@ -43,6 +43,9 @@ class Movie extends Model
         'rating_imbd' => 'double',
         'archived' => 'boolean',
     ];
+    protected $dates = [
+        'published',
+    ];
 
     // protected static function booted()
     // {
@@ -70,6 +73,7 @@ class Movie extends Model
             \Storage::disk('public')->delete($obj->image);
         });
     }
+
     //TODO when update to call imbd rating
     public static function findByTitle_imbd($title)
     {
@@ -159,9 +163,11 @@ class Movie extends Model
     {
         return $this->morphMany(\App\Models\Comment::class, 'commentable')->whereNull('parent_id');
     }
+
     //TODO start not tested
-    public function watchlist_count_user(){
-        return $this->belongsToMany(User::class,'watchlist','user_id','movie_id');
+    public function watchlist_count_user()
+    {
+        return $this->belongsToMany(User::class, 'watchlist', 'user_id', 'movie_id');
     }
     //TODO if works just make another table wishlist and add functions in User and Movie for it
     // end not tested

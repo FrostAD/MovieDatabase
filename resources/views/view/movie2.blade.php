@@ -6,7 +6,7 @@
             <div class="current-movie col-8">
                 <h3>{{$movie->title}}</h3>
                 <ul class="movie-concise-info">
-                    <li class="movie-year">{{$movie->published}}</li>
+                    <li class="movie-year">{{$movie->published->format('m/d/Y')}}</li>
                     <li class="movie-time">{{$movie->timespan}}</li>
                     <li class="movie-genre">
                         @foreach($movie->genres as $genre)
@@ -114,7 +114,7 @@
                                     <label>Year</label>
                                 </div>
                                 <div class="col">
-                                    <p>{{$actor->born_date}}</p>
+                                    <p>{{$actor->born_date->format('m/d/Y')}}</p>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                                 <label>Year</label>
                             </div>
                             <div class="col">
-                                <p>{{$actor->born_date}}</p>
+                                <p>{{$actor->born_date->format('m/d/Y')}}</p>
                             </div>
                         </div>
                     </div>

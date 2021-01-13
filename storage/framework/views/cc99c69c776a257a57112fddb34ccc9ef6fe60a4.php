@@ -4,7 +4,7 @@
             <div class="current-movie col-8">
                 <h3><?php echo e($movie->title); ?></h3>
                 <ul class="movie-concise-info">
-                    <li class="movie-year"><?php echo e($movie->published); ?></li>
+                    <li class="movie-year"><?php echo e($movie->published->format('m/d/Y')); ?></li>
                     <li class="movie-time"><?php echo e($movie->timespan); ?></li>
                     <li class="movie-genre">
                         <?php $__currentLoopData = $movie->genres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -113,7 +113,7 @@
                                     <label>Year</label>
                                 </div>
                                 <div class="col">
-                                    <p><?php echo e($actor->born_date); ?></p>
+                                    <p><?php echo e($actor->born_date->format('m/d/Y')); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +147,7 @@
                                 <label>Year</label>
                             </div>
                             <div class="col">
-                                <p><?php echo e($actor->born_date); ?></p>
+                                <p><?php echo e($actor->born_date->format('m/d/Y')); ?></p>
                             </div>
                         </div>
                     </div>

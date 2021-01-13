@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Yajra\DataTables\DataTables;
 
 class MovieController extends Controller
 {
