@@ -4,11 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Festival extends Model
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
+    use Searchable;
+
+    const SEARCHABLE_FIELDS = ['id','name','location'];
+
+    public function toSearchableArray()
+    {
+        return $this->only(self::SEARCHABLE_FIELDS);
+    }
 
     /**
      * The attributes that are mass assignable.

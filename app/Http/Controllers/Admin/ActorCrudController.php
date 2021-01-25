@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ActorRequest;
+use App\Models\Actor;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Http\Request;
 
 /**
  * Class ActorCrudController
@@ -39,6 +41,23 @@ class ActorCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        $this->crud->addFilter([
+            'type'  => 'simple',
+            'name'  => 'trashed',
+            'label' => 'Trashed'
+        ],
+            false,
+            function($values) { // if the filter is active
+                $this->crud->query = $this->crud->query->onlyTrashed();
+                $this->crud->removeButton('delete');
+
+                $this->crud->addButtonFromView('line', 'restore', 'restore', 'end');
+                $this->crud->addButtonFromView('line', 'hard_delete', 'hard_delete', 'end');
+
+            });
+
+//        $this->crud->addButtonFromView($stack, $name, $view, $position);
+
         CRUD::column('name');
         // CRUD::column('born_date')->format('DD/MM/YYYY');
         $this->crud->addColumn([
@@ -167,5 +186,18 @@ class ActorCrudController extends CrudController
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
+    }
+
+    public function restore($id){
+        $actor = Actor::withTrashed()->find($id);
+        $actor->restore();
+        return redirect()->back();
+//        dd($actor);
+    }
+
+    public function hard_delete($id){
+        $actor = Actor::withTrashed()->find($id);
+        $actor->forceDelete();
+        return redirect()->back();
     }
 }

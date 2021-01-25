@@ -68,6 +68,13 @@
       0 => 'Blueprint\\BlueprintServiceProvider',
     ),
   ),
+  'laravel/scout' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Scout\\ScoutServiceProvider',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 
@@ -135,6 +142,13 @@
     'providers' => 
     array (
       0 => 'Spatie\\Permission\\PermissionServiceProvider',
+    ),
+  ),
+  'teamtnt/laravel-scout-tntsearch-driver' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'TeamTNT\\Scout\\TNTSearchScoutServiceProvider',
     ),
   ),
   'willvincent/laravel-rateable' => 

@@ -34,9 +34,15 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function details(User $user)
+    public function details($id)
     {
-        return view('view.user', compact('user'));
+        $user = User::find($id);
+        if (!$user){
+            $user = User::withTrashed()->find($id);
+        }
+        $wishlist = $user->wishlist()->simplePaginate(5);
+        $watchlist = $user->watchlist()->simplePaginate(5);
+        return view('view.user', compact('user','wishlist','watchlist'));
     }
 
     public function settings(User $user)

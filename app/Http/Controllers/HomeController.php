@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','verified']);
     }
 
     /**
@@ -24,5 +25,19 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function home()
+    {
+        $last_movie = Movie::orderBy('created_at')->get()->last();
+        $movies_action = Movie::whereHas('genres', function($q){
+            $q->where('name','Action');
+        })->get();
+        $movies_drama = Movie::whereHas('genres', function($q){
+            $q->where('name','Drama');
+        })->get();
+//        dd($movies_action);
+
+        return view('home2', compact('last_movie','movies_action','movies_drama'));
     }
 }

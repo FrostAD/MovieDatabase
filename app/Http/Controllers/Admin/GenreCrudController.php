@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\GenreRequest;
+use App\Models\Genre;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -21,7 +22,7 @@ class GenreCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()
@@ -33,12 +34,27 @@ class GenreCrudController extends CrudController
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
     protected function setupListOperation()
     {
+        $this->crud->addFilter([
+            'type'  => 'simple',
+            'name'  => 'trashed',
+            'label' => 'Trashed'
+        ],
+            false,
+            function($values) { // if the filter is active
+                $this->crud->query = $this->crud->query->onlyTrashed();
+                $this->crud->removeButton('delete');
+
+                $this->crud->addButtonFromView('line', 'restore', 'restore', 'end');
+                $this->crud->addButtonFromView('line', 'hard_delete', 'hard_delete', 'end');
+
+            });
+
         CRUD::column('name');
         // CRUD::column('archived');
         $this->crud->addColumn([
@@ -54,13 +70,13 @@ class GenreCrudController extends CrudController
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
@@ -70,27 +86,39 @@ class GenreCrudController extends CrudController
 
         CRUD::field('name');
         // CRUD::field('archived');
-        $this->crud->addField([
-            'name' => 'archived',
-            'type' => 'hidden',
-            'value' => 0,
-        ]);
+//        $this->crud->addField([
+//            'name' => 'archived',
+//            'type' => 'hidden',
+//            'value' => 0,
+//        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+    public function restore($id){
+        $genre = Genre::withTrashed()->find($id);
+        $genre->restore();
+        return redirect()->back();
+//        dd($actor);
+    }
+
+    public function hard_delete($id){
+        $genre = Genre::withTrashed()->find($id);
+        $genre->forceDelete();
+        return redirect()->back();
     }
 }

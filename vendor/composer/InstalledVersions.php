@@ -14,12 +14,12 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '179ca69d9f4b5fc9ece9c9e65e72730ca38556bf',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -543,12 +543,21 @@ private static $installed = array (
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '179ca69d9f4b5fc9ece9c9e65e72730ca38556bf',
+    ),
+    'laravel/scout' => 
+    array (
+      'pretty_version' => 'v8.6.0',
+      'version' => '8.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '54070f7b68fed15f25e61e68884c4110496b8aa1',
     ),
     'laravel/tinker' => 
     array (
@@ -1443,6 +1452,24 @@ private static $installed = array (
       array (
       ),
       'reference' => 'bb73619b2ae5121bbbcd9f191dfd53ded17ae598',
+    ),
+    'teamtnt/laravel-scout-tntsearch-driver' => 
+    array (
+      'pretty_version' => 'v11.1.0',
+      'version' => '11.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a9c27a68dc2bd74fb354165633520de95708215d',
+    ),
+    'teamtnt/tntsearch' => 
+    array (
+      'pretty_version' => 'v2.6.0',
+      'version' => '2.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd9b2d764491c87f03ec214ed8dbc27336cf0c0e4',
     ),
     'theseer/tokenizer' => 
     array (

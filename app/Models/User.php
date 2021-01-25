@@ -9,16 +9,28 @@ use Illuminate\Notifications\Notifiable;
 use Backpack\CRUD\app\Models\Traits\CrudTrait; // <------------------------------- this one
 use Spatie\Permission\Traits\HasRoles;
 use willvincent\Rateable\Rateable;
+use Laravel\Scout\Searchable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 // <---------------------- and this one
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
     use CrudTrait; // <----- this
     use HasRoles; // <------ and this
+    use Searchable;
+    use SoftDeletes;
     //TODO is it needed rateable
 //    use Rateable;
+
+    const SEARCHABLE_FIELDS = ['id','name'];
+
+    public function toSearchableArray()
+    {
+        return $this->only(self::SEARCHABLE_FIELDS);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -58,12 +70,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Models\Movie::class);
     }
+    public function events_author(){
+        return $this->hasMany(Event::class);
+    }
     public function events(){
         return $this->belongsToMany(Event::class,'event_user');
     }
     //not tested
     public function watchlist(){
         return $this->belongsToMany(Movie::class,'watchlist','user_id','movie_id');
+    }
+    public function wishlist(){
+        return $this->belongsToMany(Movie::class,'wishlist','user_id','movie_id');
     }
     // end not tested
 }

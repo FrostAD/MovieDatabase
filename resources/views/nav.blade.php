@@ -3,8 +3,11 @@
     <h1>!MDb</h1>
   </a>
   <form id="leftNavbarContent" class="form-inline">
-    <input class="form-control" type="text" placeholder="Search">
-    <div class="dropdown mr-auto">
+    <input id="search-bar" class="form-control" type="text" placeholder="Search">
+      <ul id="results">
+      </ul>
+
+      <div class="dropdown mr-auto">
       <a class="nav-link" id="plusDropdown" role="button" data-toggle="dropdown">
         <svg color="white" width="32" viewBox="3 0 15 15" class="bi bi-plus" fill="currentColor"
           xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +16,7 @@
         </svg>
       </a>
       <div class="dropdown-menu" aria-labelledby="plusDropdown">
-        <a class="dropdown-item" href="{{route('event.create')}}">Add Event</a>
+        <a class="dropdown-item" href="{{route('event.create_custom')}}">Add Event</a>
         <a class="dropdown-item" href="{{route('exchange.create')}}">Add Exchange</a>
       </div>
     </div>
@@ -43,9 +46,9 @@
           {{\Illuminate\Support\Str::words(\Illuminate\Support\Facades\Auth::user()->name,1,'')}}</a>
         <div class="dropdown-menu" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="/account/{{\Illuminate\Support\Facades\Auth::user()->id}}">Your Account</a>
-            @role('Admin')
+            @if(auth()->user()->hasRole('Admin'))
             <a class="dropdown-item" href="/admin/movie">Admin panel</a>
-            @endrole
+            @endif
             <a class="dropdown-item" href="/exchanges">All Exchanges</a>
             <a class="dropdown-item" href="/account/{{\Illuminate\Support\Facades\Auth::user()->id}}/settings">Account Settings</a>
             <a class="dropdown-item" href="{{ route('logout') }}"

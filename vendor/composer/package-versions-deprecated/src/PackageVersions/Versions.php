@@ -54,6 +54,7 @@ final class Versions
   'guzzlehttp/promises' => '1.4.0@60d379c243457e073cff02bc323a2a86cb355631',
   'guzzlehttp/psr7' => '1.7.0@53330f47520498c0ae1f61f7e2c90f55690c06a3',
   'laravel/framework' => 'v8.17.2@b89363b540bd8ad6e727ee165b510a19fe170a28',
+  'laravel/scout' => 'v8.6.0@54070f7b68fed15f25e61e68884c4110496b8aa1',
   'laravel/tinker' => 'v2.5.0@45884b526e10a88a1b179fa1a1a24d5468c668c2',
   'laravel/ui' => 'v3.1.0@444072cb2f8baaa15172c5cde2bd30d188c3b7e7',
   'laravelcollective/html' => 'v6.2.1@ae15b9c4bf918ec3a78f092b8555551dd693fde3',
@@ -113,6 +114,8 @@ final class Versions
   'symfony/translation' => 'v5.2.0@52f486a707510884450df461b5a6429dd7a67379',
   'symfony/translation-contracts' => 'v2.3.0@e2eaa60b558f26a4b0354e1bbb25636efaaad105',
   'symfony/var-dumper' => 'v5.2.0@173a79c462b1c81e1fa26129f71e41333d846b26',
+  'teamtnt/laravel-scout-tntsearch-driver' => 'v11.1.0@a9c27a68dc2bd74fb354165633520de95708215d',
+  'teamtnt/tntsearch' => 'v2.6.0@d9b2d764491c87f03ec214ed8dbc27336cf0c0e4',
   'tijsverkoyen/css-to-inline-styles' => '2.2.3@b43b05cf43c1b6d849478965062b6ef73e223bb5',
   'vlucas/phpdotenv' => 'v5.2.0@fba64139db67123c7a57072e5f8d3db10d160b66',
   'voku/portable-ascii' => '1.5.6@80953678b19901e5165c56752d087fc11526017c',
@@ -167,7 +170,7 @@ final class Versions
   'sebastian/version' => '3.0.2@c6c1022351a901512170118436c764e473f6de8c',
   'symfony/yaml' => 'v5.2.0@bb73619b2ae5121bbbcd9f191dfd53ded17ae598',
   'theseer/tokenizer' => '1.2.0@75a63c33a8577608444246075ea0af0d052e452a',
-  'laravel/laravel' => '1.0.0+no-version-set@',
+  'laravel/laravel' => 'dev-main@179ca69d9f4b5fc9ece9c9e65e72730ca38556bf',
 );
 
     private function __construct()

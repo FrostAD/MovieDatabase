@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -57,6 +59,7 @@ class Event extends Model
         //TODO after model::class is the local foreign key and then is the reference key(key of the model in this case User)
         return $this->belongsTo(\App\Models\User::class,'user_id','id');
     }
+
 
     public function movie()
     {

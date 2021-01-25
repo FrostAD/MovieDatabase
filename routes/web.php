@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExchangeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ActorController;
@@ -28,7 +29,8 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
-Route::get('/', [MovieController::class, 'home']);
+Route::get('/', [HomeController::class, 'home']);
+Route::get('/search',[\App\Http\Controllers\SiteWideSearchController::class,'search_view']);
 // Route::get('/movie', [MovieController::class, 'show']);
 //Route::get('/mvt', [MovieController::class, 'index_new'])->name('movieTable');
 Route::get('/movies', [MovieController::class, 'index'])->name('fetch.movies.index');
@@ -36,10 +38,14 @@ Route::post('/movies', [MovieController::class, 'index'])->name('movieSort');
 Route::post('/movies/fetch', [MovieController::class, 'fetchMovies'])->name('fetch.movies');
 Route::post('/movies/sort', [MovieController::class, 'sort']);
 
-Route::get('/movie/{movie:id}', [MovieController::class, 'show'])->name('movie');
+Route::post('/movie/watchlist_add',[MovieController::class,'watchlist_add'])->middleware('auth');
+Route::post('/movie/watchlist_remove',[MovieController::class,'watchlist_remove'])->middleware('auth');
+Route::post('/movie/wishlist_add',[MovieController::class,'wishlist_add'])->middleware('auth');
+Route::post('/movie/wishlist_remove',[MovieController::class,'wishlist_remove'])->middleware('auth');
 Route::post('/movie/rate/', [MovieController::class, 'rate'])->middleware('auth');
 Route::post('/movie/rate/post', [MovieController::class, 'ratePost'])->middleware('auth');
 Route::post('/movie/comments', [MovieController::class, 'fetch'])->name('fetch.comments');
+Route::get('/movie/{movie:id}', [MovieController::class, 'show'])->name('movie');
 
 Route::get('/actor/{actor:id}', [ActorController::class, 'show'])->name('fetch.movies.actor.main');
 Route::post('/actor/movies', [ActorController::class, 'fetch'])->name('fetch.movies.actor');
@@ -64,7 +70,7 @@ Route::post('/events', [EventController::class, 'index'])->name('eventSort');
 Route::post('/events/fetch', [EventController::class, 'fetchEvents'])->name('fetch.events');
 
 //TODO add post route for sorting the index like movies
-Route::get('/event/create', [EventController::class, 'create_view'])->name('event.create')->middleware('auth');
+Route::get('/event/create', [EventController::class, 'create_view'])->name('event.create_custom')->middleware('auth');
 Route::get('/event/create/fetch', [EventController::class, 'find'])->name('event.fetch.movies');
 Route::post('/event/create/save', [EventController::class, 'create']);
 Route::get('/event/{event:id}', [EventController::class, 'show'])->name('fetch.event');
@@ -87,7 +93,7 @@ Route::get('/overall/{user:id}', [UserController::class, 'getOverallRating']);
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add')->middleware('auth');
 Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add')->middleware('auth');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/account/{user:id}', [UserController::class, 'details']);
 Route::post('/account/upload',[UserController::class,'upload']);

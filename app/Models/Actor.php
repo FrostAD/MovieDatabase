@@ -4,11 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Actor extends Model
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
+    use Searchable;
+    use SoftDeletes;
+
+    const SEARCHABLE_FIELDS = ['id','name'];
+
+    public function toSearchableArray()
+    {
+        return $this->only(self::SEARCHABLE_FIELDS);
+    }
 
     /**
      * The attributes that are mass assignable.

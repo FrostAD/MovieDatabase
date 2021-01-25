@@ -3,6 +3,34 @@
         <div class="row mt-5">
             <div class="current-movie col-8">
                 <h3><?php echo e($movie->title); ?></h3>
+                <?php if(auth()->guard()->check()): ?>
+                    <?php if(auth()->user()->watchlist->contains($movie)): ?>
+                        <form action="/movie/watchlist_remove" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
+                            <button type="submit" class="btn-primary btn">Remove from Watchlist</button>
+                        </form>
+                    <?php else: ?>
+                        <form action="/movie/watchlist_add" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
+                            <button type="submit" class="btn-primary btn">Add to Watchlist</button>
+                        </form>
+                    <?php endif; ?>
+                        <?php if(auth()->user()->wishlist->contains($movie)): ?>
+                            <form action="/movie/wishlist_remove" method="POST">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
+                                <button type="submit" class="btn-primary btn">Remove from Wishlist</button>
+                            </form>
+                        <?php else: ?>
+                            <form action="/movie/wishlist_add" method="POST">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
+                                <button type="submit" class="btn-primary btn">Add to Wishlist</button>
+                            </form>
+                        <?php endif; ?>
+                <?php endif; ?>
                 <ul class="movie-concise-info">
                     <li class="movie-year"><?php echo e($movie->published->format('m/d/Y')); ?></li>
                     <li class="movie-time"><?php echo e($movie->timespan); ?></li>
@@ -177,7 +205,7 @@
         <!-- Published by -->
         <div class="published-by mt-5">
             <h3>Published by</h3>
-
+            
             <img src="<?php echo e(asset('storage/avatars/'.$movie->user->avatar)); ?>" class="h-100 ml-3" alt="">
             <p><?php echo e($movie->user->name . ", " . $movie->user->rating_post); ?></p>
         </div>
@@ -187,6 +215,9 @@
                 <div id="scrollable-menu" class="container">
                     <h3>People also watch this:</h3>
                     <div id="img-holder-action" class="row">
+                        <?php $__currentLoopData = $recommended; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li><?php echo e($m->title); ?></li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
             </div>

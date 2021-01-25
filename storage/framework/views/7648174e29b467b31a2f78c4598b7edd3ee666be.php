@@ -3,8 +3,11 @@
     <h1>!MDb</h1>
   </a>
   <form id="leftNavbarContent" class="form-inline">
-    <input class="form-control" type="text" placeholder="Search">
-    <div class="dropdown mr-auto">
+    <input id="search-bar" class="form-control" type="text" placeholder="Search">
+      <ul id="results">
+      </ul>
+
+      <div class="dropdown mr-auto">
       <a class="nav-link" id="plusDropdown" role="button" data-toggle="dropdown">
         <svg color="white" width="32" viewBox="3 0 15 15" class="bi bi-plus" fill="currentColor"
           xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +16,7 @@
         </svg>
       </a>
       <div class="dropdown-menu" aria-labelledby="plusDropdown">
-        <a class="dropdown-item" href="<?php echo e(route('event.create')); ?>">Add Event</a>
+        <a class="dropdown-item" href="<?php echo e(route('event.create_custom')); ?>">Add Event</a>
         <a class="dropdown-item" href="<?php echo e(route('exchange.create')); ?>">Add Exchange</a>
       </div>
     </div>
@@ -39,17 +42,13 @@
       <li class="nav-item dropdown active">
         <!-- DROPDOWN WHEN LOGGED IN -->
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false"> <span class="fa fa-user-circle fa-2x mr-1" style=" vertical-align: middle;"></span>
+          aria-expanded="false"> <span class="fa fa-user-circle fa-2x mr-1" style="vertical-align: middle;"></span>
           <?php echo e(\Illuminate\Support\Str::words(\Illuminate\Support\Facades\Auth::user()->name,1,'')); ?></a>
         <div class="dropdown-menu" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="/account/<?php echo e(\Illuminate\Support\Facades\Auth::user()->id); ?>">Your Account</a>
-            <?php if(auth()->check() && auth()->user()->hasRole('Admin')): ?>
+            <?php if(auth()->user()->hasRole('Admin')): ?>
             <a class="dropdown-item" href="/admin/movie">Admin panel</a>
             <?php endif; ?>
-          <!-- <a class="dropdown-item" href="#">Your Publications</a>
-          <a class="dropdown-item" href="#">Your Watchlist</a>
-          <a class="dropdown-item" href="#">Your Wishlist</a>
-          <a class="dropdown-item" href="#">Your Events</a> -->
             <a class="dropdown-item" href="/exchanges">All Exchanges</a>
             <a class="dropdown-item" href="/account/<?php echo e(\Illuminate\Support\Facades\Auth::user()->id); ?>/settings">Account Settings</a>
             <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
@@ -64,11 +63,13 @@
             </form>
 
         </div>
+      </li>
       <?php endif; ?>
         <!-- DROPDOWN WHEN NOT LOGGED IN -->
         <?php if(auth()->guard()->guest()): ?>
+        <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false"> <span class="fa fa-user-circle fa-2x mr-1" style=" vertical-align: middle;"></span>
+          aria-expanded="false"> <span class="fa fa-user-circle fa-2x mr-1" style="vertical-align: middle;"></span>
         </a>
         <div class="dropdown-menu" aria-labelledby="userDropdown">
             <a class="dropdown-item"
@@ -80,6 +81,7 @@
                data-toggle="modal"
                data-target="#registerModal"><?php echo e(__('Register')); ?></a>
         </div>
+        </li>
           <?php endif; ?>
       </li>
     </ul>

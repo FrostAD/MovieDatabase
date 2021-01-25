@@ -20,7 +20,8 @@ class CreateActorsTable extends Migration
             $table->string('born_place');
             $table->longText('description');
             $table->string('image');
-            $table->boolean('archived')->default(false);
+//            $table->boolean('archived')->default(false);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

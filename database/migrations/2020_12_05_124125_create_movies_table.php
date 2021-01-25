@@ -28,6 +28,7 @@ class CreateMoviesTable extends Migration
             $table->string('poster')->nullable();
             $table->string('country_produced');
             $table->string('trailer');
+            $table->softDeletes();
             $table->timestamps();
         });
 

@@ -136,6 +136,21 @@ class MovieCrudController extends CrudController
     protected function setupListOperation()
     {
 
+        $this->crud->addFilter([
+            'type'  => 'simple',
+            'name'  => 'trashed',
+            'label' => 'Trashed'
+        ],
+            false,
+            function($values) { // if the filter is active
+                $this->crud->query = $this->crud->query->onlyTrashed();
+                $this->crud->removeButton('delete');
+
+                $this->crud->addButtonFromView('line', 'restore', 'restore', 'end');
+                $this->crud->addButtonFromView('line', 'hard_delete', 'hard_delete', 'end');
+
+            });
+
         // CRUD::column('user_id');
         $this->crud->addColumn([
             // any type of relationship
@@ -211,13 +226,13 @@ class MovieCrudController extends CrudController
             // 'model'     => App\Models\Category::class, // foreign key model
         ],);
         // CRUD::column('archived');
-        $this->crud->addColumn([
-            'name'  => 'archived',
-            'label' => 'Status',
-            'type'  => 'boolean',
-            // optionally override the Yes/No texts
-            'options' => [0 => 'Active', 1 => 'Inactive']
-        ],);
+//        $this->crud->addColumn([
+//            'name'  => 'archived',
+//            'label' => 'Status',
+//            'type'  => 'boolean',
+//            // optionally override the Yes/No texts
+//            'options' => [0 => 'Active', 1 => 'Inactive']
+//        ],);
         CRUD::column('timespan');
         CRUD::column('description');
         CRUD::column('poster');
@@ -373,11 +388,11 @@ class MovieCrudController extends CrudController
         //     'value' => MovieCrudController::findByTitle_imbd($this->crud->getEntries()->title),
         // ]);
         // CRUD::field('archived');
-        $this->crud->addField([
-            'name' => 'archived',
-            'type' => 'hidden',
-            'value' => 0,
-        ]);
+//        $this->crud->addField([
+//            'name' => 'archived',
+//            'type' => 'hidden',
+//            'value' => 0,
+//        ]);
         CRUD::field('timespan');
         CRUD::field('description');
         // CRUD::field('poster');
@@ -447,5 +462,18 @@ class MovieCrudController extends CrudController
             $value = str_replace('"', "", $res[1]);
             return $value;
         }
+    }
+
+    public function restore($id){
+        $movie = Movie::withTrashed()->find($id);
+        $movie->restore();
+        return redirect()->back();
+//        dd($actor);
+    }
+
+    public function hard_delete($id){
+        $movie = Movie::withTrashed()->find($id);
+        $movie->forceDelete();
+        return redirect()->back();
     }
 }

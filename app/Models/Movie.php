@@ -5,12 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use willvincent\Rateable\Rateable;
+use Laravel\Scout\Searchable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Movie extends Model
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
     use Rateable;
+    use Searchable;
+    use SoftDeletes;
+
+    const SEARCHABLE_FIELDS = ['id','title'];
+
+    public function toSearchableArray()
+    {
+        return $this->only(self::SEARCHABLE_FIELDS);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -165,9 +177,9 @@ class Movie extends Model
     }
 
     //TODO start not tested
-    public function watchlist_count_user()
+    public function watchlist_users()
     {
-        return $this->belongsToMany(User::class, 'watchlist', 'user_id', 'movie_id');
+        return $this->belongsToMany(User::class, 'watchlist', 'movie_id', 'user_id');
     }
     //TODO if works just make another table wishlist and add functions in User and Movie for it
     // end not tested

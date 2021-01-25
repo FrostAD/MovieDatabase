@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->double('rating_overall')->default(0);
             $table->double('rating_post')->default(0);
             $table->double('rating_exchange')->default(0);
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

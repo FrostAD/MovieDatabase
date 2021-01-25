@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Genre;
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\User;
@@ -13,19 +14,6 @@ use Illuminate\Support\Facades\Auth;
 class MovieController extends Controller
 {
 
-    public function home()
-    {
-        $last_movie = Movie::orderBy('created_at')->get()->last();
-        $movies_action = Movie::whereHas('genres', function($q){
-            $q->where('name','Action');
-        })->get();
-        $movies_drama = Movie::whereHas('genres', function($q){
-            $q->where('name','Drama');
-        })->get();
-//        dd($movies_action);
-
-        return view('home2', compact('last_movie','movies_action','movies_drama'));
-    }
 
     public function index(Request $request)
     {
@@ -39,9 +27,32 @@ class MovieController extends Controller
         $movies->appends(['sort' => 'created_at']);
         return view('index.movies', compact('movies'));
     }
+//    public function restore(Request $request){
+//        $movie = Movie::withTrashed()->find($request->id);
+////        dd($movie);
+//        $movie->restore();
+//        return redirect()->back();
+//    }
 
-    public function show(Movie $movie)
+    public function show($id)
     {
+        $movie = Movie::find($id);
+        //trashed or not exist
+        if (!$movie) {
+            $movie = Movie::withTrashed()->find($id);
+            if (!$movie)
+                return redirect('/movies');
+            else {
+                if (\auth()->user()) {
+                    if (\auth()->user()->hasRole('Admin')) {
+
+                    } else {
+                        return redirect('/movies');
+                    }
+                }
+                return redirect('/movies');
+            }
+        }
         // dd($movie->averageRating);
 //        $genres = $movie->genres();
         $user = User::find($movie->user_id)->name;
@@ -73,13 +84,33 @@ class MovieController extends Controller
         }
 //        dd($movie->title);
 //        dd(Event::first()->movie);
-        $events = Event::whereHas('movie', function($q) use ($movie) {
-            $q->where('title',$movie->title);
+        $events = Event::whereHas('movie', function ($q) use ($movie) {
+            $q->where('title', $movie->title);
         });
         //TODO fix pagination jquerry in master layout is blocking this and redirects it
         $events = $events->simplePaginate(4);
+
+        $recommended = new Collection();
+        foreach ($movie->watchlist_users as $user) {
+//            array_push($recommended, $user->watchlist);
+            foreach ($user->watchlist as $m) {
+                $recommended->add($m);
+//                            array_push($recommended, $m);
+
+//                foreach ($m->genres as $g) {
+//                    if ($movie->genres->contains($g)) {
+//                        if (!in_array($g, $recommended))
+//                            array_push($recommended, $m);
+//                    }
+//                }
+            }
+        }
+        $recommended = $recommended->unique()->except([$movie->id]);
+//        dd($recommended);
+//        $recommended = collect($recommended);
+//        dd($recommended->unique());
 //        dd($events);
-        return view('view.movie2', compact('movie', 'user', 'url', 'comments', 'post','events'));
+        return view('view.movie2', compact('movie', 'user', 'url', 'comments', 'post', 'events','recommended'));
     }
 
     public function fetch(Request $request)
@@ -222,5 +253,41 @@ class MovieController extends Controller
         return 'https://www.youtube.com/embed/' . $youtube_id;
     }
 
+    public function watchlist_add(Request $request)
+    {
+        $movie = Movie::find($request->movie_id);
+        $user = User::find(\auth()->user()->id);
+        $user->watchlist()->attach($movie);
+        return redirect()->back();
+//        dd($user->watchlist);
+    }
 
+    public function watchlist_remove(Request $request)
+    {
+        $movie = Movie::find($request->movie_id);
+        $user = User::find(\auth()->user()->id);
+        $user->watchlist()->detach($movie);
+        return redirect()->back();
+
+//        dd($user->watchlist);
+    }
+
+    public function wishlist_add(Request $request)
+    {
+        $movie = Movie::find($request->movie_id);
+        $user = User::find(\auth()->user()->id);
+        $user->wishlist()->attach($movie);
+        return redirect()->back();
+//        dd($user->watchlist);
+    }
+
+    public function wishlist_remove(Request $request)
+    {
+        $movie = Movie::find($request->movie_id);
+        $user = User::find(\auth()->user()->id);
+        $user->wishlist()->detach($movie);
+        return redirect()->back();
+
+//        dd($user->watchlist);
+    }
 }

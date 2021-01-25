@@ -36,6 +36,7 @@ class CreateExchangesTable extends Migration
             $table->double('rating_for_first')->default(0);
             $table->double('rating_for_second')->default(0);
             $table->boolean('visible');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

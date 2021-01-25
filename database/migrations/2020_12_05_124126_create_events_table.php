@@ -25,6 +25,7 @@ class CreateEventsTable extends Migration
             $table->string('location');
             $table->longText('description');
             $table->foreignId('movie_id')->constrained()->cascadeOnDelete();
+            $table->softDeletes();
             $table->timestamps();
         });
 

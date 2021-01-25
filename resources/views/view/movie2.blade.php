@@ -5,6 +5,34 @@
         <div class="row mt-5">
             <div class="current-movie col-8">
                 <h3>{{$movie->title}}</h3>
+                @auth
+                    @if(auth()->user()->watchlist->contains($movie))
+                        <form action="/movie/watchlist_remove" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{$movie->id}}" name="movie_id">
+                            <button type="submit" class="btn-primary btn">Remove from Watchlist</button>
+                        </form>
+                    @else
+                        <form action="/movie/watchlist_add" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{$movie->id}}" name="movie_id">
+                            <button type="submit" class="btn-primary btn">Add to Watchlist</button>
+                        </form>
+                    @endif
+                        @if(auth()->user()->wishlist->contains($movie))
+                            <form action="/movie/wishlist_remove" method="POST">
+                                @csrf
+                                <input type="hidden" value="{{$movie->id}}" name="movie_id">
+                                <button type="submit" class="btn-primary btn">Remove from Wishlist</button>
+                            </form>
+                        @else
+                            <form action="/movie/wishlist_add" method="POST">
+                                @csrf
+                                <input type="hidden" value="{{$movie->id}}" name="movie_id">
+                                <button type="submit" class="btn-primary btn">Add to Wishlist</button>
+                            </form>
+                        @endif
+                @endauth
                 <ul class="movie-concise-info">
                     <li class="movie-year">{{$movie->published->format('m/d/Y')}}</li>
                     <li class="movie-time">{{$movie->timespan}}</li>
@@ -178,7 +206,7 @@
         <!-- Published by -->
         <div class="published-by mt-5">
             <h3>Published by</h3>
-{{--            <img src="/img/unknown-user.png" alt="unknown-user" class="h-100 ml-3">--}}
+            {{--            <img src="/img/unknown-user.png" alt="unknown-user" class="h-100 ml-3">--}}
             <img src="{{asset('storage/avatars/'.$movie->user->avatar)}}" class="h-100 ml-3" alt="">
             <p>{{$movie->user->name . ", " . $movie->user->rating_post}}</p>
         </div>
@@ -188,6 +216,9 @@
                 <div id="scrollable-menu" class="container">
                     <h3>People also watch this:</h3>
                     <div id="img-holder-action" class="row">
+                        @foreach($recommended as $m)
+                            <li>{{$m->title}}</li>
+                        @endforeach
                     </div>
                 </div>
             </div>

@@ -143,6 +143,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables-fractal" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yajra/laravel-datatables-editor" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/scout" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/teamtnt/laravel-scout-tntsearch-driver" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/teamtnt/tntsearch" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

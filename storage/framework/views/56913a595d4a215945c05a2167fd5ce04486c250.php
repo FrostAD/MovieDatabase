@@ -50,7 +50,39 @@
 
 
 
-
+<script>
+    const resultsList = document.getElementById('results');
+    function createLi(searchResult){
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = searchResult.view_link;
+        link.textContent = searchResult.model;
+        const h4 = document.createElement('h4')
+        h4.appendChild(link);
+        const span = document.createElement('span');
+        span.textContent = searchResult.match;
+        li.appendChild(h4);
+        li.appendChild(span);
+        return li;
+    }
+    document.getElementById('search-bar').addEventListener('input', function (event){
+        event.preventDefault();
+        const searched = event.target.value;
+        fetch('/api/site-search?search=' + searched, {
+            method: 'GET'
+        }).then((response) => {
+            return response.json();
+        }).then((response) => {
+            console.log({response})
+            const results = response.data;
+            // empty list
+            resultsList.innerHTML = '';
+            results.forEach((result) => {
+                resultsList.appendChild(createLi(result))
+            })
+        })
+    })
+</script>
 <?php if(\Illuminate\Support\Facades\Route::current()->getName() == 'movie'): ?>
     <script>
         $(document).ready(function () {
@@ -268,7 +300,7 @@
         });
     </script>
 <?php endif; ?>
-<?php if(\Illuminate\Support\Facades\Route::current()->getName() == 'event.create'): ?>
+<?php if(\Illuminate\Support\Facades\Route::current()->getName() == 'event.create_custom'): ?>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script>
         $('.livesearch').select2({

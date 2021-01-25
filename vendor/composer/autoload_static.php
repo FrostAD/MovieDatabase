@@ -96,6 +96,7 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '290dd4ba42f11019134caca05dbefe3f' => __DIR__ . '/..' . '/teamtnt/tntsearch/helper/helpers.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
     );
 
@@ -133,6 +134,8 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         array (
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
             'Tests\\' => 6,
+            'TeamTNT\\TNTSearch\\' => 18,
+            'TeamTNT\\Scout\\' => 14,
         ),
         'S' => 
         array (
@@ -210,6 +213,7 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
             'League\\CommonMark\\' => 18,
             'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
+            'Laravel\\Scout\\' => 14,
         ),
         'I' => 
         array (
@@ -319,6 +323,14 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         'Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
+        ),
+        'TeamTNT\\TNTSearch\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/teamtnt/tntsearch/src',
+        ),
+        'TeamTNT\\Scout\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/teamtnt/laravel-scout-tntsearch-driver/src',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -545,6 +557,10 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Laravel\\Scout\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/scout/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -725,6 +741,7 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         'App\\Http\\Controllers\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommentController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EventController' => __DIR__ . '/../..' . '/app/Http/Controllers/EventController.php',
+        'App\\Http\\Controllers\\ExchangeController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExchangeController.php',
         'App\\Http\\Controllers\\FestivalController' => __DIR__ . '/../..' . '/app/Http/Controllers/FestivalController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\MovieController' => __DIR__ . '/../..' . '/app/Http/Controllers/MovieController.php',
@@ -732,7 +749,9 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         'App\\Http\\Controllers\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostController.php',
         'App\\Http\\Controllers\\ProducerController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProducerController.php',
         'App\\Http\\Controllers\\ScreenwritterController' => __DIR__ . '/../..' . '/app/Http/Controllers/ScreenwritterController.php',
+        'App\\Http\\Controllers\\SiteWideSearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/SiteWideSearchController.php',
         'App\\Http\\Controllers\\StudioController' => __DIR__ . '/../..' . '/app/Http/Controllers/StudioController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminMiddleware.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -746,6 +765,7 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\ActorRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ActorRequest.php',
         'App\\Http\\Requests\\EventRequest' => __DIR__ . '/../..' . '/app/Http/Requests/EventRequest.php',
+        'App\\Http\\Requests\\ExchangeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ExchangeRequest.php',
         'App\\Http\\Requests\\FestivalRequest' => __DIR__ . '/../..' . '/app/Http/Requests/FestivalRequest.php',
         'App\\Http\\Requests\\GenreRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GenreRequest.php',
         'App\\Http\\Requests\\MovieRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MovieRequest.php',
@@ -754,6 +774,7 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         'App\\Http\\Requests\\ScreenwritterRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ScreenwritterRequest.php',
         'App\\Http\\Requests\\StudioRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StudioRequest.php',
         'App\\Http\\Requests\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserRequest.php',
+        'App\\Http\\Resources\\SiteSearchResource' => __DIR__ . '/../..' . '/app/Http/Resources/SiteSearchResource.php',
         'App\\Models\\Actor' => __DIR__ . '/../..' . '/app/Models/Actor.php',
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
         'App\\Models\\Event' => __DIR__ . '/../..' . '/app/Models/Event.php',
@@ -772,6 +793,7 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\View\\Components\\Alert' => __DIR__ . '/../..' . '/app/View/Components/Alert.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -1069,6 +1091,7 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\ActorSeeder' => __DIR__ . '/../..' . '/database/seeders/ActorSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\ExchangeSeeder' => __DIR__ . '/../..' . '/database/seeders/ExchangeSeeder.php',
         'Database\\Seeders\\GenreSeeder' => __DIR__ . '/../..' . '/database/seeders/GenreSeeder.php',
         'Database\\Seeders\\MovieSeeder' => __DIR__ . '/../..' . '/database/seeders/MovieSeeder.php',
         'Database\\Seeders\\MusicianSeeder' => __DIR__ . '/../..' . '/database/seeders/MusicianSeeder.php',
@@ -3288,6 +3311,20 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
+        'Laravel\\Scout\\Builder' => __DIR__ . '/..' . '/laravel/scout/src/Builder.php',
+        'Laravel\\Scout\\Console\\FlushCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/FlushCommand.php',
+        'Laravel\\Scout\\Console\\ImportCommand' => __DIR__ . '/..' . '/laravel/scout/src/Console/ImportCommand.php',
+        'Laravel\\Scout\\EngineManager' => __DIR__ . '/..' . '/laravel/scout/src/EngineManager.php',
+        'Laravel\\Scout\\Engines\\AlgoliaEngine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/AlgoliaEngine.php',
+        'Laravel\\Scout\\Engines\\Engine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/Engine.php',
+        'Laravel\\Scout\\Engines\\NullEngine' => __DIR__ . '/..' . '/laravel/scout/src/Engines/NullEngine.php',
+        'Laravel\\Scout\\Events\\ModelsFlushed' => __DIR__ . '/..' . '/laravel/scout/src/Events/ModelsFlushed.php',
+        'Laravel\\Scout\\Events\\ModelsImported' => __DIR__ . '/..' . '/laravel/scout/src/Events/ModelsImported.php',
+        'Laravel\\Scout\\Jobs\\MakeSearchable' => __DIR__ . '/..' . '/laravel/scout/src/Jobs/MakeSearchable.php',
+        'Laravel\\Scout\\ModelObserver' => __DIR__ . '/..' . '/laravel/scout/src/ModelObserver.php',
+        'Laravel\\Scout\\ScoutServiceProvider' => __DIR__ . '/..' . '/laravel/scout/src/ScoutServiceProvider.php',
+        'Laravel\\Scout\\Searchable' => __DIR__ . '/..' . '/laravel/scout/src/Searchable.php',
+        'Laravel\\Scout\\SearchableScope' => __DIR__ . '/..' . '/laravel/scout/src/SearchableScope.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
@@ -6247,6 +6284,46 @@ class ComposerStaticInit0a121bc8c0daf636eb1779605f686014
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
         'Symfony\\Polyfill\\Php73\\Php73' => __DIR__ . '/..' . '/symfony/polyfill-php73/Php73.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
+        'TeamTNT\\Scout\\Console\\ImportCommand' => __DIR__ . '/..' . '/teamtnt/laravel-scout-tntsearch-driver/src/Console/ImportCommand.php',
+        'TeamTNT\\Scout\\Console\\StatusCommand' => __DIR__ . '/..' . '/teamtnt/laravel-scout-tntsearch-driver/src/Console/StatusCommand.php',
+        'TeamTNT\\Scout\\Engines\\TNTSearchEngine' => __DIR__ . '/..' . '/teamtnt/laravel-scout-tntsearch-driver/src/Engines/TNTSearchEngine.php',
+        'TeamTNT\\Scout\\Events\\SearchPerformed' => __DIR__ . '/..' . '/teamtnt/laravel-scout-tntsearch-driver/src/Events/SearchPerformed.php',
+        'TeamTNT\\Scout\\TNTSearchScoutServiceProvider' => __DIR__ . '/..' . '/teamtnt/laravel-scout-tntsearch-driver/src/TNTSearchScoutServiceProvider.php',
+        'TeamTNT\\TNTSearch\\Classifier\\TNTClassifier' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Classifier/TNTClassifier.php',
+        'TeamTNT\\TNTSearch\\Connectors\\Connector' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Connectors/Connector.php',
+        'TeamTNT\\TNTSearch\\Connectors\\ConnectorInterface' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Connectors/ConnectorInterface.php',
+        'TeamTNT\\TNTSearch\\Connectors\\FileSystemConnector' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Connectors/FileSystemConnector.php',
+        'TeamTNT\\TNTSearch\\Connectors\\MySqlConnector' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Connectors/MySqlConnector.php',
+        'TeamTNT\\TNTSearch\\Connectors\\PostgresConnector' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Connectors/PostgresConnector.php',
+        'TeamTNT\\TNTSearch\\Connectors\\SQLiteConnector' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Connectors/SQLiteConnector.php',
+        'TeamTNT\\TNTSearch\\Connectors\\SqlServerConnector' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Connectors/SqlServerConnector.php',
+        'TeamTNT\\TNTSearch\\Exceptions\\IndexNotFoundException' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Exceptions/IndexNotFoundException.php',
+        'TeamTNT\\TNTSearch\\FileReaders\\FileReaderInterface' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/FileReaders/FileReaderInterface.php',
+        'TeamTNT\\TNTSearch\\FileReaders\\TextFileReader' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/FileReaders/TextFileReader.php',
+        'TeamTNT\\TNTSearch\\Indexer\\TNTGeoIndexer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Indexer/TNTGeoIndexer.php',
+        'TeamTNT\\TNTSearch\\Indexer\\TNTIndexer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Indexer/TNTIndexer.php',
+        'TeamTNT\\TNTSearch\\KeywordExtraction\\Rake' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/KeywordExtraction/Rake.php',
+        'TeamTNT\\TNTSearch\\Spell\\JaroWinklerDistance' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Spell/JaroWinklerDistance.php',
+        'TeamTNT\\TNTSearch\\Stemmer\\ArabicStemmer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Stemmer/ArabicStemmer.php',
+        'TeamTNT\\TNTSearch\\Stemmer\\CroatianStemmer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Stemmer/CroatianStemmer.php',
+        'TeamTNT\\TNTSearch\\Stemmer\\GermanStemmer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Stemmer/GermanStemmer.php',
+        'TeamTNT\\TNTSearch\\Stemmer\\ItalianStemmer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Stemmer/ItalianStemmer.php',
+        'TeamTNT\\TNTSearch\\Stemmer\\NoStemmer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Stemmer/NoStemmer.php',
+        'TeamTNT\\TNTSearch\\Stemmer\\PorterStemmer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Stemmer/PorterStemmer.php',
+        'TeamTNT\\TNTSearch\\Stemmer\\PortugueseStemmer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Stemmer/PortugueseStemmer.php',
+        'TeamTNT\\TNTSearch\\Stemmer\\RussianStemmer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Stemmer/RussianStemmer.php',
+        'TeamTNT\\TNTSearch\\Stemmer\\Stemmer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Stemmer/Stemmer.php',
+        'TeamTNT\\TNTSearch\\Stemmer\\UkrainianStemmer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Stemmer/UkrainianStemmer.php',
+        'TeamTNT\\TNTSearch\\Support\\AbstractTokenizer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Support/AbstractTokenizer.php',
+        'TeamTNT\\TNTSearch\\Support\\Collection' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Support/Collection.php',
+        'TeamTNT\\TNTSearch\\Support\\Expression' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Support/Expression.php',
+        'TeamTNT\\TNTSearch\\Support\\Highlighter' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Support/Highlighter.php',
+        'TeamTNT\\TNTSearch\\Support\\ProductTokenizer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Support/ProductTokenizer.php',
+        'TeamTNT\\TNTSearch\\Support\\Tokenizer' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Support/Tokenizer.php',
+        'TeamTNT\\TNTSearch\\Support\\TokenizerInterface' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/Support/TokenizerInterface.php',
+        'TeamTNT\\TNTSearch\\TNTFuzzyMatch' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/TNTFuzzyMatch.php',
+        'TeamTNT\\TNTSearch\\TNTGeoSearch' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/TNTGeoSearch.php',
+        'TeamTNT\\TNTSearch\\TNTSearch' => __DIR__ . '/..' . '/teamtnt/tntsearch/src/TNTSearch.php',
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
