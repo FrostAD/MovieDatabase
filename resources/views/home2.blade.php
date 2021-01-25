@@ -39,7 +39,7 @@
                    <li><a href="#"><img src="{{asset('storage/'.$movie_drama->poster)}}" width="170px"></a></li>
                 @endforeach
             @endif
-      </ul>
+        </ul>
     </div>
 </div>
 @endsection

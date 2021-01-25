@@ -70,18 +70,6 @@
                                         <p>{{$user->email}}</p>
                                     </div>
                                 </div>
-                                {{--                            <div class="row">--}}
-                                {{--                                <div class="col-md-12">--}}
-                                {{--                                    <label>Biography</label>--}}
-                                {{--                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates consequuntur, hic maiores--}}
-                                {{--                                        rerum--}}
-                                {{--                                        natus fugiat et excepturi odio, tenetur recusandae, incidunt tempore quaerat laboriosam delectus--}}
-                                {{--                                        perspiciatis dolore officia? Ratione, tempore vero id unde ut recusandae distinctio perferendis--}}
-                                {{--                                        non--}}
-                                {{--                                        provident tempora ullam iusto dolores, velit porro, libero officiis! Harum, corrupti temporibus?--}}
-                                {{--                                    </p>--}}
-                                {{--                                </div>--}}
-                                {{--                            </div>--}}
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum nobis nihil,
@@ -94,15 +82,19 @@
 
                             </div>
                             <div class="tab-pane fade" id="profile_wishlist" role="tabpanel" aria-labelledby="profile-tab">
-                                @foreach($wishlist as $m)
-                                    <li><a href="/movie/{{$m->id}}">{{$m->title}}</a></li>
-                                @endforeach
-                                {{$wishlist->links()}}}
+                                <ul class="list-group">
+                                    @foreach($wishlist as $m)
+                                    <li class="list-group-item"><a href="/movie/{{$m->id}}">{{$m->title}}</a></li>
+                                    @endforeach
+                                </ul>
+                                {{$wishlist->links()}}
                             </div>
                             <div class="tab-pane fade" id="profile_watchlist" role="tabpanel" aria-labelledby="profile-tab">
+                                <ul class="list-group">
                                 @foreach($watchlist as $m)
-                                    <li><a href="/movie/{{$m->id}}">{{$m->title}}</a></li>
+                                <li class="list-group-item"><a href="/movie/{{$m->id}}">{{$m->title}}</a></li>
                                 @endforeach
+                                </ul>
                                 {{$watchlist->links()}}
                             </div>
                         </div>
@@ -115,6 +107,5 @@
                 </a>
             </div>
         </div>
-
     </div>
 @endsection

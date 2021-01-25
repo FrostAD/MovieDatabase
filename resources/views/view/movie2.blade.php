@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('body')
     <div class="container">
         <div class="row mt-5">
@@ -212,14 +211,14 @@
         </div>
         <!-- People also watch this -->
         <div class="row">
-            <div class="col-6 row">
-                <div id="scrollable-menu" class="container">
-                    <h3>People also watch this:</h3>
-                    <div id="img-holder-action" class="row">
+            <div class="col-6">
+                <h3>Drama Movies</h3>
+                <div class="selector-page scrollbar-hidden">
+                    <ul>
                         @foreach($recommended as $m)
-                            <li>{{$m->title}}</li>
+                        <li><a href=""><img src="{{asset('storage/'.$m->poster)}}" alt=""></a></li>
                         @endforeach
-                    </div>
+                    </ul>
                 </div>
             </div>
             <!-- TODO --- TODO --- TODO -->

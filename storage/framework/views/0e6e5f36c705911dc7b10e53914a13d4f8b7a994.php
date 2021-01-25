@@ -40,7 +40,7 @@
                    <li><a href="#"><img src="<?php echo e(asset('storage/'.$movie_drama->poster)); ?>" width="170px"></a></li>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endif; ?>
-      </ul>
+        </ul>
     </div>
 </div>
 <?php $__env->stopSection(); ?>

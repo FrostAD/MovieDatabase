@@ -1,18 +1,22 @@
+// Remove scrollbar
+body::-webkit-scrollbar {
+    display: none;
+}
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hidden::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 /* Hide scrollbar for IE, Edge add Firefox */
 .scrollbar-hidden {
-  -ms-overflow-style: none;
-  scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
 }
 // Concise information about movie under the title (year/time/genre)
 .movie-concise-info {
-  list-style: none;
-  display: flex;
-  li{
-    padding-right: .90em;
-    font-size: .75em;
-  }
+    list-style: none;
+    display: flex;
+    li {
+        padding-right: 0.9em;
+        font-size: 0.75em;
+    }
 }

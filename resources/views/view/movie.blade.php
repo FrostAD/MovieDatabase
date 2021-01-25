@@ -1,9 +1,4 @@
 @extends('layouts.master')
-<style>
-    .display-comment .display-comment {
-        margin-left: 40px
-    }
-</style>
 @section('body')
     <div class="container">
         <div class="row mt-5">
@@ -65,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <!-- TODO --- TODO --- TODO --- TODO --- TODO --- TODO --- -->
+            
             <div class="col-6 m-auto">
                 <p>Some events (work in progress)</p>
             </div>

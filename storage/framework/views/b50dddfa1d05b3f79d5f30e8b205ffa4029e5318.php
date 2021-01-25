@@ -71,18 +71,6 @@
                                         <p><?php echo e($user->email); ?></p>
                                     </div>
                                 </div>
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum nobis nihil,
@@ -95,15 +83,20 @@
 
                             </div>
                             <div class="tab-pane fade" id="profile_wishlist" role="tabpanel" aria-labelledby="profile-tab">
-                                <?php $__currentLoopData = $wishlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a href="/movie/<?php echo e($m->id); ?>"><?php echo e($m->title); ?></a></li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                <?php echo e($wishlist->links()); ?>}
+                                <ul class="list-group">
+                                    <?php $__currentLoopData = $wishlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li class="list-group-item"><a href="/movie/<?php echo e($m->id); ?>"><?php echo e($m->title); ?></a></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                                <?php echo e($wishlist->links()); ?>
+
                             </div>
                             <div class="tab-pane fade" id="profile_watchlist" role="tabpanel" aria-labelledby="profile-tab">
+                                <ul class="list-group">
                                 <?php $__currentLoopData = $watchlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><a href="/movie/<?php echo e($m->id); ?>"><?php echo e($m->title); ?></a></li>
+                                <li class="list-group-item"><a href="/movie/<?php echo e($m->id); ?>"><?php echo e($m->title); ?></a></li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
                                 <?php echo e($watchlist->links()); ?>
 
                             </div>
@@ -117,7 +110,6 @@
                 </a>
             </div>
         </div>
-
     </div>
 <?php $__env->stopSection(); ?>
 
