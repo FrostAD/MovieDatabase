@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('body')
-    <section id="section-recently-added" class="container">
+<div class="container">
+    <section id="section-recently-added">
         <h3 class="mt-3 mb-4">Recently Added</h3>
         @if($last_movie)
             <div class="row text-center">
@@ -20,26 +21,25 @@
     </section>
 
     <!-- Section-2: Scrollable Menu -->
-    <div id="scrollable-menu" class="container">
-        <h3>Action Movies</h3>
-        <div id="img-holder-action" class="row slider">
-            @if($movies_action)
+    <h3>Action Movies</h3>
+    <div class="selector-page scrollbar-hidden">
+      <ul>
+        @if($movies_action)
                 @foreach($movies_action as $movie_action)
-                    {{--                <div class='col-4 my-img'><img  src="{{asset('storage/'.$movie_action->poster)}}"></div>--}}
-                    <div class='col-4 my-img'><img src="{{asset('storage/'.$movie_action->poster)}}" width="170px">
-                    </div>
+                   <li><a href="#"><img src="{{asset('storage/'.$movie_action->poster)}}" width="170px"></a></li>
                 @endforeach
             @endif
-        </div>
+      </ul>
     </div>
-    <div id="scrollable-menu" class="container">
-        <h3>Drama Movies</h3>
-        <div id="img-holder-comedy" class="row slider">
-            @if($movies_drama)
+    <h3>Drama Movies</h3>
+    <div class="selector-page scrollbar-hidden">
+      <ul>
+        @if($movies_drama)
                 @foreach($movies_drama as $movie_drama)
-                    <div class='col-4 my-img'><img src="{{asset('storage/'.$movie_drama->poster)}}" width="170px"></div>
+                   <li><a href="#"><img src="{{asset('storage/'.$movie_drama->poster)}}" width="170px"></a></li>
                 @endforeach
             @endif
-        </div>
+      </ul>
     </div>
+</div>
 @endsection

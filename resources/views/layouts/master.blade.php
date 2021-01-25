@@ -377,8 +377,8 @@
 @endif
 <!-- JavaScript included individual files as needed -->
 <script src="/bootstrap/js/bootstrap.min.js"></script>
-{{--<script src="/custom-js/index.js"></script>--}}
-
+<script src="/custom-js/index.js"></script>
+<script src="/custom-js/jquery.mousewheel.min.js"></script>
 </body>
 
 </html>
