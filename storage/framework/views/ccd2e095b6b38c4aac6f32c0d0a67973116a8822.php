@@ -3,11 +3,15 @@
     <h1>!MDb</h1>
   </a>
   <form id="leftNavbarContent" class="form-inline">
-    <input id="search-bar" class="form-control" type="text" placeholder="Search">
-      <ul id="results">
-      </ul>
+    <input id="search-bar" class="form-control" type="text" data-toggle="dropdown" placeholder="Search">
+    <div class="dropdown">
+      <ul id="results" data-toggle="dropdown">
 
-      <div class="dropdown mr-auto">
+      </ul>
+    </div>
+ 
+    
+      <div class="dropdown">
       <a class="nav-link" id="plusDropdown" role="button" data-toggle="dropdown">
         <svg color="white" width="32" viewBox="3 0 15 15" class="bi bi-plus" fill="currentColor"
           xmlns="http://www.w3.org/2000/svg">
@@ -86,5 +90,4 @@
       </li>
     </ul>
   </div>
-</nav>
-<?php /**PATH C:\Users\rstoi\Documents\GitHub\MovieDatabase\resources\views/nav.blade.php ENDPATH**/ ?>
+</nav><?php /**PATH C:\Users\rstoi\Documents\GitHub\MovieDatabase\resources\views/nav.blade.php ENDPATH**/ ?>

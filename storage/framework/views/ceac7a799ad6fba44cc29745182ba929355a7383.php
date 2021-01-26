@@ -2,36 +2,8 @@
 <?php $__env->startSection('body'); ?>
     <div class="container">
         <div class="row mt-5">
-            <div class="current-movie col-8">
+            <div class="current-movie col-md-8">
                 <h3><?php echo e($movie->title); ?></h3>
-                <?php if(auth()->guard()->check()): ?>
-                    <?php if(auth()->user()->watchlist->contains($movie)): ?>
-                        <form action="/movie/watchlist_remove" method="POST">
-                            <?php echo csrf_field(); ?>
-                            <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
-                            <button type="submit" class="btn-primary btn">Remove from Watchlist</button>
-                        </form>
-                    <?php else: ?>
-                        <form action="/movie/watchlist_add" method="POST">
-                            <?php echo csrf_field(); ?>
-                            <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
-                            <button type="submit" class="btn-primary btn">Add to Watchlist</button>
-                        </form>
-                    <?php endif; ?>
-                        <?php if(auth()->user()->wishlist->contains($movie)): ?>
-                            <form action="/movie/wishlist_remove" method="POST">
-                                <?php echo csrf_field(); ?>
-                                <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
-                                <button type="submit" class="btn-primary btn">Remove from Wishlist</button>
-                            </form>
-                        <?php else: ?>
-                            <form action="/movie/wishlist_add" method="POST">
-                                <?php echo csrf_field(); ?>
-                                <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
-                                <button type="submit" class="btn-primary btn">Add to Wishlist</button>
-                            </form>
-                        <?php endif; ?>
-                <?php endif; ?>
                 <ul class="movie-concise-info">
                     <li class="movie-year"><?php echo e($movie->published->format('m/d/Y')); ?></li>
                     <li class="movie-time"><?php echo e($movie->timespan); ?></li>
@@ -43,7 +15,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-3">
+            <div class="col-md-3">
                 <h4 class="float-right">
                     <small>IMDB: <?php echo e($movie->rating_imbd); ?> </small><span><svg width="16" viewBox="0 0 16 20"
                                                                             class="bi bi-star" fill="currentColor"
@@ -63,13 +35,43 @@
                 </h4>
             </div>
             <!-- Share movie -->
-            <div class="col-1">Share!<br/>
+            <div class="col-md-1 d-flex">
                 <a href="#"><i class="fa fa-2x fa-facebook-square"></i></a>
             </div>
         </div>
         <div class="row">
-            <h5 class="ml-auto my-auto">Rate this movie: </h5>
-            <div class="movie-stars" id="form_rating_movie">
+            <div class="d-flex my-auto pl-3">
+                <?php if(auth()->guard()->check()): ?>
+                    <?php if(auth()->user()->watchlist->contains($movie)): ?>
+                        <form action="/movie/watchlist_remove" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
+                            <button type="submit" class="btn btn-danger btn-sm mr-2" title="Remove from watchlist">Watchlist</button>
+                        </form>
+                    <?php else: ?>
+                        <form action="/movie/watchlist_add" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
+                            <button type="submit" class="btn btn-success btn-sm mr-2" title="Add to watchlist">Watchlist</button>
+                        </form>
+                    <?php endif; ?>
+                        <?php if(auth()->user()->wishlist->contains($movie)): ?>
+                            <form action="/movie/wishlist_remove" method="POST">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
+                                <button type="submit" class="btn btn-danger btn-sm" title="Remove from wishlist">Wishlist</button>
+                            </form>
+                        <?php else: ?>
+                            <form action="/movie/wishlist_add" method="POST">
+                                <?php echo csrf_field(); ?>
+                                <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
+                                <button type="submit" class="btn btn-success btn-sm" title="Add to wishlist">Wishlist</button>
+                            </form>
+                        <?php endif; ?>
+                <?php endif; ?>
+            </div>
+            <div class="movie-stars d-flex mx-auto" id="form_rating_movie">
+            <h5 class="my-auto">Rate this movie: </h5>
                 <form action="/movie/rate/" method="POST">
                     <?php echo csrf_field(); ?>
                     <input type="hidden" name="movie_id" value="<?php echo e($movie->id); ?>"/>
@@ -86,23 +88,21 @@
                 </form>
             </div>
         </div>
-        <div class="row" style="max-height: 350px; overflow: hidden;">
-            <div class="img-current-movie" style="max-width: 200px; overflow: hidden;">
-                <img src="<?php echo e(asset('storage/' . $movie->poster)); ?>"/>
+        <div class="row h-100" style="overflow: hidden;">
+            <div class="col-md-3 img-current-movie" style="">
+                <img style="min-width: 100%" src="<?php echo e(asset('storage/' . $movie->poster)); ?>"/>
             </div>
-            <div class="trailer-current-movie ml-auto" style="width: 800px;">
-                <iframe width="800" height="400"
-                        src="<?php echo e($url); ?>">
-                </iframe>
+            <div class="col-md-9 trailer-current-movie ml-auto" style="">
+                <iframe class="h-100 w-100" frameBorder="0" src="<?php echo e($url); ?>"></iframe>
             </div>
         </div>
-        <div class="row description my-3 p-3 rounded">
+        <div class="row description my-3 p-3">
             <p><?php echo e($movie->description); ?></p>
         </div>
         <!-- Actors -->
-        <div class="row actors-menu my-3">
+        <div class="row actors-menu">
             <div class="col-4 actors-name scrollbar-hidden">
-                <ul class="list-group actors-menu my-3 ">
+                <ul class="list-group actors-menu">
                     <?php $__currentLoopData = $movie->actors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $actor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <li>
                             <a class="list-group-item list-group-item-action" data-toggle="list"
@@ -148,13 +148,10 @@
                         </div>
                     <?php endif; ?>
 
-                    <div class="tab-pane fade show" id="actor<?php echo e($actor->id); ?>">
-                        <div class="float-left" style="height: 250px;">
+                    <div class="tab-pane fade h-100" id="actor<?php echo e($actor->id); ?>">
                             <a href="/actor/<?php echo e($actor->id); ?>">
-                                <img src="<?php echo e(asset('storage/'.$actor->image)); ?>" width="100px" style="float: left;"
-                                     alt="">
+                                <img class="h-100" src="<?php echo e(asset('storage/'.$actor->image)); ?>" width="150" style="float: left;">
                             </a>
-                        </div>
                         <div class="row">
                             <div class="col">
                                 <label>Name</label>
@@ -186,8 +183,8 @@
         <!-- End Actors -->
         <!-- Post Raiting -->
         <div class="row">
-            <h5 class="my-auto">Rate this post: </h5>
-            <div class="post-stars">
+            <div class="post-stars d-flex mx-auto">
+                <h5 class="my-auto">Rate this post: </h5>
                 <form action="/movie/rate/post" method="POST">
                     <?php echo csrf_field(); ?>
                     <input type="hidden" name="movie_id" value="<?php echo e($movie->id); ?>"/>
@@ -204,16 +201,16 @@
             </div>
         </div>
         <!-- Published by -->
-        <div class="published-by mt-5">
+        <div class="published-by mb-1">
             <h3>Published by</h3>
             
             <img src="<?php echo e(asset('storage/avatars/'.$movie->user->avatar)); ?>" class="h-100 ml-3" alt="">
             <p><?php echo e($movie->user->name . ", " . $movie->user->rating_post); ?></p>
         </div>
-        <!-- People also watch this -->
+        <!-- People also watch -->
         <div class="row">
             <div class="col-6">
-                <h3>Drama Movies</h3>
+                <h3>People also watch:</h3>
                 <div class="selector-page scrollbar-hidden">
                     <ul>
                         <?php $__currentLoopData = $recommended; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

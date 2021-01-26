@@ -25,12 +25,15 @@
         ul>li:hover{
             background-color: #e2e8f0;
         }
+        .color-asd{
+            color: white;
+        }
     </style>
 </head>
 <body>
 
 
-<input id="search-bar" type="text" placeholder="Search Site">
+<input id="search-bar" class="ml-auto" type="text" placeholder="Search Site">
 
 <ul id="results">
 
@@ -40,6 +43,7 @@
     const resultsList = document.getElementById('results');
     function createLi(searchResult){
         const li = document.createElement('li');
+        li.classList.add("color-asd")
         const link = document.createElement('a');
         link.href = searchResult.view_link;
         link.textContent = searchResult.model;

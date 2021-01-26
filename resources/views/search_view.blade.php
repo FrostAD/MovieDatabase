@@ -30,7 +30,7 @@
 <body>
 
 {{--search bar--}}
-<input id="search-bar" type="text" placeholder="Search Site">
+<input id="search-bar" class="ml-auto" type="text" placeholder="Search Site">
 
 <ul id="results">
 
