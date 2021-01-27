@@ -12,20 +12,6 @@
                     <h5>
                         <?php echo e($user->name); ?>
 
-                        <?php if(auth()->check() && auth()->user()->hasRole('Admin')): ?>
-                        <?php if($user->trashed()): ?>
-                            <a href="/admin/user/<?php echo e($user->id); ?>/restore">
-                                <button type="submit">Restore</button>
-                            </a>
-                        <?php else: ?>
-                            
-                            <form action="/admin/user/<?php echo e($user->id); ?>/delete" method="POST">
-                                <?php echo csrf_field(); ?>
-                                <?php echo method_field('DELETE'); ?>
-                                <button type="submit">Deactivate</button>
-                            </form>
-                        <?php endif; ?>
-                        <?php endif; ?>
                     </h5>
                     <p>Rating : <span><?php echo e($user->rating_overall); ?></span></p>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -108,6 +94,20 @@
                 <a href="<?php echo e(route('account.settings',\Illuminate\Support\Facades\Auth::id())); ?>">
                     <button class="profile-edit-btn">Edit Profile</button>
                 </a>
+                <?php if(auth()->check() && auth()->user()->hasRole('Admin')): ?>
+                        <?php if($user->trashed()): ?>
+                            <a href="/admin/user/<?php echo e($user->id); ?>/restore">
+                                <button class="profile-edit-btn" type="submit">Restore</button>
+                            </a>
+                        <?php else: ?>
+                            
+                            <form action="/admin/user/<?php echo e($user->id); ?>/delete" method="POST">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('DELETE'); ?>
+                                <button class="profile-edit-btn btn-danger" type="submit">Deactivate</button>
+                            </form>
+                        <?php endif; ?>
+                        <?php endif; ?>
             </div>
         </div>
     </div>

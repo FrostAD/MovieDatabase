@@ -70,7 +70,7 @@
                         <?php endif; ?>
                 <?php endif; ?>
             </div>
-            <div class="movie-stars d-flex mx-auto" id="form_rating_movie">
+            <div class="movie-stars d-flex ml-auto" id="form_rating_movie">
             <h5 class="my-auto">Rate this movie: </h5>
                 <form action="/movie/rate/" method="POST">
                     <?php echo csrf_field(); ?>
@@ -201,11 +201,14 @@
             </div>
         </div>
         <!-- Published by -->
-        <div class="published-by mb-1">
+        <div class="row d-block">
             <h3>Published by</h3>
-            
-            <img src="<?php echo e(asset('storage/avatars/'.$movie->user->avatar)); ?>" class="h-100 ml-3" alt="">
-            <p><?php echo e($movie->user->name . ", " . $movie->user->rating_post); ?></p>
+            <div class="d-flex" style="height: 150px">
+
+                
+                <img src="<?php echo e(asset('storage/avatars/'.$movie->user->avatar)); ?>" class="h-100 ml-3" alt="">
+                <p><?php echo e($movie->user->name . ", " . $movie->user->rating_post); ?></p>
+            </div>
         </div>
         <!-- People also watch -->
         <div class="row">

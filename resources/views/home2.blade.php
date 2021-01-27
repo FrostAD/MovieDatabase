@@ -2,7 +2,7 @@
 @section('body')
 <div class="container">
     <section id="section-recently-added">
-        <h3 class="mt-3 mb-4">Recently Added</h3>
+        <h3 class="my-3">Recently Added</h3>
         @if($last_movie)
             <div class="row text-center">
                 <div class="col-md-6">

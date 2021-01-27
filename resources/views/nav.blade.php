@@ -3,9 +3,9 @@
     <h1>!MDb</h1>
   </a>
   <form id="leftNavbarContent" class="form-inline">
-    <input id="search-bar" class="form-control" type="text" data-toggle="dropdown" placeholder="Search">
+    <input id="search-bar" class="form-control" type="text" placeholder="Search">
     <div class="dropdown">
-      <ul id="results" data-toggle="dropdown">
+      <ul id="results">
 
       </ul>
     </div>

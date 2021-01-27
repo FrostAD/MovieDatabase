@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-
                     <img src="<?php echo e(asset('storage/avatars/'.\Illuminate\Support\Facades\Auth::user()->avatar)); ?>" alt="">
                     
                     <form action="/account/upload" method="POST" enctype="multipart/form-data">
+                        
                         <?php echo csrf_field(); ?>
                         
                         
@@ -23,14 +23,12 @@
                 <div class="col-lg-12 text-center mb-3">
                     <h2>Edit Profile</h2>
                 </div>
-                <div class="col-lg-8 push-lg-4 personal-info">
+                <div class="col-lg-8 personal-info">
                     <form method="POST" action="/account/update/<?php echo e(\Illuminate\Support\Facades\Auth::id()); ?>">
                         <?php echo csrf_field(); ?>
-
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Name')); ?></label>
-
-                            <div class="col-md-6">
+                            <label class="col-lg-3 col-form-label form-control-label"><?php echo e(__('Name')); ?></label>
+                            <div class="col-lg-9">
                                 <input id="name" type="text" class="form-control <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -57,9 +55,9 @@ unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-9">
                                 <input id="email" type="email" class="form-control <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -86,10 +84,9 @@ unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form-group row">
-                            <label for="password"
-                                   class="col-md-4 col-form-label text-md-right"><?php echo e(__('Password')); ?></label>
+                            <label class="col-lg-3 col-form-label form-control-label"><?php echo e(__('Password')); ?></label>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-9">
                                 <input id="password" type="password"
                                        class="form-control <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -117,10 +114,8 @@ unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm"
-                                   class="col-md-4 col-form-label text-md-right"><?php echo e(__('Confirm Password')); ?></label>
-
-                            <div class="col-md-6">
+                            <label class="col-lg-3 col-form-label form-control-label"><?php echo e(__('Confirm Password')); ?></label>
+                            <div class="col-lg-9">
                                 <input id="password-confirm" type="password" class="form-control"
                                        name="password_confirmation" required autocomplete="new-password">
                             </div>

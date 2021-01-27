@@ -4,16 +4,16 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-{{--                    <img src="https://picsum.photos/200/150" alt=""/>--}}
                     <img src="{{asset('storage/avatars/'.\Illuminate\Support\Facades\Auth::user()->avatar)}}" alt="">
-                    {{--                        Change Photo--}}
+                    {{-- Change Photo --}}
                     <form action="/account/upload" method="POST" enctype="multipart/form-data">
+                        {{-- TODO --- TODO --- TODO --- TODO --}}
                         @csrf
-                        {{--                        <div class="custom-file">--}}
-                        {{--                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01"--}}
-                        {{--                                   aria-describedby="inputGroupFileAddon01">--}}
-                        {{--                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>--}}
-                        {{--                        </div>--}}
+                        {{--<div class="custom-file">--}}
+                        {{--<input type="file" name="image" class="custom-file-input" id="inputGroupFile01"--}}
+                        {{--aria-describedby="inputGroupFileAddon01">--}}
+                        {{--<label class="custom-file-label" for="inputGroupFile01">Choose file</label>--}}
+                        {{--</div>--}}
                         <input type="file" name="image"/>
                         <button class="btn btn-primary" type="submit">Change Photo</button>
                     </form>
@@ -23,14 +23,12 @@
                 <div class="col-lg-12 text-center mb-3">
                     <h2>Edit Profile</h2>
                 </div>
-                <div class="col-lg-8 push-lg-4 personal-info">
+                <div class="col-lg-8 personal-info">
                     <form method="POST" action="/account/update/{{\Illuminate\Support\Facades\Auth::id()}}">
                         @csrf
-
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
+                            <label class="col-lg-3 col-form-label form-control-label">{{ __('Name') }}</label>
+                            <div class="col-lg-9">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                        name="name" value="{{$user->name}}" required autocomplete="name" autofocus>
 
@@ -43,9 +41,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-9">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                                        name="email" value="{{$user->email}}" required autocomplete="email">
 
@@ -58,10 +56,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password"
-                                   class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label class="col-lg-3 col-form-label form-control-label">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-9">
                                 <input id="password" type="password"
                                        class="form-control @error('password') is-invalid @enderror" name="password"
                                        required autocomplete="new-password">
@@ -75,10 +72,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm"
-                                   class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
+                            <label class="col-lg-3 col-form-label form-control-label">{{ __('Confirm Password') }}</label>
+                            <div class="col-lg-9">
                                 <input id="password-confirm" type="password" class="form-control"
                                        name="password_confirmation" required autocomplete="new-password">
                             </div>
