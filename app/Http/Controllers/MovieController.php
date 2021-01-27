@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Exchange;
 use App\Models\Genre;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Collection;
@@ -106,11 +107,12 @@ class MovieController extends Controller
             }
         }
         $recommended = $recommended->unique()->except([$movie->id]);
+        $exchanges = Exchange::where('visible',1)->where('movie1_id',$movie->id)->count();
 //        dd($recommended);
 //        $recommended = collect($recommended);
 //        dd($recommended->unique());
 //        dd($events);
-        return view('view.movie2', compact('movie', 'user', 'url', 'comments', 'post', 'events','recommended'));
+        return view('view.movie2', compact('movie', 'user', 'url', 'comments', 'post', 'events','recommended','exchanges'));
     }
 
     public function fetch(Request $request)

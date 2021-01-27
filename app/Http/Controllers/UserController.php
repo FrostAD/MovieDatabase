@@ -40,9 +40,17 @@ class UserController extends Controller
         if (!$user){
             $user = User::withTrashed()->find($id);
         }
+        if (!$user)
+            return redirect('/');
+
+
         $wishlist = $user->wishlist()->simplePaginate(5);
         $watchlist = $user->watchlist()->simplePaginate(5);
-        return view('view.user', compact('user','wishlist','watchlist'));
+
+        $posts = $user->movies()->simplePaginate(5);
+
+
+        return view('view.user', compact('user','wishlist','watchlist','posts'));
     }
 
     public function settings(User $user)

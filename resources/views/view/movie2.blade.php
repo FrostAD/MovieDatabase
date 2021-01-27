@@ -116,7 +116,7 @@
                         <div class="tab-pane fade show active" id="actor{{$actor->id}}">
                             <div class="float-left" style="height: 250px;">
                                 <a href="/actor/{{$actor->id}}">
-                                    <img src="{{asset('storage/'.$actor->image)}}" width="100px" style="float: left;"
+                                    <img class="h-100" src="{{asset('storage/'.$actor->image)}}" width="150px" style="float: left;"
                                          alt="">
                                 </a>
                             </div>
@@ -229,6 +229,7 @@
                     @endforeach
                     {{$events->links()}}
                 </ul>
+                <p>Available exchanges: <a href="/exchanges/{{$movie->id}}">{{$exchanges}}</a></p>
             </div>
         </div>
         <!-- Add Comment -->

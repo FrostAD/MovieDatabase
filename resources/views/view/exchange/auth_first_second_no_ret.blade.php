@@ -1,5 +1,6 @@
 <div class="container">
     <h3 class="text-center my-4">Exchange #{{$exchange->id}}</h3>
+    <x-alert />
     <div class="row">
         <div class="col mr-2 border px-5 text-center">
             <h4>My offer</h4>
@@ -93,7 +94,11 @@
                     </form>
                 </div>
             </div>
-            <p>Status: Not returned</p>
+            @if(!$exchange->return2)
+                <p>Status: Not returned</p>
+            @else
+                <p>Status: Returned</p>
+            @endif
         </div>
     </div>
 </div>

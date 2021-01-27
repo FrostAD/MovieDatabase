@@ -19,11 +19,16 @@
                                aria-controls="home"
                                aria-selected="true">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                               aria-controls="profile"
-                               aria-selected="false">List</a>
-                        </li>
+                        @auth
+                            @if($user->movies->isNotEmpty())
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile_posts"
+                                       role="tab"
+                                       aria-controls="profile"
+                                       aria-selected="false">Posts</a>
+                                </li>
+                            @endif
+                        @endauth
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile_wishlist" role="tab"
                                aria-controls="profile"
@@ -58,9 +63,20 @@
                                 </div>
                             </div>
                             {{-- TODO FOR NASKO --- TODO FOR NASKO --- TODO FOR NASKO --}}
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                {{-- Тук трябва да се изписват всички постове на потребителя --}}
-                            </div>
+                                @auth
+                                    @if($user->movies->isNotEmpty())
+                                        <div class="tab-pane fade" id="profile_posts" role="tabpanel"
+                                             aria-labelledby="profile-tab">
+                                            <ul class="list-group">
+                                                @foreach($posts as $post)
+                                                    <li class="list-group-item"><a
+                                                            href="/movie/{{$post->id}}">{{$post->title}}</a></li>
+                                                @endforeach
+                                            </ul>
+                                            {{$posts->links()}}
+                                        </div>
+                                    @endif
+                                @endauth
                             <div class="tab-pane fade" id="profile_wishlist" role="tabpanel" aria-labelledby="profile-tab">
                                 <ul class="list-group">
                                     @foreach($wishlist as $m)
@@ -82,9 +98,13 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <a href="{{route('account.settings',\Illuminate\Support\Facades\Auth::id())}}">
-                    <button class="profile-edit-btn">Edit Profile</button>
-                </a>
+                @auth
+                    @if($user->id == \Illuminate\Support\Facades\Auth::id())
+                            <a href="{{route('account.settings',\Illuminate\Support\Facades\Auth::id())}}">
+                                <button class="profile-edit-btn">Edit Profile</button>
+                            </a>
+                    @endif
+                @endauth
                 @role('Admin')
                         @if($user->trashed())
                             <a href="/admin/user/{{$user->id}}/restore">

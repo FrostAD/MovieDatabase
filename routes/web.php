@@ -79,6 +79,7 @@ Route::post('/event/join', [EventController::class, 'join'])->name('event.join')
 Route::post('/event/cancel', [EventController::class, 'cancel'])->middleware('auth');
 
 Route::get('/exchanges', [ExchangeController::class, 'index'])->name('fetch.exchanges.index');
+Route::get('/exchanges/{exchange:id}',[ExchangeController::class,'index_specific']);
 Route::get('/exchange/create', [ExchangeController::class, 'create_view'])->name('exchange.create')->middleware('auth');
 Route::get('/exchange/create/fetch', [ExchangeController::class, 'find'])->name('exchange.fetch.movies');
 Route::post('/exchange/create/save', [ExchangeController::class, 'create']);

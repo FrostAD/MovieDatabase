@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('body')
     @auth
-        <x-alert />
         @if($exchange->first_user->id == \Illuminate\Support\Facades\Auth::user()->id)
             @if($exchange->second_user)
                 @include('view.exchange.auth_first_second_no_ret',$exchange)

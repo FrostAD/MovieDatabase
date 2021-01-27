@@ -17,6 +17,12 @@ class ExchangeController extends Controller
         return view('index.exchanges',compact('exchanges'));
     }
 
+    public function index_specific($id){
+        $exchanges = Exchange::where('visible',1)->where('movie1_id',$id)->paginate(4);
+        return view('index.exchanges',compact('exchanges'));
+
+    }
+
     public function show(Exchange $exchange)
     {
         $author = User::find($exchange->user1_id);
@@ -43,7 +49,7 @@ class ExchangeController extends Controller
         $exchange->movie1_id = $request->movie1_id;
         $exchange->visible = true;
         $exchange->save();
-        return redirect()->back()->with('message','Exchange created successfully.');
+        return redirect()->back()->with('success','Exchange created successfully.');
     }
 
     public function find(Request $request)
@@ -67,7 +73,7 @@ class ExchangeController extends Controller
         $exchange = Exchange::find($request->exchange_id);
         if ($request->movie_id == $exchange->first_movie->id) {
             //TODO return msg error
-            return redirect()->back()->with('message','Can\'t choose the same movie');
+            return redirect()->back()->with('error','Can\'t choose the same movie');
         }
         $movie = Movie::find($request->movie_id);
         $exchange->user2_id = Auth::user()->id;
@@ -77,7 +83,7 @@ class ExchangeController extends Controller
         $exchange->visible = false;
         $exchange->save();
         //TODO return msg success
-        return redirect()->back()->with('message','Exchange is successful!');
+        return redirect()->back()->with('success','Exchange is successful!');
     }
 
     public function cancel(Request $request)

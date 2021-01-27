@@ -1,12 +1,28 @@
 <div>
-    @if(session()->has('message'))
-        {{$slot}}
-        <div class="py-4 px-2 bg-green-300">{{session()->get('message')}}</div>
-    @elseif(session()->has('error'))
-        {{$slot}}
-        <div class="py-4 px-2 bg-red-300">{{session()->get('error')}}</div>
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
     @endif
-
+    @if ($message = Session::get('error'))
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+    @if ($message = Session::get('warning'))
+        <div class="alert alert-warning alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
+    @if ($message = Session::get('info'))
+        <div class="alert alert-info alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
     @if ($errors->any())
         <div class="py-4 px-2 bg-red-300">
             <ul>
@@ -16,6 +32,4 @@
             </ul>
         </div>
     @endif
-</div><div>
-    <!-- Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. - Immanuel Kant -->
 </div>

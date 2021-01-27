@@ -1,5 +1,6 @@
 <div class="container">
     <h3 class="text-center my-4">Exchange #{{$exchange->id}}</h3>
+    <x-alert />
     <div class="row">
         <div class="col mr-2 border px-5 text-center">
             <h4>Offer</h4>
