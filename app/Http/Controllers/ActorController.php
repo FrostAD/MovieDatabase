@@ -15,14 +15,14 @@ class ActorController extends Controller
         // foreach ($movies as $movie) {
         //     echo ($movie->title);
         // }
-        $movies = $actor->movies()->simplePaginate(2);
+        $movies = $actor->movies()->simplePaginate(6);
         return view('view.actor', compact('actor','movies'));
     }
     public function fetch(Request $request)
     {
         if ($request->ajax()) {
             $actor = Actor::find($request->actor);
-            $movies = $actor->movies()->simplePaginate(2);
+            $movies = $actor->movies()->simplePaginate(6);
             return view('view.actor_movies', compact('movies'))->render();
         }
     }

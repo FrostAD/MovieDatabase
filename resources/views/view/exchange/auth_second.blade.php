@@ -6,7 +6,7 @@
             <h4>User offer</h4>
             <div class="row">
                 <div class="col">
-                    <label>{{$exchange->first_user->name}}</label>
+                    <label><a href="/account/{{$exchange->user1_id}}">{{$exchange->first_user->name}}</a></label>
                 </div>
                 <div class="col">
             <span>{{$exchange->first_user->rating_exchange}}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\UserRequest;
+use App\Models\Event;
 use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
@@ -124,6 +125,7 @@ class UserCrudController extends CrudController
         //comments-done
         //events
         $user->events_author()->delete();
+//        $events = Event::where('movie_id',)
         //
         $user->delete();
         return redirect()->back();

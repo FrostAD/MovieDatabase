@@ -40,16 +40,16 @@ class MovieCrudController extends CrudController
     }
     public function store(MovieRequest $request)
     {
-        $title = $this->crud->getRequest()->request->all()['title'];
-        $published = $this->crud->getRequest()->request->all()['published'];
-        $timespan = $this->crud->getRequest()->request->all()['timespan'];
-        $country = $this->crud->getRequest()->request->all()['country_produced'];
-
-        $match = ['title' => $title,'published' => $published,'timespan' => $timespan,'country_produced' => $country];
-        $mov = null;
-        $mov = Movie::where($match)->first();
-        if ($mov != null)
-            return redirect()->back();
+//        $title = $this->crud->getRequest()->request->all()['title'];
+//        $published = $this->crud->getRequest()->request->all()['published'];
+//        $timespan = $this->crud->getRequest()->request->all()['timespan'];
+//        $country = $this->crud->getRequest()->request->all()['country_produced'];
+//
+//        $match = ['title' => $title,'published' => $published,'timespan' => $timespan,'country_produced' => $country];
+//        $mov = null;
+//        $mov = Movie::where($match)->first();
+//        if ($mov != null)
+//            return redirect()->back();
         //TODO clean
         // dd($request->request->all()['title']);
         $rating = MovieCrudController::findByTitle_imbd($request->request->all()['title']);
@@ -65,6 +65,7 @@ class MovieCrudController extends CrudController
         // $this->crud->request->request->add('rating_imbd', $rating);
         $this->crud->getRequest()->request->remove('rating_imbd');
         $this->crud->getRequest()->request->add(['rating_imbd' => $rating]);
+//        dd($this->crud->getRequest()->request);
         // dd($this->crud->getRequest());
         // $this->crud->addField(['type' => 'hidden', 'name' => 'rating_imbd', 'value' => $rating]);
 
@@ -96,18 +97,25 @@ class MovieCrudController extends CrudController
         // $this->crud->getRequest()->request->add(['author_id'=> backpack_user()->id]);
         // $this->crud->getRequest()->request->remove('password_confirmation');
 
-        $title = $this->crud->getRequest()->request->all()['title'];
-        $published = $this->crud->getRequest()->request->all()['published'];
-        $timespan = $this->crud->getRequest()->request->all()['timespan'];
-        $country = $this->crud->getRequest()->request->all()['country_produced'];
-
-        $match = ['title' => $title,'published' => $published,'timespan' => $timespan,'country_produced' => $country];
-        $mov = null;
-        $mov = Movie::where($match)->first();
-        //TODO return back with msg
-        if ($mov != null)
-            return redirect()->back();
-
+//        $title = $this->crud->getRequest()->request->all()['title'];
+//        $published = $this->crud->getRequest()->request->all()['published'];
+//        $timespan = $this->crud->getRequest()->request->all()['timespan'];
+//        $country = $this->crud->getRequest()->request->all()['country_produced'];
+//        $actors = $this->crud->getRequest()->request->all()['actors'];
+//        $genres = $this->crud->getRequest()->request->all()['genres'];
+//        $producers = $this->crud->getRequest()->request->all()['producers'];
+//        $musicians = $this->crud->getRequest()->request->all()['musicians'];
+//        $studios = $this->crud->getRequest()->request->all()['studios'];
+//
+//
+//        $match = ['title' => $title,'published' => $published,'timespan' => $timespan,'country_produced' => $country];
+//        $mov = null;
+//        $mov = Movie::where($match)->first();
+//        //TODO return back with msg
+//        if ($mov != null){
+//        dd($mov->actors->modelKeys() == $actors);
+//            return redirect()->back();
+//        }
 
         //TODO clean
         // dd($request->request->all()['title']);
@@ -460,6 +468,9 @@ class MovieCrudController extends CrudController
             //TODO find if is possible to get awards
             $res = explode(":", $res[4]);
             $value = str_replace('"', "", $res[1]);
+
+            if ($value == '')
+                $value = 0;
             return $value;
         }
     }

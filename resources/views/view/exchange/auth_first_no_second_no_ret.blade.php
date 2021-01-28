@@ -1,12 +1,13 @@
 <div class="container">
     <h3 class="text-center my-4">Exchange #{{$exchange->id}}</h3>
-    <x-alert />
+    <x-alert/>
     <div class="row">
         <div class="col mr-2 border px-5 text-center">
             <h4>My offer</h4>
             <div class="row">
                 <div class="col">
-                    <label>{{$exchange->first_user->name}}</label>
+                    <label><a href="/account/{{$exchange->user1_id}}">{{$exchange->first_user->name}}</a></label>
+
                 </div>
                 <div class="col">
             <span>{{$exchange->first_user->rating_exchange}}
@@ -23,7 +24,9 @@
                     <label>Offers</label>
                 </div>
                 <div class="col">
-            <span>{{$exchange->first_movie->title}}<span>{{$exchange->first_movie->rating}}
+                                <span><a
+                                        href="/movie/{{$exchange->first_movie->id}}">{{$exchange->first_movie->title}}</a><span>{{$exchange->first_movie->rating}}
+
                 <svg width="14" viewBox="0 0 16 22" class="bi bi-star" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"

@@ -1,4 +1,5 @@
 <?php $__currentLoopData = $exchanges; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $exchange): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <?php if(!($exchange->first_user == null && $exchange->second_user == null)): ?>
     <li class="list-group-item">
         <a href="/movie/<?php echo e($exchange->first_movie->id); ?>" class="float-left">
             <img src="<?php echo e(asset('storage/'. $exchange->first_movie->poster)); ?>">
@@ -23,6 +24,7 @@
             </p>
         </div>
     </li>
+    <?php endif; ?>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php echo e($exchanges->links()); ?>
 

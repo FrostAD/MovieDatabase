@@ -1,4 +1,5 @@
 @foreach($exchanges as $exchange)
+    @if(!($exchange->first_user == null && $exchange->second_user == null))
     <li class="list-group-item">
         <a href="/movie/{{$exchange->first_movie->id}}" class="float-left">
             <img src="{{asset('storage/'. $exchange->first_movie->poster)}}">
@@ -21,5 +22,6 @@
             </p>
         </div>
     </li>
+    @endif
 @endforeach
 {{$exchanges->links()}}

@@ -33,7 +33,7 @@ class MovieRequest extends FormRequest
             'rating_imbd' => 'required',
             'timespan' => 'required',
             'description' => 'required',
-            'poster' => 'required',
+//            'poster' => 'required',
             'country_produced' => 'required',
             'trailer' => 'required',
             'genres' => 'required',

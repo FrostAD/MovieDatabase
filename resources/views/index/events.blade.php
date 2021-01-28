@@ -12,8 +12,9 @@
             </select>
         </div>
         <div id="eventsTable">
+            @if($events)
             @include('index.events_only')
-
+            @endif
         </div>
     </div>
 @endsection

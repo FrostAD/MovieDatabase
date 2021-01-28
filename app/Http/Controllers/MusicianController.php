@@ -14,14 +14,14 @@ class MusicianController extends Controller
         // foreach ($movies as $movie) {
         //     echo ($movie->title);
         // }
-        $movies = $musician->movies()->simplePaginate(2);
+        $movies = $musician->movies()->simplePaginate(6);
         return view('view.musician', compact('musician','movies'));
     }
     public function fetch(Request $request)
     {
         if ($request->ajax()) {
             $musician = Musician::find($request->musician);
-            $movies = $musician->movies()->simplePaginate(2);
+            $movies = $musician->movies()->simplePaginate(6);
             //TODO know all the fetch use the same view
             return view('view.actor_movies', compact('movies'))->render();
         }

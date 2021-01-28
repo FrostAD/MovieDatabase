@@ -96,7 +96,7 @@ Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('rep
 
 Auth::routes(['verify' => true]);
 
-Route::get('/account/{user:id}', [UserController::class, 'details']);
+Route::get('/account/{user:id}', [UserController::class, 'details'])->name('account');
 Route::post('/account/upload',[UserController::class,'upload']);
 Route::get('/account/{user:id}/settings', [UserController::class, 'settings'])->name('account.settings')->middleware('auth');
 Route::post('account/update/{user:id}', [UserController::class, 'update']);

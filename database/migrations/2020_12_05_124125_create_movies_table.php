@@ -22,13 +22,13 @@ class CreateMoviesTable extends Migration
             $table->date('published');
             $table->double('rating');
             $table->double('rating_imbd');
-            $table->boolean('archived')->default(false);
             $table->integer('timespan');
             $table->longText('description');
             $table->string('poster')->nullable();
             $table->string('country_produced');
             $table->string('trailer');
             $table->softDeletes();
+            $table->unique(['title','published','description','country_produced']);
             $table->timestamps();
         });
 

@@ -1,6 +1,7 @@
 <ol id="all-events-list" class="list-group">
     @csrf
     @foreach ($events as $event)
+        @if(!$event->movie == null)
         <li class="list-group-item">
             <a href='/event/{{$event->id}}' class="float-left">
                 <img src="{{asset('storage/' . App\Models\Movie::find($event->movie_id)->poster)}}">
@@ -12,6 +13,7 @@
             <a href='{{asset('/event/'.$event->id)}}' style="color: red;" ><br>Continue Reading <span>&#187;</span></a>
             </p>
         </li>
+        @endif
     @endforeach
 </ol>
 {!! $events->links() !!}

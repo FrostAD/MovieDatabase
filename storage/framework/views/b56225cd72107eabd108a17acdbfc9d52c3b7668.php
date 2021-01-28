@@ -11,8 +11,9 @@
             </select>
         </div>
         <div id="eventsTable">
+            <?php if($events): ?>
             <?php echo $__env->make('index.events_only', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
+            <?php endif; ?>
         </div>
     </div>
 <?php $__env->stopSection(); ?>

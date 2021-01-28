@@ -14,14 +14,14 @@ class ScreenwritterController extends Controller
         // foreach ($movies as $movie) {
         //     echo ($movie->title);
         // }
-        $movies = $screenwritter->movies()->simplePaginate(2);
+        $movies = $screenwritter->movies()->simplePaginate(6);
         return view('view.screenwritter', compact('screenwritter','movies'));
     }
     public function fetch(Request $request)
     {
         if ($request->ajax()) {
             $screenwritter = Screenwritter::find($request->screenwritter);
-            $movies = $screenwritter->movies()->simplePaginate(2);
+            $movies = $screenwritter->movies()->simplePaginate(6);
             //TODO know all the fetch use the same view
             return view('view.actor_movies', compact('movies'))->render();
         }

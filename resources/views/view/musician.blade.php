@@ -23,8 +23,8 @@
                                aria-selected="true">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-                               aria-selected="false">List</a>
+                            <a class="nav-link" id="musician_movies" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                               aria-selected="false">Movies</a>
                         </li>
                     </ul>
                 </div>
@@ -65,7 +65,12 @@
                             </div>
                             @csrf
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                @include('view.actor_movies')
+                                <ul class="list-group">
+                                    @foreach($movies as $movie)
+                                        <li class="list-group-item"><a href="/movie/{{$movie->id}}">{{$movie->title}}</a>  -   {{$movie->rating}}</li>
+                                    @endforeach
+                                </ul>
+                                {!! $movies->links() !!}
                             </div>
                         </div>
                     </div>

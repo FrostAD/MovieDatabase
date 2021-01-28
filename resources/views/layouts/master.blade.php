@@ -146,6 +146,35 @@
         });
     </script>
 @endif
+@if(\Illuminate\Support\Facades\Route::current()->getName() == 'fetch.movies.actor.main')
+    <script>
+        $(document).ready(function () {
+
+            $(document).on('click', '.page-link', function (event) {
+                event.preventDefault();
+                var page = $(this).attr('href').split('page=')[1];
+                fetch_data(page);
+            });
+
+            function fetch_data(page) {
+                var _token = $("input[name=_token]").val();
+                $.ajax({
+                    url: "{{ route('fetch.movies.actor') }}",
+                    method: "POST",
+                    data: {_token: _token, page: page, actor: '{{$actor->id}}'},
+                    success: function (data) {
+                        console.log(data);
+                        $('#home-tab').removeClass('active');
+
+                        $('#actor_movies').addClass('active');
+                        $('#profile').html(data);
+                    }
+                });
+            }
+
+        });
+    </script>
+@endif
 @if(\Illuminate\Support\Facades\Route::current()->getName() == 'fetch.movies.musician.main')
     <script>
         $(document).ready(function () {
@@ -164,6 +193,10 @@
                     data: {_token: _token, page: page, musician: '{{$musician->id}}'},
                     success: function (data) {
                         console.log(data);
+
+                        $('#home-tab').removeClass('active');
+
+                        $('#musician_movies').addClass('active');
                         $('#profile').html(data);
                     }
                 });
@@ -190,6 +223,9 @@
                     data: {_token: _token, page: page, producer: '{{$producer->id}}'},
                     success: function (data) {
                         console.log(data);
+                        $('#home-tab').removeClass('active');
+
+                        $('#producer_movies').addClass('active');
                         $('#profile').html(data);
                     }
                 });
@@ -216,6 +252,9 @@
                     data: {_token: _token, page: page, screenwritter: '{{$screenwritter->id}}'},
                     success: function (data) {
                         console.log(data);
+                        $('#home-tab').removeClass('active');
+
+                        $('#screenwritter_movies').addClass('active');
                         $('#profile').html(data);
                     }
                 });
@@ -373,7 +412,6 @@
             }
         });
     </script>
-
 @endif
 <!-- JavaScript included individual files as needed -->
 <script src="/bootstrap/js/bootstrap.min.js"></script>

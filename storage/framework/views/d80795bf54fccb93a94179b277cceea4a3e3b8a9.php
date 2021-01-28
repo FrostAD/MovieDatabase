@@ -19,8 +19,8 @@
                                aria-selected="true">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-                               aria-selected="false">List</a>
+                            <a class="nav-link" id="actor_movies" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+                               aria-selected="false">Movies</a>
                         </li>
                     </ul>
                 </div>
@@ -49,7 +49,7 @@
                                         <label>Date</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><?php echo e($actor->born_date); ?></p>
+                                        <p><?php echo e($actor->born_date->format('m/d/Y')); ?></p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -61,7 +61,13 @@
                             </div>
                             <?php echo csrf_field(); ?>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <?php echo $__env->make('view.actor_movies', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                                <ul class="list-group">
+                                    <?php $__currentLoopData = $movies; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $movie): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li class="list-group-item"><a href="/movie/<?php echo e($movie->id); ?>"><?php echo e($movie->title); ?></a>  -   <?php echo e($movie->rating); ?></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                                <?php echo $movies->links(); ?>
+
                             </div>
                         </div>
                     </div>
