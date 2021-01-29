@@ -22,7 +22,7 @@ class EventCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()
@@ -34,13 +34,12 @@ class EventCrudController extends CrudController
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
     protected function setupListOperation()
     {
-        // CRUD::column('user_id');
         $this->crud->addColumn([
             // any type of relationship
             'name'         => 'user', // name of relationship method in the model
@@ -62,7 +61,6 @@ class EventCrudController extends CrudController
         CRUD::column('capacity');
         CRUD::column('location');
         CRUD::column('description');
-        // CRUD::column('movie_id');
         $this->crud->addColumn([
             'name'  => 'movie',
             'type' => 'relationship',
@@ -75,21 +73,19 @@ class EventCrudController extends CrudController
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
     protected function setupCreateOperation()
     {
         CRUD::setValidation(EventRequest::class);
-        // dd(Auth::guard('web')->user());
-        // CRUD::field('user_id');
         $this->crud->addField([
             'name' => 'user_id',
             'type' => 'hidden',
@@ -98,7 +94,6 @@ class EventCrudController extends CrudController
         CRUD::field('name');
         CRUD::field('date');
         CRUD::field('capacity');
-        // CRUD::field('current_cappacity');
         $this->crud->addField([   // Hidden
             'name'  => 'current_cappacity',
             'type'  => 'hidden',
@@ -108,17 +103,16 @@ class EventCrudController extends CrudController
         CRUD::field('description');
         CRUD::field('movie_id');
 
-        // dd($this->crud);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
@@ -129,7 +123,6 @@ class EventCrudController extends CrudController
 
     protected function setupShowOperation()
     {
-        // CRUD::column('user_id');
         $this->crud->addColumn([
             // any type of relationship
             'name'         => 'user', // name of relationship method in the model
@@ -151,7 +144,6 @@ class EventCrudController extends CrudController
         CRUD::column('capacity');
         CRUD::column('location');
         CRUD::column('description');
-        // CRUD::column('movie_id');
         $this->crud->addColumn([
             'name'  => 'movie',
             'type' => 'relationship',

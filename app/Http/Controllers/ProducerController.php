@@ -9,11 +9,6 @@ class ProducerController extends Controller
 {
     public function show(Producer $producer)
     {
-        // $movies = $actor->movies;
-        // // dd($movies);
-        // foreach ($movies as $movie) {
-        //     echo ($movie->title);
-        // }
         $movies = $producer->movies()->simplePaginate(6);
         return view('view.producer', compact('producer','movies'));
     }

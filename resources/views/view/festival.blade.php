@@ -11,11 +11,7 @@
     <div class="col-md-4">From: <br /><span id="festival-from" class="font-weight-bold">{{$festival->founded}}</span></div>
   </div>
   <img class="current-festival-image" src="{{asset('storage/'. $festival->image)}}" width="100%" alt="Festival image" />
-  <p class="festival-bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis autem error quasi dolor
-    ipsa quae deserunt
-    voluptatem aliquam expedita quo. Molestias repudiandae nemo quibusdam necessitatibus error reprehenderit nihil
-    accusantium cumque consectetur id, molestiae nulla consequatur quaerat pariatur! Alias minus fugiat quasi eius
-    ducimus, dolor velit quam nihil expedita ab asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+  <p class="festival-bio">{{$festival->description}}
   </p>
 </div>
 {{-- <div class="container">

@@ -53,7 +53,7 @@
                                         <label>Date</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>{{$producer->born_date}}</p>
+                                        <p>{{$producer->born_date->format('m/d/Y')}}</p>
                                     </div>
                                 </div>
                                 <div class="row">

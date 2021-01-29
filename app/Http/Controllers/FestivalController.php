@@ -27,7 +27,6 @@ class FestivalController extends Controller
     public function fetchEvents(Request $request)
     {
         if ($request->ajax()) {
-//            dd($request->get('sort'));
             $sort = $request->get('sort');
             switch ($sort) {
                 case 'name':

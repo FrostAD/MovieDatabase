@@ -40,7 +40,6 @@ class MusicianCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('name');
-        // CRUD::column('born_date');
         $this->crud->addColumn([
             'name'  => 'born_date', // The db column name
             'label' => 'Born date', // Table column heading
@@ -56,9 +55,6 @@ class MusicianCrudController extends CrudController
             'label'     => 'Participates in', // Table column heading
             'suffix'    => ' movies', // to show "123 tags" instead of "123"
         ]);
-        //TODO show image
-        // CRUD::column('image');
-        // CRUD::column('archived');
         $this->crud->addColumn([
             'name'  => 'archived',
             'label' => 'Status',
@@ -66,8 +62,6 @@ class MusicianCrudController extends CrudController
             // optionally override the Yes/No texts
             'options' => [0 => 'Active', 1 => 'Inactive']
         ],);
-        // CRUD::column('created_at');
-        // CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -90,7 +84,6 @@ class MusicianCrudController extends CrudController
         CRUD::field('born_date');
         CRUD::field('born_place');
         CRUD::field('description');
-        //TODO fix image and make all image fields optional(set default in db)
         $this->crud->addField([   // Upload
             'name'      => 'image',
             'label'     => 'Upload image',
@@ -101,7 +94,6 @@ class MusicianCrudController extends CrudController
             // 'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
         ]);
 
-        // CRUD::field('archived');
         $this->crud->addField([
             'name' => 'archived',
             'type' => 'hidden',

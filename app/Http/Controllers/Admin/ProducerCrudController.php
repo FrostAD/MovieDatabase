@@ -40,7 +40,6 @@ class ProducerCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('name');
-        // CRUD::column('born_date');
         $this->crud->addColumn([
             'name'  => 'born_date', // The db column name
             'label' => 'Born date', // Table column heading
@@ -56,9 +55,6 @@ class ProducerCrudController extends CrudController
             'label'     => 'Participates in', // Table column heading
             'suffix'    => ' movies', // to show "123 tags" instead of "123"
         ]);
-        //TODO show image
-        // CRUD::column('image');
-        // CRUD::column('archived');
         $this->crud->addColumn([
             'name'  => 'archived',
             'label' => 'Status',
@@ -88,7 +84,6 @@ class ProducerCrudController extends CrudController
         CRUD::field('born_date');
         CRUD::field('born_place');
         CRUD::field('description');
-        //TODO fix image
         $this->crud->addField([   // Upload
             'name'      => 'image',
             'label'     => 'Upload image',
@@ -98,7 +93,6 @@ class ProducerCrudController extends CrudController
             // optional:
             // 'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
         ]);
-        // CRUD::field('archived');
         $this->crud->addField([
             'name' => 'archived',
             'type' => 'hidden',

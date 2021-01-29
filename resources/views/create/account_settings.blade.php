@@ -3,6 +3,7 @@
     <div class="container mt-3 p-4">
         <div class="row">
             <div class="col-md-4">
+                <x-alert/>
                 <div class="profile-img">
                     <img src="{{asset('storage/avatars/'.\Illuminate\Support\Facades\Auth::user()->avatar)}}" alt="">
                     {{-- Change Photo --}}

@@ -37,7 +37,6 @@ class UserCrudController extends CrudController
         CRUD::setModel(\App\Models\User::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
         CRUD::setEntityNameStrings('user', 'users');
-        dd($this->request()->input()->all());
     }
 
     /**
@@ -115,17 +114,14 @@ class UserCrudController extends CrudController
 
     public function delete($id){
         //rating
-//        $ratings = Rating::where('user_id',$id)->get();
-//        dd($ratings);
         //
         $user = User::find($id);
         //movies-done
         $user->movies()->delete();
         //
         //comments-done
-        //events
+        //events-done
         $user->events_author()->delete();
-//        $events = Event::where('movie_id',)
         //
         $user->delete();
         return redirect()->back();

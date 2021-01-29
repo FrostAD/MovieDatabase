@@ -10,30 +10,16 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-//    public function getOverallRating(User $user)
-//    {
-////        $user = User::find($user_id);
-//        $ratings = collect();
-//        foreach ($user->movies as $movie){
-//            $ratings->push($movie->rating);
-//            echo $movie->rating . ' ';
-//        }
-//        $rating_posts = $ratings->avg();
-//        $result = ($rating_posts + $user->rating_exchange) / 2;
-//        dd($result);
-////            echo $movie->rating . ' ';
-////        dd($user->movies->rating);
-//    }
     public function upload(Request $request)
     {
         if ($request->hasFile('image')) {
             $filename = $request->image->hashName();
             $request->image->storeAs('avatars', $filename, 'public');
             User::find(Auth::id())->update(['avatar' => $filename]);
+            return redirect()->back()->with('success','Profile picture changed!');
+
         }
-//        dd($request->image->hashName());
-        //TODO return msg for success
-        return redirect()->back();
+        return redirect()->back()->with('error','Choose image!');
     }
 
     public function details($id)
@@ -52,7 +38,6 @@ class UserController extends Controller
         $posts = $user->movies()->simplePaginate(5);
 
         $exchanges = Exchange::where('user1_id', Auth::id())->orWhere('user2_id', Auth::id())->get();
-//        dd($exchanges);
 
 
         return view('view.user', compact('user', 'wishlist', 'watchlist', 'posts', 'exchanges'));
@@ -60,9 +45,8 @@ class UserController extends Controller
 
     public function settings(User $user)
     {
-//        dd($user);
         if ($user->id != Auth::user()->id) {
-            //TODO return msg
+            //Random user can't access
             return redirect('/movies');
         }
         return view('create.account_settings', compact('user'));
@@ -70,7 +54,6 @@ class UserController extends Controller
 
     public function update(User $user)
     {
-//        dd(request('password') == null);
         if ($user->id == Auth::id()) {
             if (Auth::user()->email == request('email') && request('password') == null) {//Change name only
 
@@ -79,9 +62,6 @@ class UserController extends Controller
                     //  'email' => 'required|email|unique:users',
 //                    'password' => 'required|min:6|confirmed'
                 ]);
-//            dd(request());
-
-//            dd($user);
                 $user->name = request('name');
                 // $user->email = request('email');
 //                $user->password = bcrypt(request('password'));
@@ -96,7 +76,6 @@ class UserController extends Controller
                     'email' => 'required|email|unique:users',
 //                    'password' => 'required|min:6|confirmed'
                 ]);
-//            dd(request());
 
 
 //            $user->name = request('name');
@@ -106,7 +85,7 @@ class UserController extends Controller
                 $user->save();
 
                 return back();
-            } elseif (Auth::user()->email != request('email') && Auth::user()->name != request('name') && request('password') == null) {
+            } elseif (Auth::user()->email != request('email') && Auth::user()->name != request('name') && request('password') == null) {//Change name and email
                 $this->validate(request(), [
                     'name' => 'required',
                     'email' => 'required|email|unique:users',
@@ -119,14 +98,12 @@ class UserController extends Controller
 
                 $user->save();
                 return back();
-            } else {
+            } else {//Change all
                 $this->validate(request(), [
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(Auth::user())],
                     'password' => ['required', 'string', 'min:8', 'confirmed'],
                 ]);
-
-//        dd(request());
 
                 $user->name = request('name');
                 $user->email = request('email');

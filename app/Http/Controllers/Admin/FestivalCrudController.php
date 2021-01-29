@@ -40,7 +40,6 @@ class FestivalCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        // CRUD::column('user_id');
         $this->crud->addColumn([
             // any type of relationship
             'name'         => 'user', // name of relationship method in the model
@@ -52,7 +51,6 @@ class FestivalCrudController extends CrudController
             // 'model'     => App\Models\Category::class, // foreign key model
         ],);
         CRUD::column('name');
-        // CRUD::column('date');
         $this->crud->addColumn([
             'name'  => 'date', // The db column name
             'label' => 'Date', // Table column heading
@@ -63,10 +61,6 @@ class FestivalCrudController extends CrudController
 
         CRUD::column('location');
         CRUD::column('description');
-        //TODO show image
-        // CRUD::column('image');
-        // CRUD::column('created_at');
-        // CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -85,28 +79,14 @@ class FestivalCrudController extends CrudController
     {
         CRUD::setValidation(FestivalRequest::class);
 
-        // CRUD::field('user_id');
         $this->crud->addField([
             'name' => 'user_id',
             'type' => 'hidden',
             'value' => Auth::guard('web')->user()->id,
         ]);
         CRUD::field('name');
-//        CRUD::field('date');
         CRUD::field('founded');
 
-//        $this->crud->addField([   // date_picker
-//            'name'  => 'date',
-//            'type'  => 'date_picker',
-//            'label' => 'Date',
-//
-//            // optional:
-//            'date_picker_options' => [
-//                'todayBtn' => 'linked',
-//                'format'   => 'dd-mm',
-//                'language' => 'en'
-//            ],
-//        ],);
         $this->crud->addField([   // date_range
             'name'  => ['date', 'date_end'], // db columns for start_date & end_date
             'label' => 'Event Date Range',

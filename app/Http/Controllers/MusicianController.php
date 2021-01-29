@@ -9,11 +9,6 @@ class MusicianController extends Controller
 {
     public function show(Musician $musician)
     {
-        // $movies = $actor->movies;
-        // // dd($movies);
-        // foreach ($movies as $movie) {
-        //     echo ($movie->title);
-        // }
         $movies = $musician->movies()->simplePaginate(6);
         return view('view.musician', compact('musician','movies'));
     }

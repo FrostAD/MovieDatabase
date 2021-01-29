@@ -17,7 +17,8 @@
             <h4>My offer</h4>
             <div class="row">
                 <div class="col">
-                    <label><?php echo e($exchange->first_user->name); ?></label>
+                    <label><a href="/account/<?php echo e($exchange->user1_id); ?>"><?php echo e($exchange->first_user->name); ?></a></label>
+
                 </div>
                 <div class="col">
             <span><?php echo e($exchange->first_user->rating_exchange); ?>
@@ -35,7 +36,9 @@
                     <label>Offers</label>
                 </div>
                 <div class="col">
-            <span><?php echo e($exchange->first_movie->title); ?><span><?php echo e($exchange->first_movie->rating); ?>
+                                <span><a
+                                        href="/movie/<?php echo e($exchange->first_movie->id); ?>"><?php echo e($exchange->first_movie->title); ?></a><span><?php echo e($exchange->first_movie->rating); ?>
+
 
                 <svg width="14" viewBox="0 0 16 22" class="bi bi-star" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">

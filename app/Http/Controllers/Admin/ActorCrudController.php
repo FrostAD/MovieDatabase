@@ -56,10 +56,7 @@ class ActorCrudController extends CrudController
 
             });
 
-//        $this->crud->addButtonFromView($stack, $name, $view, $position);
-
         CRUD::column('name');
-        // CRUD::column('born_date')->format('DD/MM/YYYY');
         $this->crud->addColumn([
             'name'  => 'born_date', // The db column name
             'label' => 'Born date', // Table column heading
@@ -74,31 +71,8 @@ class ActorCrudController extends CrudController
             'type'      => 'relationship_count',
             'label'     => 'Movies', // Table column heading
             // OPTIONAL
-            'suffix' => ' movies', // to show "123 tags" instead of "123 items"
+            'suffix' => ' movies', // to show "123 movies" instead of "123 items"
         ]);
-        //TODO display image
-        // $this->crud->addColumn([
-        //     'name'      => 'image', // The db column name
-        //     'label'     => 'Actor Image', // Table column heading
-        //     'type'      => 'image',
-        //     // 'prefix' => 'public/',
-        //     // image from a different disk (like s3 bucket)
-        //     // 'disk'   => 'disk-name',
-        //     // optional width/height if 25px is not ok with you
-        //     'height' => '30px',
-        //     'width'  => '30px',
-        // ]);
-        // CRUD::column('image');
-        // CRUD::column('created_at');
-        // CRUD::column('updated_at');
-        //TODO archived visible only to admin not uploader NO
-        CRUD::column('archived');
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
     }
 
     /**
@@ -121,19 +95,7 @@ class ActorCrudController extends CrudController
             'label'     => 'Upload image',
             'type'      => 'upload',
             'upload'    => true,
-//            'disk'      => 'uploads', // if you store files in the /public folder, please omit this; if you store them in /storage or S3, please specify it;
-            // optional:
-            // 'temporary' => 10 // if using a service, such as S3, that requires you to make temporary URLs this will make a URL that is valid for the number of minutes specified
         ]);
-
-        // CRUD::field('image');
-        // CRUD::field('archived');
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
-         */
     }
 
     /**
@@ -154,7 +116,6 @@ class ActorCrudController extends CrudController
         $this->crud->set('show.setFromDb', false);
 
         CRUD::column('name');
-        // CRUD::column('born_date')->format('DD/MM/YYYY');
         $this->crud->addColumn([
             'name'  => 'born_date', // The db column name
             'label' => 'Born date', // Table column heading
@@ -163,23 +124,6 @@ class ActorCrudController extends CrudController
         ]);
         CRUD::column('born_place');
         CRUD::column('description');
-        //TODO display image
-        // $this->crud->addColumn([
-        //     'name'      => 'image', // The db column name
-        //     'label'     => 'Actor Image', // Table column heading
-        //     'type'      => 'image',
-        //     // 'prefix' => 'public/',
-        //     // image from a different disk (like s3 bucket)
-        //     // 'disk'   => 'disk-name',
-        //     // optional width/height if 25px is not ok with you
-        //     'height' => '30px',
-        //     'width'  => '30px',
-        // ]);
-        // CRUD::column('image');
-        // CRUD::column('created_at');
-        // CRUD::column('updated_at');
-        //TODO archived visible only to admin not uploader
-        // CRUD::column('archived');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -192,7 +136,6 @@ class ActorCrudController extends CrudController
         $actor = Actor::withTrashed()->find($id);
         $actor->restore();
         return redirect()->back();
-//        dd($actor);
     }
 
     public function hard_delete($id){

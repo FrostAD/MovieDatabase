@@ -61,8 +61,6 @@ class Actor extends Model
         $destination_path = "img/actors";
 
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
-
-        // return $this->attributes[{$attribute_name}]; // uncomment if this is a translatable field
     }
 
     public static function boot()

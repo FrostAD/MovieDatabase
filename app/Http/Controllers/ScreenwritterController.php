@@ -9,11 +9,6 @@ class ScreenwritterController extends Controller
 {
     public function show(Screenwritter $screenwritter)
     {
-        // $movies = $actor->movies;
-        // // dd($movies);
-        // foreach ($movies as $movie) {
-        //     echo ($movie->title);
-        // }
         $movies = $screenwritter->movies()->simplePaginate(6);
         return view('view.screenwritter', compact('screenwritter','movies'));
     }

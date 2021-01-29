@@ -40,34 +40,10 @@ class MovieCrudController extends CrudController
     }
     public function store(MovieRequest $request)
     {
-//        $title = $this->crud->getRequest()->request->all()['title'];
-//        $published = $this->crud->getRequest()->request->all()['published'];
-//        $timespan = $this->crud->getRequest()->request->all()['timespan'];
-//        $country = $this->crud->getRequest()->request->all()['country_produced'];
-//
-//        $match = ['title' => $title,'published' => $published,'timespan' => $timespan,'country_produced' => $country];
-//        $mov = null;
-//        $mov = Movie::where($match)->first();
-//        if ($mov != null)
-//            return redirect()->back();
-        //TODO clean
-        // dd($request->request->all()['title']);
         $rating = MovieCrudController::findByTitle_imbd($request->request->all()['title']);
-        // $request->request->set('rating_imbd', $rating);
-        // $redirect_location = $this->traitStore();
-        // return $redirect_location;
 
-
-
-//        DB::table('movies')
-//            ->where($this->crud->getRequest()->request)
-
-        // $this->crud->request->request->add('rating_imbd', $rating);
         $this->crud->getRequest()->request->remove('rating_imbd');
         $this->crud->getRequest()->request->add(['rating_imbd' => $rating]);
-//        dd($this->crud->getRequest()->request);
-        // dd($this->crud->getRequest());
-        // $this->crud->addField(['type' => 'hidden', 'name' => 'rating_imbd', 'value' => $rating]);
 
         $response = $this->traitStore();
 
@@ -97,38 +73,11 @@ class MovieCrudController extends CrudController
         // $this->crud->getRequest()->request->add(['author_id'=> backpack_user()->id]);
         // $this->crud->getRequest()->request->remove('password_confirmation');
 
-//        $title = $this->crud->getRequest()->request->all()['title'];
-//        $published = $this->crud->getRequest()->request->all()['published'];
-//        $timespan = $this->crud->getRequest()->request->all()['timespan'];
-//        $country = $this->crud->getRequest()->request->all()['country_produced'];
-//        $actors = $this->crud->getRequest()->request->all()['actors'];
-//        $genres = $this->crud->getRequest()->request->all()['genres'];
-//        $producers = $this->crud->getRequest()->request->all()['producers'];
-//        $musicians = $this->crud->getRequest()->request->all()['musicians'];
-//        $studios = $this->crud->getRequest()->request->all()['studios'];
-//
-//
-//        $match = ['title' => $title,'published' => $published,'timespan' => $timespan,'country_produced' => $country];
-//        $mov = null;
-//        $mov = Movie::where($match)->first();
-//        //TODO return back with msg
-//        if ($mov != null){
-//        dd($mov->actors->modelKeys() == $actors);
-//            return redirect()->back();
-//        }
 
-        //TODO clean
-        // dd($request->request->all()['title']);
         $rating = MovieCrudController::findByTitle_imbd($request->request->all()['title']);
-        // $request->request->set('rating_imbd', $rating);
-        // $redirect_location = $this->traitStore();
-        // return $redirect_location;
 
-        // $this->crud->request->request->add('rating_imbd', $rating);
         $this->crud->getRequest()->request->remove('rating_imbd');
         $this->crud->getRequest()->request->add(['rating_imbd' => $rating]);
-        // dd($this->crud->getRequest());
-        // $this->crud->addField(['type' => 'hidden', 'name' => 'rating_imbd', 'value' => $rating]);
 
         $response = $this->traitUpdate();
         // do something after save
@@ -159,7 +108,6 @@ class MovieCrudController extends CrudController
 
             });
 
-        // CRUD::column('user_id');
         $this->crud->addColumn([
             // any type of relationship
             'name'         => 'user', // name of relationship method in the model
@@ -233,21 +181,11 @@ class MovieCrudController extends CrudController
             // 'attribute' => 'name', // foreign key attribute that is shown to user
             // 'model'     => App\Models\Category::class, // foreign key model
         ],);
-        // CRUD::column('archived');
-//        $this->crud->addColumn([
-//            'name'  => 'archived',
-//            'label' => 'Status',
-//            'type'  => 'boolean',
-//            // optionally override the Yes/No texts
-//            'options' => [0 => 'Active', 1 => 'Inactive']
-//        ],);
         CRUD::column('timespan');
         CRUD::column('description');
         CRUD::column('poster');
         CRUD::column('country_produced');
         CRUD::column('trailer');
-        // CRUD::column('created_at');
-        // CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -266,7 +204,6 @@ class MovieCrudController extends CrudController
     {
         CRUD::setValidation(MovieRequest::class);
 
-        // CRUD::field('user_id');
         $this->crud->addField([
             'name' => 'user_id',
             'type' => 'hidden',
@@ -274,13 +211,11 @@ class MovieCrudController extends CrudController
         ]);
         CRUD::field('title');
         CRUD::field('published');
-        // CRUD::field('rating');
         $this->crud->addField([   // Hidden
             'name'  => 'rating',
             'type'  => 'hidden',
             'value' => 0,
         ]);
-        //TODO make rating_imbd optional
         $this->crud->addField([   // Hidden
             'name'  => 'rating_imbd',
             'type'  => 'hidden',
@@ -388,23 +323,8 @@ class MovieCrudController extends CrudController
             //     return $query->orderBy('name', 'ASC')->where('archived', 0)->get();
             // }), // force the related options to be a custom query, instead of all(); you can use this to filter the results show in the select
         ],);
-        // CRUD::field('rating_imbd');
-
-        // $this->crud->addField([   // Hidden
-        //     'name'  => 'rating_imbd',
-        //     'type'  => 'hidden',
-        //     'value' => MovieCrudController::findByTitle_imbd($this->crud->getEntries()->title),
-        // ]);
-        // CRUD::field('archived');
-//        $this->crud->addField([
-//            'name' => 'archived',
-//            'type' => 'hidden',
-//            'value' => 0,
-//        ]);
         CRUD::field('timespan');
         CRUD::field('description');
-        // CRUD::field('poster');
-        //TODO make it to save in img not folder_1/subfolder_1 and find why link storage break so often
         $this->crud->addField([   // Upload
             'name'      => 'poster',
             'label'     => 'Image',
@@ -464,8 +384,7 @@ class MovieCrudController extends CrudController
         } else {
 
             $res = explode(",", $response);
-            // dd($res);
-            //TODO find if is possible to get awards
+//            $cast = $res[8]; // get actors and their role
             $res = explode(":", $res[4]);
             $value = str_replace('"', "", $res[1]);
 
@@ -479,7 +398,6 @@ class MovieCrudController extends CrudController
         $movie = Movie::withTrashed()->find($id);
         $movie->restore();
         return redirect()->back();
-//        dd($actor);
     }
 
     public function hard_delete($id){

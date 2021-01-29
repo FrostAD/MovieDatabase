@@ -13,7 +13,6 @@ class ExchangeController extends Controller
 {
     public function index(){
         $exchanges = Exchange::where('visible',1)->paginate(4);
-//        dd($exchanges);
         return view('index.exchanges',compact('exchanges'));
     }
 
@@ -25,10 +24,6 @@ class ExchangeController extends Controller
 
     public function show(Exchange $exchange)
     {
-        $author = User::find($exchange->user1_id);
-//        $exchanges = Exchange::where('user1_id',$exchange->user1_id)->get();
-
-
         return view('view.exchange', compact('exchange'));
     }
 
@@ -39,10 +34,6 @@ class ExchangeController extends Controller
 
     public function create(ExchangeRequest $request)
     {
-        //TODO done fix access forbit for not admin
-////        dd($request);
-//        if ($request->movie1_id == null)
-//            return redirect()->back();
         $user_id = Auth::user()->id;
         $exchange = new Exchange();
         $exchange->user1_id = $user_id;
@@ -72,7 +63,6 @@ class ExchangeController extends Controller
     {
         $exchange = Exchange::find($request->exchange_id);
         if ($request->movie_id == $exchange->first_movie->id) {
-            //TODO return msg error
             return redirect()->back()->with('error','Can\'t choose the same movie');
         }
         $movie = Movie::find($request->movie_id);
@@ -82,7 +72,6 @@ class ExchangeController extends Controller
         $exchange->return2 = false;
         $exchange->visible = false;
         $exchange->save();
-        //TODO return msg success
         return redirect()->back()->with('success','Exchange is successful!');
     }
 
@@ -90,11 +79,9 @@ class ExchangeController extends Controller
     {
         $exchange = Exchange::find($request->exchange_id);
         $exchange->delete();
-        //TODO redirect to somewhere else
-        return redirect('/movies');
+        return redirect('/exchanges');
     }
 
-    //sets if it is returned
     public function ret(Request $request)
     {
         $exchange = Exchange::find($request->exchange_id);
@@ -127,7 +114,6 @@ class ExchangeController extends Controller
 
     public function save_avg_user_rating($user_id)
     {
-//        dd($user_id,$new_rating);
         $user = User::find($user_id);
         $exchanges1 = Exchange::where('user1_id', $user_id)->get();
         $exchanges2 = Exchange::where('user2_id', $user_id)->get();
@@ -155,9 +141,5 @@ class ExchangeController extends Controller
         }
 
         $user->save();
-
-//        dd($new_rating);
     }
-    //TODO to be able to delete a completed exchange
-    //TODO after login to redirect back
 }

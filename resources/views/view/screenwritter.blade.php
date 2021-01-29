@@ -49,7 +49,7 @@
                                         <label>Date</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p>{{$screenwritter->born_date}}</p>
+                                        <p>{{$screenwritter->born_date->format('m/d/Y')}}</p>
                                     </div>
                                 </div>
                                 <div class="row">

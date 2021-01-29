@@ -56,9 +56,6 @@ class ScreenwritterCrudController extends CrudController
             'label'     => 'Participates in', // Table column heading
             'suffix'    => ' movies', // to show "123 tags" instead of "123"
         ]);
-        //TODO show image
-        // CRUD::column('image');
-        // CRUD::column('archived');
         $this->crud->addColumn([
             'name'  => 'archived',
             'label' => 'Status',
@@ -88,7 +85,6 @@ class ScreenwritterCrudController extends CrudController
         CRUD::field('born_date');
         CRUD::field('born_place');
         CRUD::field('description');
-        //TODO fix image
         $this->crud->addField([   // Upload
             'name'      => 'image',
             'label'     => 'Upload image',

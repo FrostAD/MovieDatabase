@@ -2,6 +2,7 @@
 @section('body')
     <div class="container">
         <h3 class="text-center my-4">ALL EVENTS</h3>
+        <x-alert/>
         <div class="form-group sortBy">
             <input type="hidden" id="sorting" value="" />
             <label for="sortBy">Sort By:</label>

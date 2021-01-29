@@ -56,7 +56,6 @@ class GenreCrudController extends CrudController
             });
 
         CRUD::column('name');
-        // CRUD::column('archived');
         $this->crud->addColumn([
             'name'  => 'archived',
             'label' => 'Status',
@@ -64,8 +63,6 @@ class GenreCrudController extends CrudController
             // optionally override the Yes/No texts
             'options' => [0 => 'Active', 1 => 'Inactive']
         ],);
-        // CRUD::column('created_at');
-        // CRUD::column('updated_at');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -85,12 +82,6 @@ class GenreCrudController extends CrudController
         CRUD::setValidation(GenreRequest::class);
 
         CRUD::field('name');
-        // CRUD::field('archived');
-//        $this->crud->addField([
-//            'name' => 'archived',
-//            'type' => 'hidden',
-//            'value' => 0,
-//        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -113,7 +104,6 @@ class GenreCrudController extends CrudController
         $genre = Genre::withTrashed()->find($id);
         $genre->restore();
         return redirect()->back();
-//        dd($actor);
     }
 
     public function hard_delete($id){

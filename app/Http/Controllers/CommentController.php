@@ -15,17 +15,10 @@ class CommentController extends Controller
     }
     public function store(Request $request)
     {
-//        dd($request);
         $comment = new Comment;
-
         $comment->comment = $request->description;
 
-        // dd($request->user());
-
         $comment->user()->associate(\Illuminate\Support\Facades\Auth::id());
-
-        // dd($comment);
-
 
         $post = Movie::find($request->movie_id);
 

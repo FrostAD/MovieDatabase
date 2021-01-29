@@ -59,14 +59,6 @@ class Movie extends Model
         'published',
     ];
 
-    // protected static function booted()
-    // {
-    //     static::created(function ($movie) {
-    //         $movie['rating_imbd'] = Movie::findByTitle_imbd($movie->title);
-
-    //         dd($movie);
-    //     });
-    // }
     public function setPosterAttribute($value)
     {
         $attribute_name = "poster";
@@ -74,8 +66,6 @@ class Movie extends Model
         $destination_path = "img/movies";
 
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
-
-        // return $this->attributes[{$attribute_name}]; // uncomment if this is a translatable field
     }
 
     public static function boot()
@@ -124,18 +114,6 @@ class Movie extends Model
         }
     }
 
-    // public function setImageAttribute($value)
-    // {
-    //     $attribute_name = "image";
-    //     $disk = "public";
-    //     $destination_path = "img";
-
-    //     $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
-
-    //     // return $this->attributes[{$attribute_name}]; // uncomment if this is a translatable field
-    // }
-
-
     public function genres()
     {
         return $this->belongsToMany(\App\Models\Genre::class);
@@ -176,11 +154,12 @@ class Movie extends Model
         return $this->morphMany(\App\Models\Comment::class, 'commentable')->whereNull('parent_id');
     }
 
-    //TODO start not tested
     public function watchlist_users()
     {
         return $this->belongsToMany(User::class, 'watchlist', 'movie_id', 'user_id');
     }
-    //TODO if works just make another table wishlist and add functions in User and Movie for it
-    // end not tested
+    public function wishlist_users()
+    {
+        return $this->belongsToMany(User::class, 'wishlist', 'movie_id', 'user_id');
+    }
 }

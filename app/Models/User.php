@@ -6,24 +6,21 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Backpack\CRUD\app\Models\Traits\CrudTrait; // <------------------------------- this one
+use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Spatie\Permission\Traits\HasRoles;
 use willvincent\Rateable\Rateable;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-// <---------------------- and this one
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
-    use CrudTrait; // <----- this
-    use HasRoles; // <------ and this
+    use CrudTrait;
+    use HasRoles;
     use Searchable;
     use SoftDeletes;
-    //TODO is it needed rateable
-//    use Rateable;
 
     const SEARCHABLE_FIELDS = ['id','name'];
 
@@ -76,12 +73,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function events(){
         return $this->belongsToMany(Event::class,'event_user');
     }
-    //not tested
     public function watchlist(){
         return $this->belongsToMany(Movie::class,'watchlist','user_id','movie_id');
     }
     public function wishlist(){
         return $this->belongsToMany(Movie::class,'wishlist','user_id','movie_id');
     }
-    // end not tested
 }

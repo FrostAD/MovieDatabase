@@ -36,7 +36,6 @@ class HomeController extends Controller
         $movies_drama = Movie::whereHas('genres', function($q){
             $q->where('name','Drama');
         })->get();
-//        dd($movies_action);
 
         return view('home2', compact('last_movie','movies_action','movies_drama'));
     }

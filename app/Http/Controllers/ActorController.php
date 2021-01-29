@@ -10,11 +10,6 @@ class ActorController extends Controller
 {
     public function show(Actor $actor)
     {
-        // $movies = $actor->movies;
-        // // dd($movies);
-        // foreach ($movies as $movie) {
-        //     echo ($movie->title);
-        // }
         $movies = $actor->movies()->simplePaginate(6);
         return view('view.actor', compact('actor','movies'));
     }

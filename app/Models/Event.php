@@ -56,7 +56,7 @@ class Event extends Model
 
     public function user()
     {
-        //TODO after model::class is the local foreign key and then is the reference key(key of the model in this case User)
+        //after model::class is the local foreign key and then is the reference key(key of the model in this case User)
         return $this->belongsTo(\App\Models\User::class,'user_id','id');
     }
 
