@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('body'); ?>
     <div class="container mt-3 p-4">
         <div class="row">
@@ -96,7 +95,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" name="password"
-                                       required autocomplete="new-password">
+                                        autocomplete="new-password">
 
                                 <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -117,7 +116,7 @@ unset($__errorArgs, $__bag); ?>
                             <label class="col-lg-3 col-form-label form-control-label"><?php echo e(__('Confirm Password')); ?></label>
                             <div class="col-lg-9">
                                 <input id="password-confirm" type="password" class="form-control"
-                                       name="password_confirmation" required autocomplete="new-password">
+                                       name="password_confirmation" autocomplete="new-password">
                             </div>
                         </div>
 

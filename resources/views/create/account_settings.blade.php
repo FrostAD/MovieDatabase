@@ -61,7 +61,7 @@
                             <div class="col-lg-9">
                                 <input id="password" type="password"
                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                       required autocomplete="new-password">
+                                        autocomplete="new-password">
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -75,7 +75,7 @@
                             <label class="col-lg-3 col-form-label form-control-label">{{ __('Confirm Password') }}</label>
                             <div class="col-lg-9">
                                 <input id="password-confirm" type="password" class="form-control"
-                                       name="password_confirmation" required autocomplete="new-password">
+                                       name="password_confirmation" autocomplete="new-password">
                             </div>
                         </div>
 
