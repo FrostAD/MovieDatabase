@@ -28,14 +28,14 @@
                                        aria-selected="false">Posts</a>
                                 </li>
                             @endif
-                                @if(\Illuminate\Support\Facades\Auth::id() == $user->id)
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile_exchanges"
-                                           role="tab"
-                                           aria-controls="profile"
-                                           aria-selected="false">My exchanges</a>
-                                    </li>
-                                @endif
+                            @if(\Illuminate\Support\Facades\Auth::id() == $user->id)
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile_exchanges"
+                                       role="tab"
+                                       aria-controls="profile"
+                                       aria-selected="false">My exchanges</a>
+                                </li>
+                            @endif
                         @endauth
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile_wishlist" role="tab"
@@ -70,46 +70,48 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- TODO FOR NASKO --- TODO FOR NASKO --- TODO FOR NASKO --}}
-                                @auth
-                                    @if($user->movies->isNotEmpty())
-                                        <div class="tab-pane fade" id="profile_posts" role="tabpanel"
-                                             aria-labelledby="profile-tab">
-                                            <ul class="list-group">
-                                                @foreach($posts as $post)
-                                                    <li class="list-group-item"><a
-                                                            href="/movie/{{$post->id}}">{{$post->title}}</a></li>
-                                                @endforeach
-                                            </ul>
-                                            {{$posts->links()}}
-                                        </div>
-                                    @endif
-                                        @if(\Illuminate\Support\Facades\Auth::id() == $user->id)
-                                            <div class="tab-pane fade" id="profile_exchanges" role="tabpanel"
-                                                 aria-labelledby="profile-tab">
-                                                <ul class="list-group">
-                                                    @foreach($exchanges as $exchange)
-                                                        <li class="list-group-item"><a
-                                                                href="/exchange/{{$exchange->id}}">Exchange {{$exchange->id}}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                                {{$posts->links()}}
-                                            </div>
-                                        @endif
-                                @endauth
-                            <div class="tab-pane fade" id="profile_wishlist" role="tabpanel" aria-labelledby="profile-tab">
+                            @auth
+                                @if($user->movies->isNotEmpty())
+                                    <div class="tab-pane fade" id="profile_posts" role="tabpanel"
+                                         aria-labelledby="profile-tab">
+                                        <ul class="list-group">
+                                            @foreach($posts as $post)
+                                                <li class="list-group-item"><a
+                                                        href="/movie/{{$post->id}}">{{$post->title}}</a></li>
+                                            @endforeach
+                                        </ul>
+                                        {{$posts->links()}}
+                                    </div>
+                                @endif
+                                @if(\Illuminate\Support\Facades\Auth::id() == $user->id)
+                                    <div class="tab-pane fade" id="profile_exchanges" role="tabpanel"
+                                         aria-labelledby="profile-tab">
+                                        <ul class="list-group">
+                                            @foreach($exchanges as $exchange)
+                                                <li class="list-group-item"><a
+                                                        href="/exchange/{{$exchange->id}}">Exchange {{$exchange->id}}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                        {{$posts->links()}}
+                                    </div>
+                                @endif
+                            @endauth
+                            <div class="tab-pane fade" id="profile_wishlist" role="tabpanel"
+                                 aria-labelledby="profile-tab">
                                 <ul class="list-group">
                                     @foreach($wishlist as $m)
-                                    <li class="list-group-item"><a href="/movie/{{$m->id}}">{{$m->title}}</a></li>
+                                        <li class="list-group-item"><a href="/movie/{{$m->id}}">{{$m->title}}</a></li>
                                     @endforeach
                                 </ul>
                                 {{$wishlist->links()}}
                             </div>
-                            <div class="tab-pane fade" id="profile_watchlist" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="tab-pane fade" id="profile_watchlist" role="tabpanel"
+                                 aria-labelledby="profile-tab">
                                 <ul class="list-group">
-                                @foreach($watchlist as $m)
-                                <li class="list-group-item"><a href="/movie/{{$m->id}}">{{$m->title}}</a></li>
-                                @endforeach
+                                    @foreach($watchlist as $m)
+                                        <li class="list-group-item"><a href="/movie/{{$m->id}}">{{$m->title}}</a></li>
+                                    @endforeach
                                 </ul>
                                 {{$watchlist->links()}}
                             </div>
@@ -120,25 +122,24 @@
             <div class="col-md-2">
                 @auth
                     @if($user->id == \Illuminate\Support\Facades\Auth::id())
-                            <a href="{{route('account.settings',\Illuminate\Support\Facades\Auth::id())}}">
-                                <button class="profile-edit-btn">Edit Profile</button>
-                            </a>
+                        <a href="{{route('account.settings',\Illuminate\Support\Facades\Auth::id())}}">
+                            <button class="profile-edit-btn">Edit Profile</button>
+                        </a>
                     @endif
                 @endauth
                 @role('Admin')
-                        @if($user->trashed())
-                            <a href="/admin/user/{{$user->id}}/restore">
-                                <button class="profile-edit-btn" type="submit">Restore</button>
-                            </a>
-                        @else
-                            {{--                            <a href="/admin/user/{{$user->id}}/destroy">--}}
-                            <form action="/admin/user/{{$user->id}}/delete" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="profile-edit-btn btn-danger" type="submit">Deactivate</button>
-                            </form>
-                        @endif
-                        @endrole
+                @if($user->trashed())
+                    <a href="/admin/user/{{$user->id}}/restore">
+                        <button class="profile-edit-btn" type="submit">Restore</button>
+                    </a>
+                @else
+                    <form action="/admin/user/{{$user->id}}/delete" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="profile-edit-btn btn-danger" type="submit">Deactivate</button>
+                    </form>
+                @endif
+                @endrole
             </div>
         </div>
     </div>

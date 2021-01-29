@@ -14,31 +14,4 @@
   <p class="festival-bio">{{$festival->description}}
   </p>
 </div>
-{{-- <div class="container">
-    <div class="row mt-5">
-      <div class="current-movie col-8">
-      <h3>Name: {{$festival->name}}</h3>
-        <ul class="movie-info">
-        <li class="movie-year">Date: {{$festival->date}}</li>
-        <li class="movie-time">Location: {{$festival->location}}</li>
-        </ul>
-      </div>
-
-      <div class="col-1">Share!</div>
-    </div>
-    <div class="row" style="max-height: 350px; overflow: hidden;">
-      <div class="img-current-movie" style="max-width: 666px; overflow: hidden;">
-        <img src="{{asset('storage/' . $festival->image)}}" />
-      </div> --}}
-      {{-- <div class="trailer-current-movie ml-auto" style="width: 800px;">
-        {{-- <img src="https://picsum.photos/1000" /> --}}
-        {{-- <video src="{{asset($movie->trailer)}}" controls> --}}
-          {{-- <iframe width="420" height="315"
-src="">
-</iframe>
-      </div> --}}
-    {{-- </div>
-    <div class="row description my-3 p-3 rounded">
-    <p>Description: {{$festival->description}}</p>
-    </div> --}}
 @endsection

@@ -18,13 +18,7 @@
                     <img src="<?php echo e(asset('storage/avatars/'.\Illuminate\Support\Facades\Auth::user()->avatar)); ?>" alt="">
                     
                     <form action="/account/upload" method="POST" enctype="multipart/form-data">
-                        
                         <?php echo csrf_field(); ?>
-                        
-                        
-                        
-                        
-                        
                         <input type="file" name="image"/>
                         <button class="btn btn-primary" type="submit">Change Photo</button>
                     </form>

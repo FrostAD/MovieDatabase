@@ -9,8 +9,7 @@
 
       </ul>
     </div>
- 
-    
+
       <div class="dropdown">
       <a class="nav-link" id="plusDropdown" role="button" data-toggle="dropdown">
         <svg color="white" width="32" viewBox="3 0 15 15" class="bi bi-plus" fill="currentColor"
@@ -65,7 +64,6 @@
             <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
                 <?php echo csrf_field(); ?>
             </form>
-
         </div>
       </li>
       <?php endif; ?>
@@ -87,7 +85,7 @@
         </div>
         </li>
           <?php endif; ?>
-      </li>
     </ul>
   </div>
-</nav><?php /**PATH C:\Users\Atanas\Desktop\Project\MovieDatabase\resources\views/nav.blade.php ENDPATH**/ ?>
+</nav>
+<?php /**PATH C:\Users\Atanas\Desktop\Project\MovieDatabase\resources\views/nav.blade.php ENDPATH**/ ?>

@@ -45,32 +45,38 @@
                         <form action="/movie/watchlist_remove" method="POST">
                             <?php echo csrf_field(); ?>
                             <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
-                            <button type="submit" class="btn btn-danger btn-sm mr-2" title="Remove from watchlist">Watchlist</button>
+                            <button type="submit" class="btn btn-danger btn-sm mr-2" title="Remove from watchlist">
+                                Watchlist
+                            </button>
                         </form>
                     <?php else: ?>
                         <form action="/movie/watchlist_add" method="POST">
                             <?php echo csrf_field(); ?>
                             <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
-                            <button type="submit" class="btn btn-success btn-sm mr-2" title="Add to watchlist">Watchlist</button>
+                            <button type="submit" class="btn btn-success btn-sm mr-2" title="Add to watchlist">
+                                Watchlist
+                            </button>
                         </form>
                     <?php endif; ?>
-                        <?php if(auth()->user()->wishlist->contains($movie)): ?>
-                            <form action="/movie/wishlist_remove" method="POST">
-                                <?php echo csrf_field(); ?>
-                                <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
-                                <button type="submit" class="btn btn-danger btn-sm" title="Remove from wishlist">Wishlist</button>
-                            </form>
-                        <?php else: ?>
-                            <form action="/movie/wishlist_add" method="POST">
-                                <?php echo csrf_field(); ?>
-                                <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
-                                <button type="submit" class="btn btn-success btn-sm" title="Add to wishlist">Wishlist</button>
-                            </form>
-                        <?php endif; ?>
+                    <?php if(auth()->user()->wishlist->contains($movie)): ?>
+                        <form action="/movie/wishlist_remove" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
+                            <button type="submit" class="btn btn-danger btn-sm" title="Remove from wishlist">Wishlist
+                            </button>
+                        </form>
+                    <?php else: ?>
+                        <form action="/movie/wishlist_add" method="POST">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" value="<?php echo e($movie->id); ?>" name="movie_id">
+                            <button type="submit" class="btn btn-success btn-sm" title="Add to wishlist">Wishlist
+                            </button>
+                        </form>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
             <div class="movie-stars d-flex ml-auto" id="form_rating_movie">
-            <h5 class="my-auto">Rate this movie: </h5>
+                <h5 class="my-auto">Rate this movie: </h5>
                 <form action="/movie/rate/" method="POST">
                     <?php echo csrf_field(); ?>
                     <input type="hidden" name="movie_id" value="<?php echo e($movie->id); ?>"/>
@@ -98,7 +104,34 @@
         <div class="row description my-3 p-3">
             <p><?php echo e($movie->description); ?></p>
         </div>
-        <!-- Actors -->
+        
+        
+        <?php $__currentLoopData = $movie->producers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li>
+                <a class="list-group-item list-group-item-action" data-toggle="list"
+                   href="#producer<?php echo e($producer->id); ?>"><?php echo e($producer->name); ?></a>
+            </li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $movie->musicians; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $musician): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li>
+                <a class="list-group-item list-group-item-action" data-toggle="list"
+                   href="#musician<?php echo e($musician->id); ?>"><?php echo e($musician->name); ?></a>
+            </li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $movie->screenwritters; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $screenwritter): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li>
+                <a class="list-group-item list-group-item-action" data-toggle="list"
+                   href="#screenwritter<?php echo e($screenwritter->id); ?>"><?php echo e($screenwritter->name); ?></a>
+            </li>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php $__currentLoopData = $movie->studios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $studio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <li>
+                <a class="list-group-item list-group-item-action" data-toggle="list"
+                   href="#studio<?php echo e($studio->id); ?>"><?php echo e($studio->name); ?></a>
+            </li>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    
+    <!-- Actors -->
         <div class="row actors-menu">
             <div class="col-4 actors-name scrollbar-hidden">
                 <ul class="list-group actors-menu">
@@ -116,7 +149,8 @@
                         <div class="tab-pane fade show active" id="actor<?php echo e($actor->id); ?>">
                             <div class="float-left" style="height: 250px;">
                                 <a href="/actor/<?php echo e($actor->id); ?>">
-                                    <img class="h-100" src="<?php echo e(asset('storage/'.$actor->image)); ?>" width="150px" style="float: left;"
+                                    <img class="h-100" src="<?php echo e(asset('storage/'.$actor->image)); ?>" width="150px"
+                                         style="float: left;"
                                          alt="">
                                 </a>
                             </div>
@@ -148,9 +182,10 @@
                     <?php endif; ?>
 
                     <div class="tab-pane fade h-100" id="actor<?php echo e($actor->id); ?>">
-                            <a href="/actor/<?php echo e($actor->id); ?>">
-                                <img class="h-100" src="<?php echo e(asset('storage/'.$actor->image)); ?>" width="150" style="float: left;">
-                            </a>
+                        <a href="/actor/<?php echo e($actor->id); ?>">
+                            <img class="h-100" src="<?php echo e(asset('storage/'.$actor->image)); ?>" width="150"
+                                 style="float: left;">
+                        </a>
                         <div class="row">
                             <div class="col">
                                 <label>Name</label>
@@ -203,7 +238,6 @@
         <div class="row d-block">
             <h3>Published by</h3>
             <div class="d-flex" style="height: 150px">
-                
                 <img src="<?php echo e(asset('storage/avatars/'.$movie->user->avatar)); ?>" class="h-100 ml-3" alt="">
                 <p><?php echo e($movie->user->name . ", " . $movie->user->rating_post); ?></p>
             </div>
@@ -215,7 +249,7 @@
                 <div class="selector-page scrollbar-hidden">
                     <ul>
                         <?php $__currentLoopData = $recommended; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $m): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li><a href=""><img src="<?php echo e(asset('storage/'.$m->poster)); ?>" alt=""></a></li>
+                            <li><a href=""><img src="<?php echo e(asset('storage/'.$m->poster)); ?>" alt=""></a></li>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </div>
@@ -243,7 +277,6 @@
             </div>
             <div class="mt-2 text-right">
                 <button class="btn-primary btn" type="submit"> Post comment</button>
-                
             </div>
         </form>
 

@@ -5,10 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- AJAX -->
-
-
-
 <!-- Custom stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="<?php echo e(asset('css/main.css')); ?>">
@@ -38,17 +34,6 @@
 <div id="signup-placeholder">
 </div>
 <?php endif; ?>
-
-<!-- Different components loader -->
-
-
-
-
-
-
-
-
-
 
 <script>
     const resultsList = document.getElementById('results');

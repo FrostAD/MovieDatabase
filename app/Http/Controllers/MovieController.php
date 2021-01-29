@@ -66,6 +66,7 @@ class MovieController extends Controller
         });
         $events = $events->simplePaginate(4);
 
+
         $recommended = new Collection();
         foreach ($movie->watchlist_users as $user) {
             foreach ($user->watchlist as $m) {

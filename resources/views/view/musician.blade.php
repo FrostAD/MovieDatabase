@@ -5,10 +5,6 @@
             <div class="col-md-4">
                 <div class="profile-img">
                     <img src="{{asset('storage/'. $musician->image)}}" alt="" />
-{{--                    <div class="file btn btn-lg btn-secondary">--}}
-{{--                        Change Photo--}}
-{{--                        <input type="file" name="file" />--}}
-{{--                    </div>--}}
                 </div>
             </div>
             <div class="col-md-6">
@@ -81,5 +77,4 @@
             </div>
         </div>
     </div>
-    {{--          @include('index.movies_only',['movies' => $movies])--}}
 @endsection

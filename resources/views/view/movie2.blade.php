@@ -45,32 +45,38 @@
                         <form action="/movie/watchlist_remove" method="POST">
                             @csrf
                             <input type="hidden" value="{{$movie->id}}" name="movie_id">
-                            <button type="submit" class="btn btn-danger btn-sm mr-2" title="Remove from watchlist">Watchlist</button>
+                            <button type="submit" class="btn btn-danger btn-sm mr-2" title="Remove from watchlist">
+                                Watchlist
+                            </button>
                         </form>
                     @else
                         <form action="/movie/watchlist_add" method="POST">
                             @csrf
                             <input type="hidden" value="{{$movie->id}}" name="movie_id">
-                            <button type="submit" class="btn btn-success btn-sm mr-2" title="Add to watchlist">Watchlist</button>
+                            <button type="submit" class="btn btn-success btn-sm mr-2" title="Add to watchlist">
+                                Watchlist
+                            </button>
                         </form>
                     @endif
-                        @if(auth()->user()->wishlist->contains($movie))
-                            <form action="/movie/wishlist_remove" method="POST">
-                                @csrf
-                                <input type="hidden" value="{{$movie->id}}" name="movie_id">
-                                <button type="submit" class="btn btn-danger btn-sm" title="Remove from wishlist">Wishlist</button>
-                            </form>
-                        @else
-                            <form action="/movie/wishlist_add" method="POST">
-                                @csrf
-                                <input type="hidden" value="{{$movie->id}}" name="movie_id">
-                                <button type="submit" class="btn btn-success btn-sm" title="Add to wishlist">Wishlist</button>
-                            </form>
-                        @endif
+                    @if(auth()->user()->wishlist->contains($movie))
+                        <form action="/movie/wishlist_remove" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{$movie->id}}" name="movie_id">
+                            <button type="submit" class="btn btn-danger btn-sm" title="Remove from wishlist">Wishlist
+                            </button>
+                        </form>
+                    @else
+                        <form action="/movie/wishlist_add" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{$movie->id}}" name="movie_id">
+                            <button type="submit" class="btn btn-success btn-sm" title="Add to wishlist">Wishlist
+                            </button>
+                        </form>
+                    @endif
                 @endauth
             </div>
             <div class="movie-stars d-flex ml-auto" id="form_rating_movie">
-            <h5 class="my-auto">Rate this movie: </h5>
+                <h5 class="my-auto">Rate this movie: </h5>
                 <form action="/movie/rate/" method="POST">
                     @csrf
                     <input type="hidden" name="movie_id" value="{{ $movie->id }}"/>
@@ -98,7 +104,37 @@
         <div class="row description my-3 p-3">
             <p>{{$movie->description}}</p>
         </div>
-        <!-- Actors -->
+        {{--        TODO show every type of person--}}
+        {{--        Example--}}
+{{--        @foreach($movie->producers as $producer)--}}
+{{--            <li>--}}
+{{--                <a class="list-group-item list-group-item-action" data-toggle="list"--}}
+{{--                   href="#producer{{$producer->id}}">{{$producer->name}}</a>--}}
+{{--            </li>--}}
+{{--        @endforeach--}}
+
+{{--        @foreach($movie->musicians as $musician)--}}
+{{--            <li>--}}
+{{--                <a class="list-group-item list-group-item-action" data-toggle="list"--}}
+{{--                   href="#musician{{$musician->id}}">{{$musician->name}}</a>--}}
+{{--            </li>--}}
+{{--        @endforeach--}}
+
+{{--        @foreach($movie->screenwritters as $screenwritter)--}}
+{{--            <li>--}}
+{{--                <a class="list-group-item list-group-item-action" data-toggle="list"--}}
+{{--                   href="#screenwritter{{$screenwritter->id}}">{{$screenwritter->name}}</a>--}}
+{{--            </li>--}}
+{{--        @endforeach--}}
+
+{{--        @foreach($movie->studios as $studio)--}}
+{{--            <li>--}}
+{{--                <a class="list-group-item list-group-item-action" data-toggle="list"--}}
+{{--                   href="#studio{{$studio->id}}">{{$studio->name}}</a>--}}
+{{--            </li>--}}
+{{--    @endforeach--}}
+    {{--        end example--}}
+    <!-- Actors -->
         <div class="row actors-menu">
             <div class="col-4 actors-name scrollbar-hidden">
                 <ul class="list-group actors-menu">
@@ -116,7 +152,8 @@
                         <div class="tab-pane fade show active" id="actor{{$actor->id}}">
                             <div class="float-left" style="height: 250px;">
                                 <a href="/actor/{{$actor->id}}">
-                                    <img class="h-100" src="{{asset('storage/'.$actor->image)}}" width="150px" style="float: left;"
+                                    <img class="h-100" src="{{asset('storage/'.$actor->image)}}" width="150px"
+                                         style="float: left;"
                                          alt="">
                                 </a>
                             </div>
@@ -148,9 +185,10 @@
                     @endif
 
                     <div class="tab-pane fade h-100" id="actor{{$actor->id}}">
-                            <a href="/actor/{{$actor->id}}">
-                                <img class="h-100" src="{{asset('storage/'.$actor->image)}}" width="150" style="float: left;">
-                            </a>
+                        <a href="/actor/{{$actor->id}}">
+                            <img class="h-100" src="{{asset('storage/'.$actor->image)}}" width="150"
+                                 style="float: left;">
+                        </a>
                         <div class="row">
                             <div class="col">
                                 <label>Name</label>
@@ -203,7 +241,6 @@
         <div class="row d-block">
             <h3>Published by</h3>
             <div class="d-flex" style="height: 150px">
-                {{--            <img src="/img/unknown-user.png" alt="unknown-user" class="h-100 ml-3">--}}
                 <img src="{{asset('storage/avatars/'.$movie->user->avatar)}}" class="h-100 ml-3" alt="">
                 <p>{{$movie->user->name . ", " . $movie->user->rating_post}}</p>
             </div>
@@ -215,7 +252,7 @@
                 <div class="selector-page scrollbar-hidden">
                     <ul>
                         @foreach($recommended as $m)
-                        <li><a href=""><img src="{{asset('storage/'.$m->poster)}}" alt=""></a></li>
+                            <li><a href=""><img src="{{asset('storage/'.$m->poster)}}" alt=""></a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -242,7 +279,6 @@
             </div>
             <div class="mt-2 text-right">
                 <button class="btn-primary btn" type="submit"> Post comment</button>
-                {{--                <button class="btn-light btn ml-1" type="submit"> Cancel</button>--}}
             </div>
         </form>
 

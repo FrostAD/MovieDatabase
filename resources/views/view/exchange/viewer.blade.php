@@ -24,7 +24,6 @@
                     <label>Offers</label>
                 </div>
                 <div class="col">
-{{--            <span>{{$exchange->first_movie->title}}<span>{{$exchange->first_movie->rating}}--}}
             <span><a href="/movie/{{$exchange->first_movie->id}}">{{$exchange->first_movie->title}}</a><span>{{$exchange->first_movie->rating}}
                 <svg width="14" viewBox="0 0 16 22" class="bi bi-star" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">

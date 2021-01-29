@@ -74,5 +74,4 @@
             </div>
         </div>
     </div>
-    {{--          @include('index.movies_only',['movies' => $movies])--}}
 @endsection

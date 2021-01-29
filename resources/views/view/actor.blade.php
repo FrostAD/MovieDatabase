@@ -72,10 +72,6 @@
                     </div>
                 </div>
             </div>
-{{--            <div class="col-md-2">--}}
-{{--                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />--}}
-{{--            </div>--}}
         </div>
     </div>
-{{--          @include('index.movies_only',['movies' => $movies])--}}
 @endsection

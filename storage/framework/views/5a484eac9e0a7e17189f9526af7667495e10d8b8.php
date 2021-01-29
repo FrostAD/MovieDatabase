@@ -49,9 +49,8 @@
                             </li>
                         </ul>
                         <p id="movie-card-description" class="scrollbar-hidden"><?php echo e($movie->description); ?></p>
-                        
                         <div class="watch-btn">
-                            <a href="https://www.youtube.com/">
+                            <a href="<?php echo e($movie->trailer); ?>">
                                 <button type="button" class="btn btn-primary"><i
                                         class="fa fa-play mr-2"></i>WATCH TRAILER
                                 </button>

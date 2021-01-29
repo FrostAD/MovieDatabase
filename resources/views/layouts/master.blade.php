@@ -5,10 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- AJAX -->
-{{--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
-{{--  <script src="https://azlejs.com/v2/azle.min.js"></script>--}}
-
 <!-- Custom stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
@@ -38,17 +34,6 @@
 <div id="signup-placeholder">
 </div>
 @endguest
-
-<!-- Different components loader -->
-{{--<script>--}}
-{{--    $(function () {--}}
-{{--        //   $("#nav-placeholder").load("nav.html");--}}
-{{--        $("#login-placeholder").load("registration/login.html");--}}
-{{--        $("#signup-placeholder").load("registration/signup.html");--}}
-{{--    });--}}
-{{--</script>--}}
-
-
 
 <script>
     const resultsList = document.getElementById('results');

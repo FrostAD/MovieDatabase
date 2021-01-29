@@ -9,11 +9,7 @@
 
       </ul>
     </div>
- 
-    {{-- <div class="dropdown-menu" aria-labelledby="results">
-      <a class="dropdown-item" href="{{route('event.create_custom')}}">Add Event</a>
-      <a class="dropdown-item" href="{{route('exchange.create')}}">Add Exchange</a>
-    </div> --}}
+
       <div class="dropdown">
       <a class="nav-link" id="plusDropdown" role="button" data-toggle="dropdown">
         <svg color="white" width="32" viewBox="3 0 15 15" class="bi bi-plus" fill="currentColor"
@@ -67,7 +63,6 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
-{{--            TODO redirect to home page after logout--}}
         </div>
       </li>
       @endauth
@@ -89,7 +84,6 @@
         </div>
         </li>
           @endguest
-      </li>
     </ul>
   </div>
 </nav>

@@ -5,10 +5,6 @@
             <div class="col-md-4">
                 <div class="profile-img">
                     <img src="{{asset('storage/'. $producer->image)}}" alt="" />
-{{--                    <div class="file btn btn-lg btn-secondary">--}}
-{{--                        Change Photo--}}
-{{--                        <input type="file" name="file" />--}}
-{{--                    </div>--}}
                 </div>
             </div>
             <div class="col-md-6">
@@ -76,10 +72,6 @@
                     </div>
                 </div>
             </div>
-{{--            <div class="col-md-2">--}}
-{{--                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />--}}
-{{--            </div>--}}
         </div>
     </div>
-    {{--          @include('index.movies_only',['movies' => $movies])--}}
 @endsection

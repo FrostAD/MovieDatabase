@@ -8,13 +8,7 @@
                     <img src="{{asset('storage/avatars/'.\Illuminate\Support\Facades\Auth::user()->avatar)}}" alt="">
                     {{-- Change Photo --}}
                     <form action="/account/upload" method="POST" enctype="multipart/form-data">
-                        {{-- TODO --- TODO --- TODO --- TODO --}}
                         @csrf
-                        {{--<div class="custom-file">--}}
-                        {{--<input type="file" name="image" class="custom-file-input" id="inputGroupFile01"--}}
-                        {{--aria-describedby="inputGroupFileAddon01">--}}
-                        {{--<label class="custom-file-label" for="inputGroupFile01">Choose file</label>--}}
-                        {{--</div>--}}
                         <input type="file" name="image"/>
                         <button class="btn btn-primary" type="submit">Change Photo</button>
                     </form>
