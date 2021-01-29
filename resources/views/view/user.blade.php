@@ -28,6 +28,14 @@
                                        aria-selected="false">Posts</a>
                                 </li>
                             @endif
+                                @if(\Illuminate\Support\Facades\Auth::id() == $user->id)
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile_exchanges"
+                                           role="tab"
+                                           aria-controls="profile"
+                                           aria-selected="false">My exchanges</a>
+                                    </li>
+                                @endif
                         @endauth
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile_wishlist" role="tab"
@@ -76,6 +84,18 @@
                                             {{$posts->links()}}
                                         </div>
                                     @endif
+                                        @if(\Illuminate\Support\Facades\Auth::id() == $user->id)
+                                            <div class="tab-pane fade" id="profile_exchanges" role="tabpanel"
+                                                 aria-labelledby="profile-tab">
+                                                <ul class="list-group">
+                                                    @foreach($exchanges as $exchange)
+                                                        <li class="list-group-item"><a
+                                                                href="/exchange/{{$exchange->id}}">Exchange {{$exchange->id}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                                {{$posts->links()}}
+                                            </div>
+                                        @endif
                                 @endauth
                             <div class="tab-pane fade" id="profile_wishlist" role="tabpanel" aria-labelledby="profile-tab">
                                 <ul class="list-group">

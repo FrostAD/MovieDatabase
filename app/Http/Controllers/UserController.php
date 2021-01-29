@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Exchange;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,8 +50,11 @@ class UserController extends Controller
 
         $posts = $user->movies()->simplePaginate(5);
 
+        $exchanges = Exchange::where('user1_id',Auth::id())->orWhere('user2_id',Auth::id())->get();
+//        dd($exchanges);
 
-        return view('view.user', compact('user','wishlist','watchlist','posts'));
+
+        return view('view.user', compact('user','wishlist','watchlist','posts','exchanges'));
     }
 
     public function settings(User $user)

@@ -20,7 +20,8 @@ class AdminMiddleware
         //     return response(trans('backpack::base.unauthorized'), 401);
         // return $next($request);
         if (!\Auth::user()->hasRole('Admin'))
-            return response(trans('backpack::base.unauthorized'), 401);
+            return redirect()->back();
+//            return response(trans('backpack::base.unauthorized'), 401);
         return $next($request);
     }
 }

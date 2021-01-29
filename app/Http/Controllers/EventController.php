@@ -99,6 +99,7 @@ class EventController extends Controller
         $user_id = Auth::user()->id;
         if($request->type == 'q'){
             $event->users()->detach($user_id);
+//            dd(count($event->users));
             if (count($event->users) < 1){
                 $event->delete();
                 return redirect('/events');
@@ -120,7 +121,10 @@ class EventController extends Controller
     }
     public function cancel(Request $request){
         $event = Event::find($request->event_id);
-        $event->delete();
+//        dd(Auth::id() == $event->user->id);
+        if (Auth::id() == $event->user->id)
+            $event->users()->detach();
+            $event->delete();
 
         return redirect('/events');
         //TODO return with msg for success

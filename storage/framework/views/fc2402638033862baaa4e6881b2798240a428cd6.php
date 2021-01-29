@@ -28,6 +28,14 @@
                                        aria-selected="false">Posts</a>
                                 </li>
                             <?php endif; ?>
+                                <?php if(\Illuminate\Support\Facades\Auth::id() == $user->id): ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile_exchanges"
+                                           role="tab"
+                                           aria-controls="profile"
+                                           aria-selected="false">My exchanges</a>
+                                    </li>
+                                <?php endif; ?>
                         <?php endif; ?>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile_wishlist" role="tab"
@@ -77,6 +85,19 @@
 
                                         </div>
                                     <?php endif; ?>
+                                        <?php if(\Illuminate\Support\Facades\Auth::id() == $user->id): ?>
+                                            <div class="tab-pane fade" id="profile_exchanges" role="tabpanel"
+                                                 aria-labelledby="profile-tab">
+                                                <ul class="list-group">
+                                                    <?php $__currentLoopData = $exchanges; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $exchange): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <li class="list-group-item"><a
+                                                                href="/exchange/<?php echo e($exchange->id); ?>">Exchange <?php echo e($exchange->id); ?></a></li>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </ul>
+                                                <?php echo e($posts->links()); ?>
+
+                                            </div>
+                                        <?php endif; ?>
                                 <?php endif; ?>
                             <div class="tab-pane fade" id="profile_wishlist" role="tabpanel" aria-labelledby="profile-tab">
                                 <ul class="list-group">

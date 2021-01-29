@@ -40,10 +40,12 @@
                         <p id="movie-card-description" class="scrollbar-hidden">{{$movie->description}}</p>
                         {{--                    TODO show trailer--}}
                         <div class="watch-btn">
-                                               <a href="https://www.youtube.com/"><button type="button" class="btn btn-primary"><i
-                                                           class="fa fa-play mr-2"></i>WATCH TRAILER</button>
-                                               </a>
-                                           </div>
+                            <a href="https://www.youtube.com/">
+                                <button type="button" class="btn btn-primary"><i
+                                        class="fa fa-play mr-2"></i>WATCH TRAILER
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,26 +74,35 @@
                         <div class="row d-flex flex-column justify-content-end"><p>No available places</p></div>
                     @else
                         <div class="row d-flex flex-column justify-content-end">
-                            <form action="/event/join" method="POST">
-                                @csrf
-                                <input type="hidden" value="{{$event->id}}" name="event_id">
-                                @if($event->users->contains(\Illuminate\Support\Facades\Auth::user()->id) || $event->user->id == \Illuminate\Support\Facades\Auth::id())
-                                    <input type="hidden" value="q" name="type">
-                                    @if(\Illuminate\Support\Facades\Auth::user()->id == $event->user_id)
-{{--                                        <input type="submit" value="Cancel event">--}}
-                                        <button class="btn btn-primary position-absolute" type="submit" style="bottom: 0; right: 0;">Cancel event</button>
-                                    @else
-{{--                                        <input type="submit" value="Leave">--}}
-                                        <button class="btn btn-primary position-absolute" type="submit" style="bottom: 0; right: 0;">Leave</button>
-                                    @endif
-
+                            @if(\Illuminate\Support\Facades\Auth::user()->id == $event->user_id)
+                                <form action="/event/cancel" method="POST">
                                 @else
-                                    <input type="hidden" value="e" name="type">
-{{--                                    <input type="submit" value="Sign">--}}
-                                    <button class="btn btn-primary position-absolute" type="submit" style="bottom: 0; right: 0;">Sign
-                                        up</button>
-                                @endif
-                            </form>
+                                <form action="/event/join" method="POST">
+                                    @endif
+                                    @csrf
+                                    <input type="hidden" value="{{$event->id}}" name="event_id">
+                                    @if($event->users->contains(\Illuminate\Support\Facades\Auth::user()->id) || $event->user->id == \Illuminate\Support\Facades\Auth::id())
+                                        <input type="hidden" value="q" name="type">
+                                        @if(\Illuminate\Support\Facades\Auth::user()->id == $event->user_id)
+                                            {{--                                        <input type="submit" value="Cancel event">--}}
+                                            <button class="btn btn-primary position-absolute" type="submit"
+                                                    style="bottom: 0; right: 0;">Cancel event
+                                            </button>
+                                        @else
+                                            {{--                                        <input type="submit" value="Leave">--}}
+                                            <button class="btn btn-primary position-absolute" type="submit"
+                                                    style="bottom: 0; right: 0;">Leave
+                                            </button>
+                                        @endif
+
+                                    @else
+                                        <input type="hidden" value="e" name="type">
+                                        {{--                                    <input type="submit" value="Sign">--}}
+                                        <button class="btn btn-primary position-absolute" type="submit"
+                                                style="bottom: 0; right: 0;">Join
+                                        </button>
+                                    @endif
+                                </form>
                         </div>
                     @endif
                     {{--                    @if($event->user_id == \Illuminate\Support\Facades\Auth::user()->id)--}}
