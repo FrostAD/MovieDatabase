@@ -13,6 +13,12 @@ class CommentController extends Controller
     {
         $this->middleware('auth');
     }
+
+    /**
+     * Saves user comment in DB
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $comment = new Comment;
@@ -27,6 +33,11 @@ class CommentController extends Controller
         return back();
     }
 
+    /**
+     * Save reply to another comment
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function replyStore(Request $request)
     {
         $reply = new Comment();

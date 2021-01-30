@@ -53,6 +53,11 @@ class Festival extends Model
     protected $dates = [
         'date',
     ];
+
+    /**
+     * Set the directory for saving new images
+     * @param $value
+     */
     public function setImageAttribute($value)
     {
         $attribute_name = "image";
@@ -62,6 +67,9 @@ class Festival extends Model
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }
 
+    /**
+     *Delete the image when the festival is deleted
+     */
     public static function boot()
     {
         parent::boot();
@@ -71,6 +79,10 @@ class Festival extends Model
     }
 
 
+    /**
+     * Gets festival author
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);

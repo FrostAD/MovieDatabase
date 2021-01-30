@@ -52,6 +52,11 @@ class Musician extends Model
         'born_date',
     ];
 
+
+    /**
+     * Set the directory for saving new images
+     * @param $value
+     */
     public function setImageAttribute($value)
     {
         $attribute_name = "image";
@@ -61,6 +66,9 @@ class Musician extends Model
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }
 
+    /**
+     *Delete the image when the musician is deleted
+     */
     public static function boot()
     {
         parent::boot();
@@ -69,6 +77,10 @@ class Musician extends Model
         });
     }
 
+    /**
+     * Gets all movies related to this musician
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function movies()
     {
         return $this->belongsToMany(\App\Models\Movie::class);

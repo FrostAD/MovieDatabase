@@ -27,6 +27,10 @@ class HomeController extends Controller
         return view('home');
     }
 
+    /**
+     * Display home page and load last added movie, action movies and drama movies
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function home()
     {
         $last_movie = Movie::orderBy('created_at')->get()->last();

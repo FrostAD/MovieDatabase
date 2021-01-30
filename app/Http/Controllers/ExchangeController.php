@@ -11,27 +11,51 @@ use Illuminate\Support\Facades\Auth;
 
 class ExchangeController extends Controller
 {
+
+    /**
+     * Display all available exchanges
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index(){
         $exchanges = Exchange::where('visible',1)->paginate(4);
         return view('index.exchanges',compact('exchanges'));
     }
 
+    /**
+     * Display all available exchanges about specific movie
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index_specific($id){
         $exchanges = Exchange::where('visible',1)->where('movie1_id',$id)->paginate(4);
         return view('index.exchanges',compact('exchanges'));
 
     }
 
+    /**
+     * Display selected exchange
+     * @param Exchange $exchange
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show(Exchange $exchange)
     {
         return view('view.exchange', compact('exchange'));
     }
 
+    /**
+     * Display the page for create exchange
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create_view()
     {
         return view('create.exchange_create');
     }
 
+    /**
+     * Create and saves exchange in DB
+     * @param ExchangeRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function create(ExchangeRequest $request)
     {
         $user_id = Auth::user()->id;
@@ -43,6 +67,11 @@ class ExchangeController extends Controller
         return redirect()->back()->with('success','Exchange created successfully.');
     }
 
+    /**
+     * Getting all movies as json and return it to load real time records in dropdown list
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function find(Request $request)
     {
         $movies = null;
@@ -59,6 +88,12 @@ class ExchangeController extends Controller
         return response()->json($movies);
     }
 
+    /**
+     * Allow second user to accept selected exchange.
+     * Saves second user id and movie id in DB
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function accept(Request $request)
     {
         $exchange = Exchange::find($request->exchange_id);
@@ -75,6 +110,12 @@ class ExchangeController extends Controller
         return redirect()->back()->with('success','Exchange is successful!');
     }
 
+    /**
+     * Allow to cancel exchange. Possible only if it's not accepted by anyone.
+     * Delete(soft-delete) record from DB
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function cancel(Request $request)
     {
         $exchange = Exchange::find($request->exchange_id);
@@ -82,6 +123,11 @@ class ExchangeController extends Controller
         return redirect('/exchanges');
     }
 
+    /**
+     * Change the status for returning of user 1 or user 2
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function ret(Request $request)
     {
         $exchange = Exchange::find($request->exchange_id);
@@ -95,6 +141,12 @@ class ExchangeController extends Controller
 
     }
 
+    /**
+     * Allow user1 and user2 to rate each other
+     * Saves ratings in DB
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function rate(Request $request)
     {
         $exchange = Exchange::find($request->exchange_id);
@@ -112,6 +164,12 @@ class ExchangeController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Called from method rate() after getting new rating for exchange
+     * Recalculate the overall rating of selected user
+     * Saves changes in DB
+     * @param $user_id
+     */
     public function save_avg_user_rating($user_id)
     {
         $user = User::find($user_id);

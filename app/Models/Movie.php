@@ -59,6 +59,10 @@ class Movie extends Model
         'published',
     ];
 
+    /**
+     * Set the directory for saving new images
+     * @param $value
+     */
     public function setPosterAttribute($value)
     {
         $attribute_name = "poster";
@@ -68,6 +72,9 @@ class Movie extends Model
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
     }
 
+    /**
+     *Delete the image when the movie is deleted
+     */
     public static function boot()
     {
         parent::boot();
@@ -76,7 +83,11 @@ class Movie extends Model
         });
     }
 
-    //TODO when update to call imbd rating
+    /**
+     * Returns imbd rating for selected movie
+     * @param $title
+     * @return string|string[]
+     */
     public static function findByTitle_imbd($title)
     {
         $curl = curl_init();
@@ -114,50 +125,91 @@ class Movie extends Model
         }
     }
 
+    /**
+     * Gets all genres for selected movie
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function genres()
     {
         return $this->belongsToMany(\App\Models\Genre::class);
     }
 
+    /**
+     * Gets all actors for selected movie
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function actors()
     {
         return $this->belongsToMany(\App\Models\Actor::class);
     }
 
+    /**
+     * Gets all producers for selected movie
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function producers()
     {
         return $this->belongsToMany(\App\Models\Producer::class);
     }
 
+    /**
+     * Gets all musicians for selected movie
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function musicians()
     {
         return $this->belongsToMany(\App\Models\Musician::class);
     }
 
+    /**
+     * Gets all studios for selected movie
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function studios()
     {
         return $this->belongsToMany(\App\Models\Studio::class);
     }
 
+    /**
+     * Gets all screenwriters for selected movie
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function screenwritters()
     {
         return $this->belongsToMany(\App\Models\Screenwritter::class);
     }
 
+    /**
+     * Gets movie author(uploader)
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
     }
 
+    /**
+     * Gets all comments for selected movie
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
     public function comments()
     {
         return $this->morphMany(\App\Models\Comment::class, 'commentable')->whereNull('parent_id');
     }
 
+    /**
+     * Gets all users which have the selected movie in their watchlist
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function watchlist_users()
     {
         return $this->belongsToMany(User::class, 'watchlist', 'movie_id', 'user_id');
     }
+
+    /**
+     * Gets all users which have the selected movie in their wishlist
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function wishlist_users()
     {
         return $this->belongsToMany(User::class, 'wishlist', 'movie_id', 'user_id');

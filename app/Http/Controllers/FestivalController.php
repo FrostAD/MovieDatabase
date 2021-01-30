@@ -8,10 +8,22 @@ use Yajra\DataTables\DataTables;
 
 class FestivalController extends Controller
 {
+
+    /**
+     * Display selected festival
+     * @param Festival $festival
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show(Festival $festival)
     {
         return view('view.festival', compact('festival'));
     }
+
+    /**
+     * Display all festivals
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|string
+     */
     public function index(Request $request)
     {
         if ($request->sortType) {
@@ -24,7 +36,12 @@ class FestivalController extends Controller
         return view('index.festivals', compact('festivals'));
     }
 
-    public function fetchEvents(Request $request)
+    /**
+     * Display all festivals(used for sorting with AJAX)
+     * @param Request $request
+     * @return string
+     */
+    public function fetchFestivals(Request $request)
     {
         if ($request->ajax()) {
             $sort = $request->get('sort');

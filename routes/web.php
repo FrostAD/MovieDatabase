@@ -37,7 +37,7 @@ Route::get('/search',[\App\Http\Controllers\SiteWideSearchController::class,'sea
 Route::get('/movies', [MovieController::class, 'index'])->name('fetch.movies.index');
 Route::post('/movies', [MovieController::class, 'index'])->name('movieSort');
 Route::post('/movies/fetch', [MovieController::class, 'fetchMovies'])->name('fetch.movies');
-Route::post('/movies/sort', [MovieController::class, 'sort']);
+//Route::post('/movies/sort', [MovieController::class, 'sort']);
 //Movie view
 Route::post('/movie/watchlist_add',[MovieController::class,'watchlist_add'])->middleware('auth');
 Route::post('/movie/watchlist_remove',[MovieController::class,'watchlist_remove'])->middleware('auth');
@@ -109,5 +109,3 @@ Route::get('/fix', function () {
     return redirect('/');
 });
 
-//TODO fix /admin and /dashboard and admin/login gives error(make redirect to /login)
-//TODO fix /admin/* to be accessable only by admins

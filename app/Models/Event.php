@@ -49,11 +49,19 @@ class Event extends Model
     ];
 
 
+    /**
+     * Gets all users which are sign up for the event
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function users()
     {
         return $this->belongsToMany(\App\Models\User::class);
     }
 
+    /**
+     * Gets event author
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         //after model::class is the local foreign key and then is the reference key(key of the model in this case User)
@@ -61,6 +69,10 @@ class Event extends Model
     }
 
 
+    /**
+     * Gets event's selected movie
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function movie()
     {
         return $this->belongsTo(\App\Models\Movie::class);

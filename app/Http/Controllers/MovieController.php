@@ -16,6 +16,11 @@ class MovieController extends Controller
 {
 
 
+    /**
+     * Display all available movies
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|string
+     */
     public function index(Request $request)
     {
         if ($request->sortType) {
@@ -28,6 +33,11 @@ class MovieController extends Controller
         return view('index.movies', compact('movies'));
     }
 
+    /**
+     * Display selected movie(with its comments,events and exchanges) with additional recommended list and youtube video
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function show($id)
     {
         $movie = Movie::find($id);
@@ -68,6 +78,7 @@ class MovieController extends Controller
 
 
         $recommended = new Collection();
+
         foreach ($movie->watchlist_users as $user) {
             foreach ($user->watchlist as $m) {
                 $recommended->add($m);
@@ -78,6 +89,11 @@ class MovieController extends Controller
         return view('view.movie2', compact('movie', 'user', 'url', 'comments', 'post', 'events', 'recommended', 'exchanges'));
     }
 
+    /**
+     * Gets all comments for selected movie
+     * @param Request $request
+     * @return string
+     */
     public function fetch(Request $request)
     {
         if ($request->ajax()) {
@@ -87,6 +103,11 @@ class MovieController extends Controller
         }
     }
 
+    /**
+     * Display all available movies(used for sorting with AJAX)
+     * @param Request $request
+     * @return string
+     */
     public function fetchMovies(Request $request)
     {
         if ($request->ajax()) {
@@ -109,13 +130,21 @@ class MovieController extends Controller
         return view('index.movies_only', compact('movies'))->render();
     }
 
-    public
-    function sort(Request $request)
-    {
-        $sort = $request->sort;
-        redirect('\movies', compact('sort'));
-    }
+//    /**
+//     * @param Request $request
+//     */
+//    public
+//    function sort(Request $request)
+//    {
+//        $sort = $request->sort;
+//        redirect('\movies', compact('sort'));
+//    }
 
+    /**
+     * Saves user rating for selected movie(itself)
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public
     function rate(Request $request)
     {
@@ -127,6 +156,11 @@ class MovieController extends Controller
         return back();
     }
 
+    /**
+     * Saves user rating for selected post(movie information)
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function ratePost(Request $request)
     {
         $movie = Movie::find($request->movie_id);
@@ -181,6 +215,11 @@ class MovieController extends Controller
         return back();
     }
 
+    /**
+     * Convert normal youtube link to embeded link
+     * @param $url
+     * @return string
+     */
     function getYoutubeEmbedUrl($url)
     {
         if (strpos($url, 'embed')) {
@@ -200,6 +239,11 @@ class MovieController extends Controller
         return 'https://www.youtube.com/embed/' . $youtube_id;
     }
 
+    /**
+     * Saves selected movie in the watchlist of current user
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function watchlist_add(Request $request)
     {
         $movie = Movie::find($request->movie_id);
@@ -208,6 +252,11 @@ class MovieController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Remove selected movie from the watchlist of current user
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function watchlist_remove(Request $request)
     {
         $movie = Movie::find($request->movie_id);
@@ -216,6 +265,11 @@ class MovieController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Saves selected movie in the wishlist of current user
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function wishlist_add(Request $request)
     {
         $movie = Movie::find($request->movie_id);
@@ -224,6 +278,11 @@ class MovieController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Remove selected movie from the wishlist of current user
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function wishlist_remove(Request $request)
     {
         $movie = Movie::find($request->movie_id);

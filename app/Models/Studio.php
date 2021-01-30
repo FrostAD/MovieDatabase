@@ -31,6 +31,10 @@ class Studio extends Model
     ];
 
 
+    /**
+     * Gets all movies related to this studio
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function movies()
     {
         return $this->belongsToMany(\App\Models\Movie::class);

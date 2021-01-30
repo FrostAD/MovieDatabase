@@ -106,30 +106,33 @@
         </div>
         
         
-        <?php $__currentLoopData = $movie->producers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $producer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li>
-                <a class="list-group-item list-group-item-action" data-toggle="list"
-                   href="#producer<?php echo e($producer->id); ?>"><?php echo e($producer->name); ?></a>
-            </li>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <?php $__currentLoopData = $movie->musicians; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $musician): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li>
-                <a class="list-group-item list-group-item-action" data-toggle="list"
-                   href="#musician<?php echo e($musician->id); ?>"><?php echo e($musician->name); ?></a>
-            </li>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <?php $__currentLoopData = $movie->screenwritters; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $screenwritter): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li>
-                <a class="list-group-item list-group-item-action" data-toggle="list"
-                   href="#screenwritter<?php echo e($screenwritter->id); ?>"><?php echo e($screenwritter->name); ?></a>
-            </li>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <?php $__currentLoopData = $movie->studios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $studio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li>
-                <a class="list-group-item list-group-item-action" data-toggle="list"
-                   href="#studio<?php echo e($studio->id); ?>"><?php echo e($studio->name); ?></a>
-            </li>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     <!-- Actors -->
         <div class="row actors-menu">

@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
+
+    /**
+     * Display all available events
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|string
+     */
     public function index(Request $request)
     {
         if ($request->sortType) {
@@ -21,6 +27,11 @@ class EventController extends Controller
         return view('index.events', compact('events'));
     }
 
+    /**
+     * Display all available events(used for sorting with AJAX)
+     * @param Request $request
+     * @return string
+     */
     public function fetchEvents(Request $request)
     {
         if ($request->ajax()) {
@@ -40,17 +51,31 @@ class EventController extends Controller
         return view('index.events_only', compact('events'))->render();
     }
 
+    /**
+     * Display selected event
+     * @param Event $event
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function show(Event $event)
     {
         $movie = Movie::find($event->movie_id);
         return view('view.event', compact('event', 'movie'));
     }
 
+    /**
+     * Display the page for create event
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function create_view()
     {
         return view('create.event_create');
     }
 
+    /**
+     * Create and saves event in DB
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function create(Request $request)
     {
         $event = new Event();
@@ -69,6 +94,12 @@ class EventController extends Controller
     }
 
     //using for event add page
+
+    /**
+     * Getting all movies as json and return it to load real time records in dropdown list
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function find(Request $request)
     {
         $movies = null;
@@ -84,6 +115,13 @@ class EventController extends Controller
         }
         return response()->json($movies);
     }
+
+    /**
+     * Allow the user to join or leave selected event
+     * Saving the current state of current user about the selected event in DB
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function join(Request $request)
     {
         $event = Event::find($request->event_id);
@@ -112,6 +150,13 @@ class EventController extends Controller
         }
         return redirect()->back();
     }
+
+    /**
+     * Allow canceling event. Possible only if the current user is the creator of the event.
+     * Deletes(soft-delete) the record from DB
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function cancel(Request $request){
         $event = Event::find($request->event_id);
         if (Auth::id() == $event->user->id){

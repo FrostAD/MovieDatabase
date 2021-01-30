@@ -23,15 +23,34 @@ class Exchange extends Model
         'visible',
     ];
 
+    /**
+     * Gets exchange author
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function first_user(){
         return $this->belongsTo(User::class,'user1_id','id');
     }
+
+    /**
+     * Gets the offered movie from the author
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function first_movie(){
         return $this->belongsTo(Movie::class,'movie1_id','id');
     }
+
+    /**
+     * Gets the second user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function second_user(){
         return $this->belongsTo(User::class,'user2_id','id');
     }
+
+    /**
+     * Gets the movie offered from the second user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function second_movie(){
         return $this->belongsTo(Movie::class,'movie2_id','id');
     }

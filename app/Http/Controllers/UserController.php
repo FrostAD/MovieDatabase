@@ -10,6 +10,13 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+
+    /**
+     * Changes user profile picture
+     * Save it in DB
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function upload(Request $request)
     {
         if ($request->hasFile('image')) {
@@ -22,6 +29,11 @@ class UserController extends Controller
         return redirect()->back()->with('error','Choose image!');
     }
 
+    /**
+     * Display selected user with its watchlist,wishlist,posts and exchanges
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function details($id)
     {
         $user = User::find($id);
@@ -43,6 +55,11 @@ class UserController extends Controller
         return view('view.user', compact('user', 'wishlist', 'watchlist', 'posts', 'exchanges'));
     }
 
+    /**
+     * Display user settings page
+     * @param User $user
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function settings(User $user)
     {
         if ($user->id != Auth::user()->id) {
@@ -52,6 +69,12 @@ class UserController extends Controller
         return view('create.account_settings', compact('user'));
     }
 
+    /**
+     * Saves new changes(after validation) in user - name,email or password
+     * @param User $user
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function update(User $user)
     {
         if ($user->id == Auth::id()) {
