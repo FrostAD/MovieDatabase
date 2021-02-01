@@ -98,7 +98,7 @@
         $(document).ready(function () {
 
             $('#sortType').on('change', function (e) {
-                alert($(this).val());
+                // alert($(this).val());
                 $('#sorting').val($(this).val());
                 var _token = $("input[name=_token]").val();
                 $.ajax({
@@ -148,7 +148,7 @@
                     method: "POST",
                     data: {_token: _token, page: page, actor: '{{$actor->id}}'},
                     success: function (data) {
-                        console.log(data);
+                        // console.log(data);
                         $('#home-tab').removeClass('active');
 
                         $('#actor_movies').addClass('active');
@@ -177,7 +177,7 @@
                     method: "POST",
                     data: {_token: _token, page: page, musician: '{{$musician->id}}'},
                     success: function (data) {
-                        console.log(data);
+                        // console.log(data);
 
                         $('#home-tab').removeClass('active');
 
@@ -207,7 +207,7 @@
                     method: "POST",
                     data: {_token: _token, page: page, producer: '{{$producer->id}}'},
                     success: function (data) {
-                        console.log(data);
+                        // console.log(data);
                         $('#home-tab').removeClass('active');
 
                         $('#producer_movies').addClass('active');
@@ -236,7 +236,7 @@
                     method: "POST",
                     data: {_token: _token, page: page, screenwritter: '{{$screenwritter->id}}'},
                     success: function (data) {
-                        console.log(data);
+                        // console.log(data);
                         $('#home-tab').removeClass('active');
 
                         $('#screenwritter_movies').addClass('active');
@@ -253,7 +253,7 @@
         $(document).ready(function () {
 
             $('#sortType').on('change', function (e) {
-                alert($(this).val());
+                // alert($(this).val());
                 $('#sorting').val($(this).val());
                 var _token = $("input[name=_token]").val();
                 $.ajax({
@@ -291,7 +291,7 @@
         $(document).ready(function () {
 
             $('#sortType').on('change', function (e) {
-                alert($(this).val());
+                // alert($(this).val());
                 $('#sorting').val($(this).val());
                 var _token = $("input[name=_token]").val();
                 $.ajax({

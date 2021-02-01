@@ -268,6 +268,9 @@
 
                 </ul>
                 <p>Available exchanges: <a href="/exchanges/<?php echo e($movie->id); ?>"><?php echo e($exchanges); ?></a></p>
+                <p><?php echo e($movie->wishlist_users()->count()); ?> users added this film in their wishlist</p>
+                <p><?php echo e($movie->watchlist_users()->count()); ?> users added this film in their watchlist</p>
+
             </div>
         </div>
         <!-- Add Comment -->

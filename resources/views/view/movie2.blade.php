@@ -267,6 +267,9 @@
                     {{$events->links()}}
                 </ul>
                 <p>Available exchanges: <a href="/exchanges/{{$movie->id}}">{{$exchanges}}</a></p>
+                <p>{{$movie->wishlist_users()->count()}} users added this film in their wishlist</p>
+                <p>{{$movie->watchlist_users()->count()}} users added this film in their watchlist</p>
+
             </div>
         </div>
         <!-- Add Comment -->

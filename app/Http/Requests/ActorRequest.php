@@ -31,7 +31,7 @@ class ActorRequest extends FormRequest
             'born_date' => 'required',
             'born_place' => 'required',
             'description' => 'required',
-            'image' => 'required',
+//            'image' => 'required',
         ];
     }
 

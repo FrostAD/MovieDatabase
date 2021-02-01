@@ -36,7 +36,6 @@
                     <label>Offers</label>
                 </div>
                 <div class="col">
-
             <span><a href="/movie/<?php echo e($exchange->first_movie->id); ?>"><?php echo e($exchange->first_movie->title); ?></a><span><?php echo e($exchange->first_movie->rating); ?>
 
                 <svg width="14" viewBox="0 0 16 22" class="bi bi-star" fill="currentColor"
