@@ -106,47 +106,52 @@
         </div>
         {{--        TODO show every type of person--}}
         {{--        Example--}}
-{{--        @foreach($movie->producers as $producer)--}}
-{{--            <li>--}}
-{{--                <a class="list-group-item list-group-item-action" data-toggle="list"--}}
-{{--                   href="#producer{{$producer->id}}">{{$producer->name}}</a>--}}
-{{--            </li>--}}
-{{--        @endforeach--}}
 
-{{--        @foreach($movie->musicians as $musician)--}}
-{{--            <li>--}}
-{{--                <a class="list-group-item list-group-item-action" data-toggle="list"--}}
-{{--                   href="#musician{{$musician->id}}">{{$musician->name}}</a>--}}
-{{--            </li>--}}
-{{--        @endforeach--}}
-
-{{--        @foreach($movie->screenwritters as $screenwritter)--}}
-{{--            <li>--}}
-{{--                <a class="list-group-item list-group-item-action" data-toggle="list"--}}
-{{--                   href="#screenwritter{{$screenwritter->id}}">{{$screenwritter->name}}</a>--}}
-{{--            </li>--}}
-{{--        @endforeach--}}
-
-{{--        @foreach($movie->studios as $studio)--}}
-{{--            <li>--}}
-{{--                <a class="list-group-item list-group-item-action" data-toggle="list"--}}
-{{--                   href="#studio{{$studio->id}}">{{$studio->name}}</a>--}}
-{{--            </li>--}}
-{{--    @endforeach--}}
+       
     {{--        end example--}}
     <!-- Actors -->
-        <div class="row actors-menu">
-            <div class="col-4 actors-name scrollbar-hidden">
+            <div class="row actors-menu">
+              <div class="col-md-4 actors-name scrollbar-hidden">
                 <ul class="list-group actors-menu">
-                    @foreach($movie->actors as $actor)
-                        <li>
-                            <a class="list-group-item list-group-item-action" data-toggle="list"
-                               href="#actor{{$actor->id}}">{{$actor->name}}</a>
-                        </li>
-                    @endforeach
+                  <li class="text-center list-group-item text-uppercase font-weight-bold">Actors</li>
+                  @foreach($movie->actors as $actor)
+                      <li>
+                          <a class="list-group-item list-group-item-action" data-toggle="list"
+                              href="#actor{{$actor->id}}">{{$actor->name}}</a>
+                      </li>
+                  @endforeach
+                  <li class="text-center list-group-item text-uppercase font-weight-bold">Producers</li>
+                  @foreach($movie->producers as $producer)
+                    <li>
+                        <a class="disabled list-group-item list-group-item-action" data-toggle="list"
+                          href="#producer{{$producer->id}}">{{$producer->name}}</a>
+                    </li>
+                  @endforeach
+                  <li class="text-center list-group-item text-uppercase font-weight-bold">Musicians</li>
+                  @foreach($movie->musicians as $musician)
+                  <li>
+                      <a class="disabled list-group-item list-group-item-action" data-toggle="list"
+                         href="#musician{{$musician->id}}">{{$musician->name}}</a>
+                  </li>
+                  @endforeach 
+                  <li class="text-center list-group-item text-uppercase font-weight-bold">Screenwriters</li>
+                  @foreach($movie->screenwritters as $screenwritter)
+                      <li>
+                          <a class="disabled list-group-item list-group-item-action" data-toggle="list"
+                            href="#screenwritter{{$screenwritter->id}}">{{$screenwritter->name}}</a>
+                      </li>
+                  @endforeach
+                  <li class="text-center list-group-item text-uppercase font-weight-bold">Studos</li>
+                  @foreach($movie->studios as $studio)
+                      <li>
+                          <a class="disabled list-group-item list-group-item-action" data-toggle="list"
+                            href="#studio{{$studio->id}}">{{$studio->name}}</a>
+                      </li>
+                  @endforeach
                 </ul>
             </div>
-            <div class="col tab-content scrollbar-hidden">
+            
+            <div class="col-md-8 tab-content scrollbar-hidden">
                 @foreach($movie->actors as $actor)
                     @if ($loop->first)
                         <div class="tab-pane fade show active" id="actor{{$actor->id}}">
@@ -238,17 +243,23 @@
             </div>
         </div>
         <!-- Published by -->
-        <div class="row d-block">
-            <h3>Published by</h3>
-            <div class="d-flex" style="height: 150px">
-                <img src="{{asset('storage/avatars/'.$movie->user->avatar)}}" class="h-100 ml-3" alt="">
-                <p>{{$movie->user->name . ", " . $movie->user->rating_post}}</p>
-            </div>
+        <div class="row text-center justify-content-center d-block">
+            <h3>Publisher {{$movie->user->name . " ". $movie->user->rating_post}}<span>
+              <svg width="22" viewBox="0 0 16 22"
+              class="bi bi-star" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+              d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+              </svg>
+              </span>
+            </h3>
+            <img src="{{asset('storage/avatars/'.$movie->user->avatar)}}" class="mb-3" style="max-height: 40vh" alt="author_image">
+                {{-- <h4>{{$movie->user->name . ", " . $movie->user->rating_post}}</h4> --}}
         </div>
         <!-- People also watch -->
         <div class="row">
             <div class="col-6">
-                <h3>People also watch:</h3>
+                <h3>People also watch</h3>
                 <div class="selector-page scrollbar-hidden">
                     <ul>
                         @foreach($recommended as $m)
@@ -257,21 +268,37 @@
                     </ul>
                 </div>
             </div>
-            <!-- TODO --- TODO --- TODO -->
-            <div class="col-6 m-auto">
-                <p>Some events (work in progress)</p>
-                <ul>
+            <div class="col-6">
+              <h3>Events</h3>
+                <ul id="events-for-movie" class="list-group scrollbar-hidden">
                     @foreach($events as $event)
-                        <li><a href="/event/{{$event->id}}">{{$event->name}}</a></li>
+                        <li class="list-group-item"><a href="/event/{{$event->id}}">{{$event->name}}</a></li>
                     @endforeach
                     {{$events->links()}}
-                </ul>
-                <p>Available exchanges: <a href="/exchanges/{{$movie->id}}">{{$exchanges}}</a></p>
-                <p>{{$movie->wishlist_users()->count()}} users added this film in their wishlist</p>
-                <p>{{$movie->watchlist_users()->count()}} users added this film in their watchlist</p>
-
+                </ul>               
             </div>
         </div>
+        <div class="row mb-3 justify-content-center bold text-center">
+          <div class="col-md-4 card border-0">
+            <div class="card-body">
+              <div class="card-title h5">Available exchanges</div>
+            </div>
+            <p class="h4"><a href="/exchanges/{{$movie->id}}">{{$exchanges}}</a></p>
+          </div>
+          <div class="col-md-4 card border-0">
+            <div class="card-body">
+              <div class="card-title h5">In Wishlist</div>
+            </div>
+            <p class="h4">{{$movie->wishlist_users()->count()}}</p>
+          </div>
+          <div class="col-md-4 card border-0">
+            <div class="card-body">
+              <div class="card-title h5">In Watchlist</div>
+            </div>
+            <p class="h4">{{$movie->watchlist_users()->count()}}</p>
+          </div>
+        </div>
+
         <!-- Add Comment -->
         <form action="/comment/store" method="POST">
             @csrf

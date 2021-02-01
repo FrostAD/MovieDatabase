@@ -21,6 +21,18 @@
                     </a>
                 </h4>
             </div>
+             <?php if (isset($component)) { $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\Alert::class, []); ?>
+<?php $component->withName('alert'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+<?php if (isset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975)): ?>
+<?php $component = $__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975; ?>
+<?php unset($__componentOriginald4c8f106e1e33ab85c5d037c2504e2574c1b0975); ?>
+<?php endif; ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?> 
         </div>
         <div class="row mt-4">
             <div class="col-4">
@@ -39,12 +51,13 @@
                             </li>
                         </ul>
                         <p id="movie-card-description" class="scrollbar-hidden"><?php echo e($movie->description); ?></p>
-                        
                         <div class="watch-btn">
-                                               <a href="https://www.youtube.com/"><button type="button" class="btn btn-primary"><i
-                                                           class="fa fa-play mr-2"></i>WATCH TRAILER</button>
-                                               </a>
-                                           </div>
+                            <a href="<?php echo e($movie->trailer); ?>">
+                                <button type="button" class="btn btn-primary"><i
+                                        class="fa fa-play mr-2"></i>WATCH TRAILER
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,46 +82,43 @@
                     </div>
                 <?php endif; ?>
                 <?php if(auth()->guard()->check()): ?>
-                    <?php if($event->current_cappacity == $event->capacity): ?>
+                    <?php if($event->current_cappacity == $event->capacity && !$event->users->contains(\Illuminate\Support\Facades\Auth::user()->id)): ?>
                         <div class="row d-flex flex-column justify-content-end"><p>No available places</p></div>
                     <?php else: ?>
                         <div class="row d-flex flex-column justify-content-end">
-                            <form action="/event/join" method="POST">
-                                <?php echo csrf_field(); ?>
-                                <input type="hidden" value="<?php echo e($event->id); ?>" name="event_id">
-                                <?php if($event->users->contains(\Illuminate\Support\Facades\Auth::user()->id) || $event->user->id == \Illuminate\Support\Facades\Auth::id()): ?>
-                                    <input type="hidden" value="q" name="type">
-                                    <?php if(\Illuminate\Support\Facades\Auth::user()->id == $event->user_id): ?>
-
-                                        <button class="btn btn-primary position-absolute" type="submit" style="bottom: 0; right: 0;">Cancel event</button>
+                            <?php if(\Illuminate\Support\Facades\Auth::user()->id == $event->user_id): ?>
+                                <form action="/event/cancel" method="POST">
                                     <?php else: ?>
+                                        <form action="/event/join" method="POST">
+                                            <?php endif; ?>
+                                            <?php echo csrf_field(); ?>
+                                            <input type="hidden" value="<?php echo e($event->id); ?>" name="event_id">
+                                            <?php if($event->users->contains(\Illuminate\Support\Facades\Auth::user()->id) || $event->user->id == \Illuminate\Support\Facades\Auth::id()): ?>
+                                                <input type="hidden" value="q" name="type">
+                                                <?php if(\Illuminate\Support\Facades\Auth::user()->id == $event->user_id): ?>
+                                                    <button class="btn btn-primary position-absolute" type="submit"
+                                                            style="bottom: 0; right: 0;">Cancel event
+                                                    </button>
+                                                <?php else: ?>
+                                                    <button class="btn btn-primary position-absolute" type="submit"
+                                                            style="bottom: 0; right: 0;">Leave
+                                                    </button>
+                                                <?php endif; ?>
 
-                                        <button class="btn btn-primary position-absolute" type="submit" style="bottom: 0; right: 0;">Leave</button>
-                                    <?php endif; ?>
-
-                                <?php else: ?>
-                                    <input type="hidden" value="e" name="type">
-
-                                    <button class="btn btn-primary position-absolute" type="submit" style="bottom: 0; right: 0;">Sign
-                                        up</button>
-                                <?php endif; ?>
-                            </form>
+                                            <?php else: ?>
+                                                <input type="hidden" value="e" name="type">
+                                                <button class="btn btn-primary position-absolute" type="submit"
+                                                        style="bottom: 0; right: 0;">Join
+                                                </button>
+                                            <?php endif; ?>
+                                        </form>
                         </div>
                     <?php endif; ?>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                 <?php endif; ?>
                 <div class="row d-flex flex-column justify-content-end">
                     <p>Current capacity: <?php echo e($event->current_cappacity); ?>/<?php echo e($event->capacity); ?></p>
                 </div>
             </div>
-
         </div>
     </div>
 <?php $__env->stopSection(); ?>

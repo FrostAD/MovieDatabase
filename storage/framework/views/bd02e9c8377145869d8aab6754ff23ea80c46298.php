@@ -1,14 +1,28 @@
 <div>
-    <?php if(session()->has('message')): ?>
-        <?php echo e($slot); ?>
-
-        <div class="py-4 px-2 bg-green-300"><?php echo e(session()->get('message')); ?></div>
-    <?php elseif(session()->has('error')): ?>
-        <?php echo e($slot); ?>
-
-        <div class="py-4 px-2 bg-red-300"><?php echo e(session()->get('error')); ?></div>
+    <?php if($message = Session::get('success')): ?>
+        <div class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong><?php echo e($message); ?></strong>
+        </div>
     <?php endif; ?>
-
+    <?php if($message = Session::get('error')): ?>
+        <div class="alert alert-danger alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong><?php echo e($message); ?></strong>
+        </div>
+    <?php endif; ?>
+    <?php if($message = Session::get('warning')): ?>
+        <div class="alert alert-warning alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong><?php echo e($message); ?></strong>
+        </div>
+    <?php endif; ?>
+    <?php if($message = Session::get('info')): ?>
+        <div class="alert alert-info alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong><?php echo e($message); ?></strong>
+        </div>
+    <?php endif; ?>
     <?php if($errors->any()): ?>
         <div class="py-4 px-2 bg-red-300">
             <ul>
@@ -18,7 +32,5 @@
             </ul>
         </div>
     <?php endif; ?>
-</div><div>
-    <!-- Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. - Immanuel Kant -->
 </div>
 <?php /**PATH C:\Users\rstoi\Documents\GitHub\MovieDatabase\resources\views/components/alert.blade.php ENDPATH**/ ?>

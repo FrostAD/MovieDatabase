@@ -5,10 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- AJAX -->
-
-
-
 <!-- Custom stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="<?php echo e(asset('css/main.css')); ?>">
@@ -38,17 +34,6 @@
 <div id="signup-placeholder">
 </div>
 <?php endif; ?>
-
-<!-- Different components loader -->
-
-
-
-
-
-
-
-
-
 
 <script>
     const resultsList = document.getElementById('results');
@@ -113,7 +98,7 @@
         $(document).ready(function () {
 
             $('#sortType').on('change', function (e) {
-                alert($(this).val());
+                // alert($(this).val());
                 $('#sorting').val($(this).val());
                 var _token = $("input[name=_token]").val();
                 $.ajax({
@@ -146,6 +131,35 @@
         });
     </script>
 <?php endif; ?>
+<?php if(\Illuminate\Support\Facades\Route::current()->getName() == 'fetch.movies.actor.main'): ?>
+    <script>
+        $(document).ready(function () {
+
+            $(document).on('click', '.page-link', function (event) {
+                event.preventDefault();
+                var page = $(this).attr('href').split('page=')[1];
+                fetch_data(page);
+            });
+
+            function fetch_data(page) {
+                var _token = $("input[name=_token]").val();
+                $.ajax({
+                    url: "<?php echo e(route('fetch.movies.actor')); ?>",
+                    method: "POST",
+                    data: {_token: _token, page: page, actor: '<?php echo e($actor->id); ?>'},
+                    success: function (data) {
+                        // console.log(data);
+                        $('#home-tab').removeClass('active');
+
+                        $('#actor_movies').addClass('active');
+                        $('#profile').html(data);
+                    }
+                });
+            }
+
+        });
+    </script>
+<?php endif; ?>
 <?php if(\Illuminate\Support\Facades\Route::current()->getName() == 'fetch.movies.musician.main'): ?>
     <script>
         $(document).ready(function () {
@@ -163,7 +177,11 @@
                     method: "POST",
                     data: {_token: _token, page: page, musician: '<?php echo e($musician->id); ?>'},
                     success: function (data) {
-                        console.log(data);
+                        // console.log(data);
+
+                        $('#home-tab').removeClass('active');
+
+                        $('#musician_movies').addClass('active');
                         $('#profile').html(data);
                     }
                 });
@@ -189,7 +207,10 @@
                     method: "POST",
                     data: {_token: _token, page: page, producer: '<?php echo e($producer->id); ?>'},
                     success: function (data) {
-                        console.log(data);
+                        // console.log(data);
+                        $('#home-tab').removeClass('active');
+
+                        $('#producer_movies').addClass('active');
                         $('#profile').html(data);
                     }
                 });
@@ -215,7 +236,10 @@
                     method: "POST",
                     data: {_token: _token, page: page, screenwritter: '<?php echo e($screenwritter->id); ?>'},
                     success: function (data) {
-                        console.log(data);
+                        // console.log(data);
+                        $('#home-tab').removeClass('active');
+
+                        $('#screenwritter_movies').addClass('active');
                         $('#profile').html(data);
                     }
                 });
@@ -229,7 +253,7 @@
         $(document).ready(function () {
 
             $('#sortType').on('change', function (e) {
-                alert($(this).val());
+                // alert($(this).val());
                 $('#sorting').val($(this).val());
                 var _token = $("input[name=_token]").val();
                 $.ajax({
@@ -267,7 +291,7 @@
         $(document).ready(function () {
 
             $('#sortType').on('change', function (e) {
-                alert($(this).val());
+                // alert($(this).val());
                 $('#sorting').val($(this).val());
                 var _token = $("input[name=_token]").val();
                 $.ajax({
@@ -373,7 +397,6 @@
             }
         });
     </script>
-
 <?php endif; ?>
 <!-- JavaScript included individual files as needed -->
 <script src="/bootstrap/js/bootstrap.min.js"></script>
