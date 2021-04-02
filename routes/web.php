@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Storage;
 
 Route::get('/', [HomeController::class, 'home']);
 //
-Route::get('/search',[\App\Http\Controllers\SiteWideSearchController::class,'search_view']);
+//Route::get('/search',[\App\Http\Controllers\SiteWideSearchController::class,'search_view']);
 //
 //Index movies
 Route::get('/movies', [MovieController::class, 'index'])->name('fetch.movies.index');
@@ -104,8 +104,8 @@ Route::post('account/update/{user:id}', [UserController::class, 'update'])->midd
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/fix', function () {
-    Artisan::call('storage:link');
-    return redirect('/');
-});
+//Route::get('/fix', function () {
+//    Artisan::call('storage:link');
+//    return redirect('/');
+//});
 

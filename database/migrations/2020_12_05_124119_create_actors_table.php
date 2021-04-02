@@ -22,6 +22,7 @@ class CreateActorsTable extends Migration
             $table->string('image');
 //            $table->boolean('archived')->default(false);
             $table->softDeletes();
+            $table->unique(['name','born_date','born_place','description']);
             $table->timestamps();
         });
     }

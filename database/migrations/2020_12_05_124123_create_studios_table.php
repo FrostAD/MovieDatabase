@@ -17,6 +17,8 @@ class CreateStudiosTable extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('archived')->default(false);
+            $table->unique(['name']);
+
             $table->timestamps();
         });
     }

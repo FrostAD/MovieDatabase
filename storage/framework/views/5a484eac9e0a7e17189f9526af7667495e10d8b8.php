@@ -39,7 +39,7 @@
                     <div class="p-3">
                         <h3 class="card-title"><?php echo e($movie->title); ?></h3>
                         <ul class="movie-concise-info">
-                            <li class="movie-year"><?php echo e($movie->published); ?></li>
+                            <li class="movie-year"><?php echo e($movie->published->format('m/d/Y')); ?></li>
                             <li class="movie-time"><?php echo e($movie->timespan); ?></li>
                             <li class="movie-genre">
                                 <?php $__currentLoopData = $movie->genres; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $genre): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

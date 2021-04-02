@@ -30,7 +30,7 @@
                     <div class="p-3">
                         <h3 class="card-title">{{$movie->title}}</h3>
                         <ul class="movie-concise-info">
-                            <li class="movie-year">{{$movie->published}}</li>
+                            <li class="movie-year">{{$movie->published->format('m/d/Y')}}</li>
                             <li class="movie-time">{{$movie->timespan}}</li>
                             <li class="movie-genre">
                                 @foreach($movie->genres as $genre)

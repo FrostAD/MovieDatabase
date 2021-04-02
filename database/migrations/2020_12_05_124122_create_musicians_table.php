@@ -21,6 +21,8 @@ class CreateMusiciansTable extends Migration
             $table->longText('description');
             $table->string('image');
             $table->boolean('archived')->default(false);
+            $table->unique(['name','born_date','born_place','description']);
+
             $table->timestamps();
         });
     }

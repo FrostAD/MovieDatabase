@@ -24,7 +24,7 @@
             </svg>
           </span>
                     |
-                    <small>OUR: {{$movie->rating}} </small><span><svg width="16" viewBox="0 0 16 20" class="bi bi-star"
+                    <small>OUR: {{round($movie->rating,2)}} </small><span><svg width="16" viewBox="0 0 16 20" class="bi bi-star"
                                                                       fill="currentColor"
                                                                       xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd"
@@ -107,7 +107,7 @@
         {{--        TODO show every type of person--}}
         {{--        Example--}}
 
-       
+
     {{--        end example--}}
     <!-- Actors -->
             <div class="row actors-menu">
@@ -123,25 +123,25 @@
                   <li class="text-center list-group-item text-uppercase font-weight-bold">Producers</li>
                   @foreach($movie->producers as $producer)
                     <li>
-                        <a class="disabled list-group-item list-group-item-action" data-toggle="list"
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
                           href="#producer{{$producer->id}}">{{$producer->name}}</a>
                     </li>
                   @endforeach
                   <li class="text-center list-group-item text-uppercase font-weight-bold">Musicians</li>
                   @foreach($movie->musicians as $musician)
                   <li>
-                      <a class="disabled list-group-item list-group-item-action" data-toggle="list"
+                      <a class="list-group-item list-group-item-action" data-toggle="list"
                          href="#musician{{$musician->id}}">{{$musician->name}}</a>
                   </li>
-                  @endforeach 
+                  @endforeach
                   <li class="text-center list-group-item text-uppercase font-weight-bold">Screenwriters</li>
                   @foreach($movie->screenwritters as $screenwritter)
                       <li>
-                          <a class="disabled list-group-item list-group-item-action" data-toggle="list"
+                          <a class="list-group-item list-group-item-action" data-toggle="list"
                             href="#screenwritter{{$screenwritter->id}}">{{$screenwritter->name}}</a>
                       </li>
                   @endforeach
-                  <li class="text-center list-group-item text-uppercase font-weight-bold">Studos</li>
+                  <li class="text-center list-group-item text-uppercase font-weight-bold">Studios</li>
                   @foreach($movie->studios as $studio)
                       <li>
                           <a class="disabled list-group-item list-group-item-action" data-toggle="list"
@@ -150,7 +150,7 @@
                   @endforeach
                 </ul>
             </div>
-            
+
             <div class="col-md-8 tab-content scrollbar-hidden">
                 @foreach($movie->actors as $actor)
                     @if ($loop->first)
@@ -220,6 +220,102 @@
                         </div>
                     </div>
                 @endforeach
+                @foreach($movie->producers as $producer)
+                        <div class="tab-pane fade h-100" id="producer{{$producer->id}}">
+                            <a href="/producer/{{$producer->id}}">
+                                <img class="h-100" src="{{asset('storage/'.$producer->image)}}" width="150"
+                                     style="float: left;">
+                            </a>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col">
+                                    <p>{{$producer->name}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Born</label>
+                                </div>
+                                <div class="col">
+                                    <p>{{$producer->born_place}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Year</label>
+                                </div>
+                                <div class="col">
+                                    <p>{{$producer->born_date->format('m/d/Y')}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    @foreach($movie->musicians as $musician)
+                        <div class="tab-pane fade h-100" id="musician{{$musician->id}}">
+                            <a href="/musician/{{$musician->id}}">
+                                <img class="h-100" src="{{asset('storage/'.$musician->image)}}" width="150"
+                                     style="float: left;">
+                            </a>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col">
+                                    <p>{{$musician->name}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Born</label>
+                                </div>
+                                <div class="col">
+                                    <p>{{$musician->born_place}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Year</label>
+                                </div>
+                                <div class="col">
+                                    <p>{{$musician->born_date->format('m/d/Y')}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    @foreach($movie->screenwritters as $screenwritter)
+                        <div class="tab-pane fade h-100" id="screenwritter{{$screenwritter->id}}">
+                            <a href="/screenwritter/{{$screenwritter->id}}">
+                                <img class="h-100" src="{{asset('storage/'.$screenwritter->image)}}" width="150"
+                                     style="float: left;">
+                            </a>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col">
+                                    <p>{{$screenwritter->name}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Born</label>
+                                </div>
+                                <div class="col">
+                                    <p>{{$screenwritter->born_place}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Year</label>
+                                </div>
+                                <div class="col">
+                                    <p>{{$screenwritter->born_date->format('m/d/Y')}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
             </div>
         </div>
         <!-- End Actors -->
@@ -244,7 +340,7 @@
         </div>
         <!-- Published by -->
         <div class="row text-center justify-content-center d-block">
-            <h3>Publisher {{$movie->user->name . " ". $movie->user->rating_post}}<span>
+            <h3>Publisher <a href="/account/{{$movie->user->id}}">{{$movie->user->name}} </a>{{$movie->user->rating_post}}<span>
               <svg width="22" viewBox="0 0 16 22"
               class="bi bi-star" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg">
@@ -275,7 +371,7 @@
                         <li class="list-group-item"><a href="/event/{{$event->id}}">{{$event->name}}</a></li>
                     @endforeach
                     {{$events->links()}}
-                </ul>               
+                </ul>
             </div>
         </div>
         <div class="row mb-3 justify-content-center bold text-center">
